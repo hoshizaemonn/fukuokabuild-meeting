@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福岡ビルド株式会社 ── SNS・Web戦略提案書</title>
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --primary-light: #2a5a8c;
+      --accent: #e8913a;
+      --accent-light: #f5a623;
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #2c3e50;
+      --text-light: #6b7c93;
+      --border: #e2e8f0;
+      --success: #27ae60;
+      --info: #3498db;
+      --warning: #f39c12;
+      --gradient-start: #1a3a5c;
+      --gradient-end: #2a6a9c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+      padding: 80px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+      animation: float 20s infinite linear;
+    }
+
+    @keyframes float {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(14px, 2.5vw, 18px);
+      opacity: 0.85;
+      font-weight: 400;
+      position: relative;
+    }
+
+    .hero-meta {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      position: relative;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== TOC ===== */
+    .toc {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin: -40px auto 48px;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      max-width: 800px;
+    }
+
+    .toc h2 {
+      font-size: 16px;
+      color: var(--primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc a:hover {
+      background: var(--bg);
+      color: var(--primary);
+    }
+
+    .toc-num {
+      background: var(--primary);
+      color: #fff;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ===== SECTION ===== */
+    section {
+      margin-bottom: 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .section-number {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 {
+      font-size: clamp(20px, 3vw, 26px);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      font-size: 18px;
+      color: var(--primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h4 {
+      font-size: 15px;
+      color: var(--primary-light);
+      margin: 20px 0 10px;
+    }
+
+    .card p, .card li {
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    .card ul, .card ol {
+      padding-left: 20px;
+      margin: 8px 0;
+    }
+
+    .card li {
+      margin-bottom: 4px;
+    }
+
+    /* ===== ICON BADGE ===== */
+    .icon-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .icon-badge.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+    .icon-badge.facebook { background: #1877f2; color: #fff; }
+    .icon-badge.line { background: #06c755; color: #fff; }
+    .icon-badge.web { background: var(--primary); color: #fff; }
+    .icon-badge.youtube { background: #ff0000; color: #fff; }
+
+    /* ===== STRENGTH GRID ===== */
+    .strength-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .strength-item {
+      background: linear-gradient(135deg, #f0f5fa, #e8eef5);
+      border-radius: 12px;
+      padding: 20px 24px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .strength-item strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .strength-item span {
+      font-size: 14px;
+      color: var(--text-light);
+    }
+
+    /* ===== TABLES ===== */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    th {
+      padding: 14px 18px;
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ===== FUNNEL ===== */
+    .funnel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin: 20px 0;
+      position: relative;
+    }
+
+    .funnel-stage {
+      text-align: center;
+      padding: 28px 16px;
+      position: relative;
+    }
+
+    .funnel-stage:nth-child(1) {
+      background: linear-gradient(135deg, #e8f4fd, #d1e9f7);
+      border-radius: 12px 0 0 12px;
+    }
+
+    .funnel-stage:nth-child(2) {
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    }
+
+    .funnel-stage:nth-child(3) {
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .funnel-stage::after {
+      content: "▶";
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: var(--text-light);
+      z-index: 1;
+    }
+
+    .funnel-stage:last-child::after {
+      display: none;
+    }
+
+    .funnel-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+
+    .funnel-items {
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .funnel-items strong {
+      color: var(--primary);
+    }
+
+    /* ===== STEP FLOW ===== */
+    .step-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 16px 0;
+      position: relative;
+    }
+
+    .step-flow::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 24px;
+      bottom: 24px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 12px 0;
+      position: relative;
+    }
+
+    .step-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 3px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+
+    .step-content {
+      flex: 1;
+      padding-top: 8px;
+    }
+
+    .step-content .step-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 14px;
+    }
+
+    .step-content .step-desc {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* ===== TOP5 ===== */
+    .top5-list {
+      counter-reset: top5;
+    }
+
+    .top5-item {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 24px 28px 24px 80px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .top5-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+    }
+
+    .top5-item::before {
+      counter-increment: top5;
+      content: counter(top5);
+      position: absolute;
+      left: 24px;
+      top: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .top5-item h3 {
+      margin-bottom: 8px;
+      font-size: 17px;
+      color: var(--primary);
+    }
+
+    .top5-item p, .top5-item li {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    .top5-item ul {
+      padding-left: 18px;
+      margin-top: 8px;
+    }
+
+    /* ===== ROADMAP ===== */
+    .roadmap {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .roadmap::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent), var(--success));
+      border-radius: 2px;
+    }
+
+    .roadmap-item {
+      position: relative;
+      margin-bottom: 28px;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+
+    .roadmap-item::before {
+      content: "";
+      position: absolute;
+      left: -33px;
+      top: 28px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      background: var(--card);
+    }
+
+    .roadmap-item:nth-child(2)::before { border-color: var(--info); }
+    .roadmap-item:nth-child(3)::before { border-color: var(--accent); }
+    .roadmap-item:nth-child(4)::before { border-color: var(--warning); }
+    .roadmap-item:nth-child(5)::before { border-color: var(--success); }
+
+    .phase-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .phase-1 { background: #e8f4fd; color: var(--primary); }
+    .phase-2 { background: #e8f4fd; color: var(--info); }
+    .phase-3 { background: #fff3e0; color: #e67e22; }
+    .phase-4 { background: #fef3e2; color: #d4880f; }
+    .phase-5 { background: #e8f5e9; color: var(--success); }
+
+    .roadmap-item h3 {
+      font-size: 17px;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .roadmap-item .period {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .roadmap-item p {
+      font-size: 14px;
+    }
+
+    .roadmap-item .effect {
+      margin-top: 8px;
+      padding: 8px 14px;
+      background: #f0f7f0;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      background: linear-gradient(135deg, #fff8ed, #fff3e0);
+      border: 2px solid var(--accent);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin: 24px 0;
+    }
+
+    .highlight-box h3 {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .highlight-box ol {
+      padding-left: 20px;
+    }
+
+    .highlight-box li {
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .highlight-box li strong {
+      color: var(--primary);
+    }
+
+    /* ===== SUMMARY ===== */
+    .summary-box {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+
+    .summary-box h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .summary-box p {
+      opacity: 0.9;
+      line-height: 2;
+      margin-bottom: 12px;
+    }
+
+    .summary-box .summary-points {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+    }
+
+    .summary-box .summary-points li {
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .summary-box .summary-points li .num {
+      background: var(--accent);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* ===== CONTENT TABLE (4-column) ===== */
+    .content-table {
+      margin: 16px 0;
+    }
+
+    .content-row {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr 0.8fr;
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 1px;
+    }
+
+    .content-row.header {
+      background: var(--primary);
+      border-radius: 10px 10px 0 0;
+    }
+
+    .content-row.header > div {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .content-row > div {
+      background: var(--card);
+      padding: 14px 18px;
+      font-size: 14px;
+    }
+
+    .content-row:last-child > div:first-child { border-radius: 0 0 0 10px; }
+    .content-row:last-child > div:last-child { border-radius: 0 0 10px 0; }
+
+    /* ===== RICH MENU MOCK ===== */
+    .rich-menu-mock {
+      max-width: 360px;
+      margin: 20px auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+    }
+
+    .rich-menu-header {
+      background: #06c755;
+      color: #fff;
+      text-align: center;
+      padding: 14px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .rich-menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .rich-menu-cell {
+      background: var(--card);
+      padding: 20px 14px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .rich-menu-cell:hover {
+      background: #f0f7f0;
+    }
+
+    .rich-menu-cell .rm-icon {
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-light);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 24px 48px; }
+      .toc { margin: -30px 16px 36px; padding: 24px; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+      .funnel { grid-template-columns: 1fr; gap: 8px; }
+      .funnel-stage { border-radius: 10px !important; }
+      .funnel-stage::after { display: none; }
+      .top5-item { padding-left: 70px; }
+      .strength-grid { grid-template-columns: 1fr; }
+      .hero-meta { gap: 16px; }
+      .summary-box { padding: 28px 24px; }
+      .card [style*="grid-template-columns:1fr auto 1fr"] {
+        grid-template-columns: 1fr !important;
+      }
+      .card [style*="grid-template-columns:1fr auto 1fr"] > div:nth-child(2) {
+        writing-mode: horizontal-tb !important;
+        flex-direction: row !important;
+        padding: 8px 0 !important;
+      }
+    }
+
+    @media print {
+      .hero { padding: 40px 24px; }
+      body { font-size: 12px; }
+      .card, .top5-item, .roadmap-item { box-shadow: none; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero-badge">STRATEGY PROPOSAL 2026</div>
+    <h1>福岡ビルド株式会社</h1>
+    <p class="subtitle">SNS・Web 総合マーケティング戦略提案書</p>
+    <div class="hero-meta">
+      <span>作成日：2026年2月</span>
+      <span>目的：売上向上に向けたデジタル戦略</span>
+    </div>
+  </header>
+
+  <!-- ===== TOC ===== -->
+  <div class="container">
+    <nav class="toc">
+      <h2>&#128203; 目次</h2>
+      <div class="toc-grid">
+        <a href="#sec1"><span class="toc-num">1</span>現状分析</a>
+        <a href="#sec2"><span class="toc-num">2</span>Instagram戦略</a>
+        <a href="#sec3"><span class="toc-num">3</span>Facebook戦略</a>
+        <a href="#sec4"><span class="toc-num">4</span>LINE公式戦略</a>
+        <a href="#sec5"><span class="toc-num">5</span>福岡ビルド × FBホーム 分離運用</a>
+        <a href="#sec6"><span class="toc-num">6</span>ホームページ改善</a>
+        <a href="#sec7"><span class="toc-num">7</span>集客ファネル設計</a>
+        <a href="#sec8"><span class="toc-num">8</span>差別化 重点施策 TOP5</a>
+        <a href="#sec9"><span class="toc-num">9</span>ロードマップ</a>
+        <a href="#sec10"><span class="toc-num">10</span>まとめ</a>
+      </div>
+    </nav>
+
+    <!-- ===== SECTION 1: 現状分析 ===== -->
+    <section id="sec1">
+      <div class="section-header">
+        <div class="section-number">1</div>
+        <h2>現状分析</h2>
+      </div>
+
+      <div class="card">
+        <h3>&#9989; 御社の強み</h3>
+        <div class="strength-grid">
+          <div class="strength-item">
+            <strong>明確なポジショニング</strong>
+            <span>「高利回り投資家向け木造アパート」という他社にない旗印</span>
+          </div>
+          <div class="strength-item">
+            <strong>設計施工一貫体制</strong>
+            <span>中間マージン排除による価格競争力</span>
+          </div>
+          <div class="strength-item">
+            <strong>年間30棟以上の実績</strong>
+            <span>豊富な施工実績が信頼の裏付け</span>
+          </div>
+          <div class="strength-item">
+            <strong>6つの強みの体系化</strong>
+            <span>提案力・利回り・入居率など訴求が整理されている</span>
+          </div>
+          <div class="strength-item">
+            <strong>複数のCTA導線</strong>
+            <span>資料請求・LINE・電話と接点が多い</span>
+          </div>
+          <div class="strength-item">
+            <strong>データドリブン企画</strong>
+            <span>賃貸需要調査・競合分析に基づく提案</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>&#128200; 競合状況</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>競合企業</th>
+                <th>特徴</th>
+                <th>SNS活用</th>
+                <th>脅威度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>グランムート</strong></td>
+                <td>木造3階建て特化、狭小地対応</td>
+                <td>SNSなし</td>
+                <td>&#9898; 低</td>
+              </tr>
+              <tr>
+                <td><strong>グリード</strong></td>
+                <td>新築アパート建築＋毎月セミナー＋完成見学会</td>
+                <td>セミナー集客に強い</td>
+                <td>&#128308; 高</td>
+              </tr>
+              <tr>
+                <td><strong>セイコーエステート</strong></td>
+                <td>土地〜売却までワンストップ＋無料セミナー毎月開催</td>
+                <td>セミナー＋オンライン対応</td>
+                <td>&#128308; 高</td>
+              </tr>
+              <tr>
+                <td><strong>功史朗建設</strong></td>
+                <td>木造でRC並みのデザイン性を訴求</td>
+                <td>限定的</td>
+                <td>&#128993; 中</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-top:20px;">自社Instagram現状</h4>
+        <div style="background:#fff0f0;padding:14px 20px;border-radius:10px;margin-top:8px;font-size:14px;">
+          <strong>@fukuokabuild</strong> ── 投稿1件 / フォロワー0人 / 広告色の強いバナー1枚のみ。始動段階のため、<strong>今が戦略設計の絶好のタイミング</strong>。
+        </div>
+
+        <div class="highlight-box" style="margin-top:20px;">
+          <h3>&#128161; 最大のチャンス</h3>
+          <p>競合のSNS活用はまだ弱い段階です。今このタイミングでSNSを本格運用すれば、<strong>福岡エリアの投資用アパート建築分野でデジタル上の第一想起</strong>を取れる可能性が高いです。さらに、業界専門メディア（新建ハウジング等）の情報を活用することで、「信頼できる専門家アカウント」として差別化が可能です。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: Instagram ===== -->
+    <section id="sec2">
+      <div class="section-header">
+        <div class="section-number">2</div>
+        <h2>Instagram 戦略</h2>
+      </div>
+
+      <!-- Instagram現状分析 -->
+      <div class="card">
+        <h3>&#128202; @fukuokabuild 現状分析</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;">
+          <div style="text-align:center;padding:20px;background:linear-gradient(135deg,#fff0f0,#ffe8e8);border-radius:12px;">
+            <div style="font-size:32px;font-weight:800;color:#e74c3c;">1件</div>
+            <div style="font-size:13px;color:var(--text-light);margin-top:4px;">投稿数</div>
+          </div>
+          <div style="text-align:center;padding:20px;background:linear-gradient(135deg,#fff0f0,#ffe8e8);border-radius:12px;">
+            <div style="font-size:32px;font-weight:800;color:#e74c3c;">0人</div>
+            <div style="font-size:13px;color:var(--text-light);margin-top:4px;">フォロワー</div>
+          </div>
+          <div style="text-align:center;padding:20px;background:linear-gradient(135deg,#fff0f0,#ffe8e8);border-radius:12px;">
+            <div style="font-size:32px;font-weight:800;color:#e74c3c;">広告色</div>
+            <div style="font-size:13px;color:var(--text-light);margin-top:4px;">投稿の印象</div>
+          </div>
+        </div>
+        <p>現在は広告バナー1件のみで、フォロワーがつく理由（有益な情報・共感・学び）が提供されていない状態です。<strong>今がまさに戦略的なコンテンツ設計を行う絶好のタイミングです。</strong></p>
+        <div style="background:#f0f5fa;padding:16px 20px;border-radius:10px;margin-top:16px;font-size:14px;">
+          <strong>課題：</strong>単なる広告アカウント → <strong>目指す姿：</strong>「信頼できる業界専門家アカウント」へ転換
+        </div>
+      </div>
+
+      <!-- コンテンツ4本柱（新建ハウジング活用度入り） -->
+      <div class="card">
+        <h3><span class="icon-badge instagram">&#9679;</span>投稿コンテンツ 4本柱 ── 「アパート投資で稼ぐ」価値提供型</h3>
+        <div style="background:#fff8ed;padding:18px 24px;border-radius:10px;margin-bottom:20px;border-left:4px solid var(--accent);">
+          <strong>戦略の核心：</strong>フォローする理由 = <strong>「この人をフォローすれば、アパート投資で儲かる情報が手に入る」</strong><br>
+          → 抽象的な業界解説ではなく、<strong>具体的な数字・実例・ノウハウ</strong>で「今すぐアパートが欲しい」と思わせる投稿を展開します。
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>柱</th>
+                <th>テーマ</th>
+                <th>頻度</th>
+                <th>フック（最初の1枚目）</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>&#9312; 実例ベースの利回り公開</strong></td>
+                <td>「このアパート、月◯万円の家賃収入」実際の物件で利回り・投資額・キャッシュフローを全公開</td>
+                <td>週2回</td>
+                <td>「利回り8.2% 投資額2,800万円」</td>
+              </tr>
+              <tr>
+                <td><strong>&#9313; 投資ノウハウの切り口</strong></td>
+                <td>「失敗しないアパート選び」「融資を通す3つのコツ」など、投資家が知りたい実践知識</td>
+                <td>週2回</td>
+                <td>「銀行が融資したくなる物件とは？」</td>
+              </tr>
+              <tr>
+                <td><strong>&#9314; オーナーの成功ストーリー</strong></td>
+                <td>実際のオーナー様インタビュー。「年収500万円の会社員が家賃月30万円を得るまで」</td>
+                <td>週1回</td>
+                <td>「35歳会社員、副業で月30万円」</td>
+              </tr>
+              <tr>
+                <td><strong>&#9315; 福岡エリアの投資データ</strong></td>
+                <td>「福岡市◯◯区の入居率は95%」など、地域特化の具体的な市場データで投資判断をサポート</td>
+                <td>週1回</td>
+                <td>「博多区vs早良区 利回り比較」</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-top:24px;">投稿の鉄則</h4>
+        <div class="strength-grid">
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>1枚目に必ず「数字」</strong>
+            <span>利回り、家賃、投資額、入居率など。数字がないとスクロールされる</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>「会社紹介」は最小限に</strong>
+            <span>投稿の90%は「投資家にとって有益な情報」。会社アピールは最後の1枚だけ</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>毎投稿に明確なCTA</strong>
+            <span>「詳しい資料はLINEで」「無料シミュレーションはプロフィールから」</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>「儲かる」を隠さない</strong>
+            <span>投資である以上、利益を求めるのは当然。キレイ事ではなく、リアルな数字で勝負</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投稿テンプレート集 -->
+      <div class="card">
+        <h3>&#128221; すぐ使える投稿テンプレート集</h3>
+        <p>以下は実際にカルーセル投稿（複数枚のスライド形式）で使えるテンプレートです。各スライドの構成を参考にしてください。</p>
+
+        <h4 style="margin-top:20px;">テンプレート1：実例ベースの利回り公開</h4>
+        <div style="background:#f0f5fa;padding:20px;border-radius:12px;margin-top:12px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">1枚目（フック）</div>
+              <strong style="font-size:24px;color:var(--accent);">利回り8.2%</strong><br>
+              <span style="font-size:14px;">月28万円の家賃収入</span><br>
+              <span style="font-size:12px;color:var(--text-light);">鳥栖市・新築アパート</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">2枚目（投資額）</div>
+              <strong>投資額の内訳</strong><br>
+              <span style="font-size:13px;">土地：1,200万円<br>建築費：1,600万円<br>合計：2,800万円</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">3枚目（家賃収入）</div>
+              <strong>月の家賃収入</strong><br>
+              <span style="font-size:13px;">1K × 8戸<br>家賃3.5万円/戸<br>満室時：28万円/月</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">4枚目（キャッシュフロー）</div>
+              <strong>年間収支</strong><br>
+              <span style="font-size:13px;">家賃収入：336万円<br>経費：106万円<br>手元に：230万円/年</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">5枚目（CTA）</div>
+              <strong>無料シミュレーション実施中</strong><br>
+              <span style="font-size:12px;">あなたの土地の利回りは？<br>詳しくはLINEで ↓</span>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin-top:24px;">テンプレート2：投資ノウハウ系</h4>
+        <div style="background:#f0f5fa;padding:20px;border-radius:12px;margin-top:12px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">1枚目（フック）</div>
+              <strong style="font-size:20px;color:var(--primary);">銀行が融資したくなる物件の3つの条件</strong>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">2枚目（条件1）</div>
+              <strong>1. 駅徒歩15分以内</strong><br>
+              <span style="font-size:13px;">入居率が10%以上高く、銀行も評価します</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">3枚目（条件2）</div>
+              <strong>2. 利回り7.5%以上</strong><br>
+              <span style="font-size:13px;">返済比率が健全で、融資審査に通りやすい</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">4枚目（条件3）</div>
+              <strong>3. 設計施工一貫の実績ある会社</strong><br>
+              <span style="font-size:13px;">中間マージンがなく、品質も安定</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">5枚目（まとめ＋CTA）</div>
+              <strong>福岡ビルドなら全て満たします</strong><br>
+              <span style="font-size:12px;">融資サポートも万全です<br>詳しくはプロフィールから</span>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin-top:24px;">テンプレート3：エリア比較データ系</h4>
+        <div style="background:#f0f5fa;padding:20px;border-radius:12px;margin-top:12px;">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">1枚目（フック）</div>
+              <strong style="font-size:20px;color:var(--accent);">博多区 vs 早良区<br>どっちが稼げる？</strong>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">2枚目（博多区）</div>
+              <strong>博多区</strong><br>
+              <span style="font-size:13px;">利回り：8.1%<br>入居率：96%<br>駅近物件多数</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">3枚目（早良区）</div>
+              <strong>早良区</strong><br>
+              <span style="font-size:13px;">利回り：7.8%<br>入居率：95%<br>ファミリー層に人気</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">4枚目（まとめ）</div>
+              <strong>結論</strong><br>
+              <span style="font-size:13px;">単身向けなら博多区<br>ファミリー向けなら早良区<br>どちらも高利回り</span>
+            </div>
+            <div style="background:#fff;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:4px;">5枚目（CTA）</div>
+              <strong>あなたの土地は？</strong><br>
+              <span style="font-size:12px;">無料で利回り診断します<br>LINEで今すぐ相談 ↓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 新建ハウジング活用戦略 -->
+      <div class="card">
+        <h3>&#128240; 業界メディア（新建ハウジング）の活用は「補助」程度に</h3>
+        <p><a href="https://www.s-housing.jp/" target="_blank" style="color:var(--info);text-decoration:none;font-weight:600;">新建ハウジング</a>などの業界メディアは、<strong>ネタ元としては有用</strong>ですが、投資家が本当に欲しいのは<strong>「抽象的な業界動向」ではなく「今すぐ稼げる具体的な情報」</strong>です。業界メディアの情報は月1〜2回程度に抑え、<strong>実例・利回り・成功事例を中心</strong>に投稿してください。</p>
+
+
+      <!-- 初月投稿プラン -->
+      <div class="card">
+        <h3>&#128197; 初月1ヶ月の投稿プラン ── 「アパート販売」ゴール直結型</h3>
+        <p style="background:#fff0f0;padding:14px 20px;border-radius:10px;font-size:14px;margin-bottom:16px;">
+          <strong>重要：</strong>「会社紹介」系の投稿は<strong>週1回まで</strong>に抑え、残りは全て<strong>「儲かる情報」</strong>に集中。フォロワーは「会社のことが知りたい」のではなく、<strong>「どうやって稼ぐか」</strong>が知りたいのです。
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>週</th>
+                <th>種別</th>
+                <th>投稿内容</th>
+                <th>1枚目のフック</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#f8fafc;"><td colspan="4" style="font-weight:700;color:var(--primary);padding:10px 18px;">1週目 ── 「儲かる」を見せる</td></tr>
+              <tr>
+                <td rowspan="6" style="vertical-align:top;font-weight:700;">W1</td>
+                <td><span style="background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">利回り</span></td>
+                <td>「このアパート、月28万円の家賃収入」鳥栖市の実例で利回り・投資額・キャッシュフローを全公開</td>
+                <td>「利回り8.2% 月収28万円」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--info);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">ノウハウ</span></td>
+                <td>「銀行が融資したくなる物件の3つの条件」カルーセル（投資家の最大の悩みを解決）</td>
+                <td>「融資が通る物件とは？」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">利回り</span></td>
+                <td>「福岡市vs鳥栖市、どっちが稼げる？」エリア別利回り比較リール</td>
+                <td>「博多区8.1% 鳥栖市8.4%」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--success);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">成功例</span></td>
+                <td>「35歳会社員、副業で月30万円を得るまで」オーナー様の成功ストーリー</td>
+                <td>「年収500万円→月30万円」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--info);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">ノウハウ</span></td>
+                <td>「失敗しないアパート投資、3つのチェックポイント」カルーセル</td>
+                <td>「これを知らないと損します」</td>
+              </tr>
+              <tr>
+                <td><span style="background:#6b7c93;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">会社</span></td>
+                <td>「福岡ビルドが選ばれる3つの理由」（設計施工一貫・高利回り・融資サポート）</td>
+                <td>「なぜ当社なのか？」</td>
+              </tr>
+              <tr style="background:#f8fafc;"><td colspan="4" style="font-weight:700;color:var(--primary);padding:10px 18px;">2週目 ── 具体的な数字で信頼構築</td></tr>
+              <tr>
+                <td rowspan="6" style="vertical-align:top;font-weight:700;">W2</td>
+                <td><span style="background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">利回り</span></td>
+                <td>「投資額2,500万円、10年後のキャッシュフローはこうなる」シミュレーション公開</td>
+                <td>「10年後+850万円」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--warning);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">データ</span></td>
+                <td>「福岡市早良区の入居率は95%。その理由とは？」地域データ解説</td>
+                <td>「入居率95% のエリア」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--info);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">ノウハウ</span></td>
+                <td>「木造アパートの減価償却、4年で◯万円の節税」カルーセル</td>
+                <td>「4年で320万円節税」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">利回り</span></td>
+                <td>「利回り8.5%の実例公開」久留米市の物件で間取り・家賃・投資額を解説</td>
+                <td>「月32万円の家賃収入」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--info);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">ノウハウ</span></td>
+                <td>「アパート投資の落とし穴、3つの失敗パターン」リール</td>
+                <td>「これをやると失敗します」</td>
+              </tr>
+              <tr>
+                <td><span style="background:#6b7c93;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">会社</span></td>
+                <td>「年間30棟以上の実績、施工現場を公開」リール動画（職人の仕事風景）</td>
+                <td>「年間30棟の実績」</td>
+              </tr>
+              <tr style="background:#f8fafc;"><td colspan="4" style="font-weight:700;color:var(--primary);padding:10px 18px;">3週目 ── 「今すぐ欲しい」を喚起</td></tr>
+              <tr>
+                <td rowspan="6" style="vertical-align:top;font-weight:700;">W3</td>
+                <td><span style="background:var(--success);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">成功例</span></td>
+                <td>「会社員Aさん、3棟目のアパートを購入」複数棟オーナーの成功ストーリー</td>
+                <td>「3棟で月100万円」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--warning);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">データ</span></td>
+                <td>「福岡市博多区vs中央区、どっちが狙い目？」エリア徹底比較</td>
+                <td>「博多区8.2% vs 中央区7.8%」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">利回り</span></td>
+                <td>「新着！佐賀市の土地で利回り8.8%を実現した方法」物件実例</td>
+                <td>「利回り8.8% 月36万円」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--info);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">ノウハウ</span></td>
+                <td>「変形地でも高利回りを実現する設計の工夫」カルーセル</td>
+                <td>「変形地でも利回り8%超」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--info);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">ノウハウ</span></td>
+                <td>「メンテナンス費を抑える3つのポイント」リール</td>
+                <td>「修繕費を年10万円削減」</td>
+              </tr>
+              <tr>
+                <td><span style="background:#6b7c93;color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">会社</span></td>
+                <td>「融資相談から完成まで、当社の完全サポート体制」カルーセル</td>
+                <td>「融資相談も安心サポート」</td>
+              </tr>
+              <tr style="background:#f8fafc;"><td colspan="4" style="font-weight:700;color:var(--primary);padding:10px 18px;">4週目 ── CTAを強化</td></tr>
+              <tr>
+                <td rowspan="6" style="vertical-align:top;font-weight:700;">W4</td>
+                <td><span style="background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">利回り</span></td>
+                <td>「今月完成した物件、利回り8.3%の全貌公開」ビフォーアフター写真</td>
+                <td>「利回り8.3% 月29万円」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--warning);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">データ</span></td>
+                <td>「福岡エリアの空室率、実は◯%しかない」入居率データで安心感を提供</td>
+                <td>「空室率わずか5.2%」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--success);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">成功例</span></td>
+                <td>「オーナー様インタビュー：なぜ福岡ビルドを選んだのか？」動画</td>
+                <td>「3年で1,200万円の収益」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--info);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">ノウハウ</span></td>
+                <td>「利回り8%超を実現する5つの秘訣」カルーセル＋LINE登録強化</td>
+                <td>「利回り8%超の秘訣」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--accent);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">利回り</span></td>
+                <td>「土地をお持ちの方必見！有効活用で月◯万円」土地活用提案リール</td>
+                <td>「遊休地を月40万円に」</td>
+              </tr>
+              <tr>
+                <td><span style="background:var(--primary);color:#fff;padding:2px 8px;border-radius:4px;font-size:11px;">CTA</span></td>
+                <td>「今月のまとめ＋無料シミュレーション実施中！LINE登録で【福岡エリア利回りマップ】プレゼント」</td>
+                <td>「LINE登録で利回りマップGET」</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="background:#e8f5e9;padding:16px 20px;border-radius:10px;margin-top:16px;border-left:4px solid var(--success);">
+          <strong>初月の成果目標：</strong>フォロワー100人以上 ＋ LINE登録20人以上<br>
+          <strong>成功の指標：</strong>毎投稿の保存数・シェア数が「いいね」の30%以上（有益な情報として保存されている証拠）
+        </div>
+      </div>
+
+      <!-- 運用上の注意点 -->
+      <div class="card">
+        <h3>&#9888; 運用上の絶対ルール ── 「アパート販売」から逆算する</h3>
+        <div class="strength-grid">
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>1枚目に必ず「数字」を入れる</strong>
+            <span>利回り、家賃、投資額、入居率など。数字がないとスクロールで飛ばされます。「利回り8.2%」「月28万円」など具体的な数字がフックになります。</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>「会社紹介」は週1回まで</strong>
+            <span>フォロワーは「会社のこと」ではなく「稼ぐ方法」が知りたいのです。会社紹介系の投稿は最小限に抑え、投資家にとって有益な情報を最優先にしてください。</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>毎投稿の最後に必ずCTA</strong>
+            <span>「詳しくはLINEで」「無料シミュレーションはプロフィールから」など、次のアクションを必ず提示。CTAがないと、ただの情報提供で終わり、売上につながりません。</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>実例を最優先、抽象論は後回し</strong>
+            <span>「業界動向」よりも「このアパートで月◯万円稼げた」という実例の方が100倍刺さります。理論より実績です。</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>週6回投稿を維持</strong>
+            <span>Instagramのアルゴリズムは頻度を重視します。週6回（平日毎日＋土曜）の投稿で、フォロワーの目に留まる確率を上げます。</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--accent);">
+            <strong>「儲かる」を隠さない</strong>
+            <span>投資である以上、利益を求めるのは当然です。「キレイ事」ではなく、リアルな数字・利益・キャッシュフローで勝負してください。</span>
+          </div>
+        </div>
+
+        <div style="background:#fff0f0;padding:18px 24px;border-radius:10px;margin-top:20px;border-left:4px solid #e74c3c;">
+          <strong>&#10060; NGな投稿例：</strong><br>
+          ❌ 「当社の理念は〜」「創業49年の歩み」「社員の日常」<br>
+          ❌ 「断熱等級義務化について」（投資家には関係薄い）<br>
+          ❌ 「職人のこだわり」（品質アピールは最後の1枚だけでOK）<br><br>
+          <strong>&#9989; OKな投稿例：</strong><br>
+          ✅ 「このアパート、月28万円の家賃収入」（実例ベース）<br>
+          ✅ 「銀行が融資したくなる物件の3つの条件」（ノウハウ）<br>
+          ✅ 「35歳会社員、副業で月30万円を得るまで」（成功事例）
+        </div>
+      </div>
+
+      <!-- リール・ハッシュタグ・ストーリーズ -->
+      <div class="card">
+        <h3>&#127915; リール（短尺動画）を最優先 ── 「30秒で儲かる理由」を見せる</h3>
+        <p>2026年現在、Instagramのアルゴリズムはリールを強く推しています。30秒の物件紹介動画＋テロップで「このアパートで月◯万円稼げる」を完結させるのが最も効率的です。</p>
+
+        <h4>リール投稿の鉄板パターン</h4>
+        <div class="strength-grid">
+          <div class="strength-item" style="border-left-color:var(--info);">
+            <strong>パターン1：物件紹介リール</strong>
+            <span>0-5秒：外観＋「利回り8.2%」<br>5-15秒：内装ウォークスルー＋家賃<br>15-25秒：投資額・収支<br>25-30秒：CTA「LINEで相談」</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--info);">
+            <strong>パターン2：エリア比較リール</strong>
+            <span>0-5秒：「博多区vs早良区」<br>5-20秒：利回り・入居率を比較<br>20-30秒：まとめ＋CTA</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--info);">
+            <strong>パターン3：成功事例リール</strong>
+            <span>0-5秒：「35歳会社員、月30万円」<br>5-25秒：ストーリー紹介<br>25-30秒：「あなたもできます」CTA</span>
+          </div>
+          <div class="strength-item" style="border-left-color:var(--info);">
+            <strong>パターン4：ノウハウ系リール</strong>
+            <span>0-5秒：「融資を通す3つのコツ」<br>5-25秒：3つのポイント解説<br>25-30秒：「詳しくはLINEで」CTA</span>
+          </div>
+        </div>
+
+        <h4 style="margin-top:20px;">ハッシュタグ設計 ── 「稼ぐ」キーワードを中心に</h4>
+        <p style="background:#f0f5fa;padding:14px 18px;border-radius:10px;font-size:13px;margin-top:8px;line-height:2.2;">
+          <code>#福岡不動産投資</code>&nbsp; <code>#アパート経営</code>&nbsp; <code>#高利回り物件</code>&nbsp; <code>#不動産投資初心者</code>&nbsp; <code>#副業で稼ぐ</code>&nbsp; <code>#家賃収入</code>&nbsp; <code>#投資用アパート</code>&nbsp; <code>#福岡アパート</code>&nbsp; <code>#利回り8%</code>&nbsp; <code>#土地活用</code>&nbsp; <code>#木造アパート</code>&nbsp; <code>#資産運用</code>&nbsp; <code>#アパート投資</code>&nbsp; <code>#不動産投資家</code>&nbsp; <code>#キャッシュフロー</code>
+        </p>
+
+        <h4>ストーリーズ活用 ── 毎日LINEへ誘導</h4>
+        <ul>
+          <li><strong>日々の現場進捗</strong>をリアルタイム発信（「今日の現場：◯◯市」程度でOK）</li>
+          <li><strong>LINE登録への誘導リンク</strong>を常時配置（「無料シミュレーションはこちら」）</li>
+          <li><strong>質問スタンプ</strong>で投資家の悩みを収集 → 次の投稿ネタに活用</li>
+          <li><strong>「今月の成約事例」</strong>を定期的にストーリーズで紹介（守秘義務に注意）</li>
+        </ul>
+
+        <h4>ハイライト整理 ── 初訪問者を即LINEへ誘導</h4>
+        <ul>
+          <li><strong>「利回り実例」</strong>：過去の高利回り物件をまとめたハイライト</li>
+          <li><strong>「お客様の声」</strong>：成功オーナーのインタビュー集</li>
+          <li><strong>「よくある質問」</strong>：融資・利回り・メンテナンスなどFAQ</li>
+          <li><strong>「無料相談」</strong>：LINE登録・シミュレーションへの誘導専用</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: Facebook ===== -->
+    <section id="sec3">
+      <div class="section-header">
+        <div class="section-number">3</div>
+        <h2>Facebook 戦略</h2>
+      </div>
+
+      <div class="card">
+        <h3><span class="icon-badge facebook">f</span>30〜50代の投資家層にリーチ</h3>
+        <p>Facebookのユーザー層は投資用アパートのターゲット層と合致します。</p>
+
+        <h4>運用方針</h4>
+        <ul>
+          <li><strong>Instagramと連携投稿</strong>で運用効率化しつつ、Facebookでは<strong>より詳細な文章</strong>を付加</li>
+          <li>完成見学会・セミナーの<strong>イベントページ</strong>を作成し、参加ハードルを下げる</li>
+          <li>投資家コミュニティ（Facebookグループ）への参加・情報発信で認知拡大</li>
+        </ul>
+
+        <h4>Facebook広告</h4>
+        <div style="background:#f0f5fa;padding:18px;border-radius:10px;margin-top:8px;">
+          <p style="margin-bottom:8px;"><strong>ターゲティング設定：</strong></p>
+          <ul>
+            <li><strong>地域：</strong>福岡県＋佐賀県</li>
+            <li><strong>年齢：</strong>30〜55歳</li>
+            <li><strong>興味関心：</strong>不動産投資・資産運用・副業・アパート経営</li>
+            <li><strong>誘導先：</strong>資料請求LP or LINE登録ページ</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: LINE ===== -->
+    <section id="sec4">
+      <div class="section-header">
+        <div class="section-number">4</div>
+        <h2>LINE公式アカウント戦略</h2>
+      </div>
+
+      <div class="card">
+        <h3><span class="icon-badge line">L</span>売上直結の最重要チャネル</h3>
+        <p>LINEは<strong>見込み客の囲い込み → 育成 → 成約</strong>の流れを作る最強ツールです。</p>
+
+        <h4>ステップ配信シナリオ（自動化）</h4>
+        <div class="step-flow">
+          <div class="step-item">
+            <div class="step-dot">即</div>
+            <div class="step-content">
+              <div class="step-title">ウェルカムメッセージ ＋ 無料資料PDF配布</div>
+              <div class="step-desc">登録直後に価値を提供し、信頼獲得</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot">3日</div>
+            <div class="step-content">
+              <div class="step-title">「なぜ福岡で木造アパート投資なのか？」コラム</div>
+              <div class="step-desc">市場の魅力を教育し、興味を深める</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot">7日</div>
+            <div class="step-content">
+              <div class="step-title">オーナー様の成功事例紹介</div>
+              <div class="step-desc">第三者の声で「自分にもできる」と感じさせる</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot">14日</div>
+            <div class="step-content">
+              <div class="step-title">「利回りシミュレーション無料診断」への誘導</div>
+              <div class="step-desc">具体的な行動を促し、本気度を測る</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot">21日</div>
+            <div class="step-content">
+              <div class="step-title">個別相談・見学会の案内</div>
+              <div class="step-desc">対面接触で成約へ</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot" style="font-size:10px;">以降</div>
+            <div class="step-content">
+              <div class="step-title">月2回の物件情報・市場動向の配信</div>
+              <div class="step-desc">継続接触で長期フォロー</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>&#128241; リッチメニュー設計イメージ</h3>
+        <div class="rich-menu-mock">
+          <div class="rich-menu-header">福岡ビルド 公式LINE</div>
+          <div class="rich-menu-grid">
+            <div class="rich-menu-cell">
+              <div class="rm-icon">&#127968;</div>
+              施工実績を見る
+            </div>
+            <div class="rich-menu-cell">
+              <div class="rm-icon">&#128202;</div>
+              無料シミュレーション
+            </div>
+            <div class="rich-menu-cell">
+              <div class="rm-icon">&#128197;</div>
+              個別相談予約
+            </div>
+            <div class="rich-menu-cell">
+              <div class="rm-icon">&#128172;</div>
+              お客様の声
+            </div>
+          </div>
+        </div>
+
+        <h4>LINE登録のフック（全チャネル共通）</h4>
+        <ul>
+          <li>「LINE登録で<strong>【福岡エリア利回りマップ】</strong>無料プレゼント」</li>
+          <li>「LINE限定：<strong>非公開物件情報</strong>を優先配信」</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: 2事業LINE分離運用 ===== -->
+    <section id="sec5">
+      <div class="section-header">
+        <div class="section-number">5</div>
+        <h2>福岡ビルド &times; FBホーム 分離運用戦略</h2>
+      </div>
+
+      <div class="card">
+        <h3>&#128276; 結論：LINE公式アカウントは分けるべき</h3>
+        <p>福岡ビルド（投資用アパート事業）とFBホーム（分譲住宅ブランド）は、<strong>ターゲット・訴求軸・購買動機</strong>がまったく異なります。LINEを統合すると両方の顧客体験が劣化し、売上機会を逃します。</p>
+
+        <div style="background:#fff8ed;padding:20px 24px;border-radius:12px;margin-top:16px;border-left:4px solid var(--accent);">
+          <strong>&#128161; 現状：福岡ビルドのLINEは既にあるが、FBホームのLINEはまだ未作成の場合</strong><br><br>
+          <strong>推奨する移行ステップ：</strong><br>
+          <strong>STEP1（今すぐ）：</strong>福岡ビルドのLINEで暫定的に運用開始。登録時に「投資用アパート希望」「住宅購入希望」をタグ付けして区別<br>
+          <strong>STEP2（1ヶ月以内）：</strong>FBホームのLINE公式アカウントを新規作成<br>
+          <strong>STEP3（2ヶ月以内）：</strong>既存の「住宅購入希望」タグの登録者にメッセージを送り、FBホームLINEへ移行を促す<br>
+          <strong>STEP4（3ヶ月以内）：</strong>完全分離運用へ移行。各SNS・HPの誘導先も変更
+        </div>
+      </div>
+
+        <h4>2事業の根本的な違い</h4>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>福岡ビルド（投資事業）</th>
+                <th>FBホーム（住宅事業）</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>顧客</strong></td>
+                <td>投資家・資産運用層</td>
+                <td>マイホームを探すファミリー</td>
+              </tr>
+              <tr>
+                <td><strong>購買動機</strong></td>
+                <td>「お金を増やしたい」</td>
+                <td>「いい家に住みたい」</td>
+              </tr>
+              <tr>
+                <td><strong>判断基準</strong></td>
+                <td>利回り・入居率・減価償却</td>
+                <td>断熱性能・デザイン・間取り</td>
+              </tr>
+              <tr>
+                <td><strong>年齢層</strong></td>
+                <td>30〜55歳（会社員・経営者）</td>
+                <td>25〜45歳（子育て世代中心）</td>
+              </tr>
+              <tr>
+                <td><strong>検討期間</strong></td>
+                <td>長い（数ヶ月〜1年）</td>
+                <td>中〜長（物件次第で即決も）</td>
+              </tr>
+              <tr>
+                <td><strong>刺さるコンテンツ</strong></td>
+                <td>投資シミュレーション・市場分析</td>
+                <td>見学会案内・住宅性能・暮らしのイメージ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>&#10060; 統合NGの3つの理由</h3>
+
+        <div class="strength-grid">
+          <div class="strength-item" style="border-left-color:#e74c3c;">
+            <strong>1. ステップ配信のシナリオが完全に異なる</strong>
+            <span>投資家には「減価償却の仕組み」を、住宅購入者には「UA値0.16の凄さ」を送るべき。1アカウントでは配信設計が破綻します。</span>
+          </div>
+          <div class="strength-item" style="border-left-color:#e74c3c;">
+            <strong>2. メッセージ通数課金でコスト浪費</strong>
+            <span>LINE公式は通数課金制。タグで分けても、ターゲット外への誤配信リスクが残り、無駄なコストが発生します。</span>
+          </div>
+          <div class="strength-item" style="border-left-color:#e74c3c;">
+            <strong>3. ブランドの世界観が壊れる</strong>
+            <span>FBホームの「カリフォルニアスタイル」のライフスタイル感に、投資の話が混ざると世界観が崩れ、住宅購入者の温度が下がります。</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 暫定運用の方法 -->
+      <div class="card">
+        <h3>&#128736; STEP1：暫定運用の具体的な方法（福岡ビルドLINEを一時的に共用）</h3>
+        <p>FBホームのLINEが完成するまで、既存の福岡ビルドLINEで<strong>タグ管理</strong>を使って暫定運用します。</p>
+
+        <h4 style="margin-top:20px;">リッチメニューを2パターン用意</h4>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
+          <div style="background:linear-gradient(135deg,#e8f4fd,#d1e9f7);border-radius:12px;padding:20px;border:2px solid var(--primary);">
+            <div style="text-align:center;margin-bottom:12px;">
+              <strong style="color:var(--primary);">パターンA：投資家向け</strong>
+            </div>
+            <div style="font-size:13px;">
+              ・利回りシミュレーション<br>
+              ・投資セミナー案内<br>
+              ・施工実績<br>
+              ・個別相談予約
+            </div>
+          </div>
+          <div style="background:linear-gradient(135deg,#fef9f0,#fdf0db);border-radius:12px;padding:20px;border:2px solid var(--accent);">
+            <div style="text-align:center;margin-bottom:12px;">
+              <strong style="color:var(--accent);">パターンB：住宅購入者向け</strong>
+            </div>
+            <div style="font-size:13px;">
+              ・見学会予約<br>
+              ・住宅性能を知る<br>
+              ・施工事例ギャラリー<br>
+              ・来店予約特典
+            </div>
+          </div>
+        </div>
+
+        <h4>ウェルカムメッセージで振り分け</h4>
+        <div style="background:#f0f5fa;padding:18px;border-radius:10px;margin-top:12px;">
+          <strong>登録直後のメッセージ例：</strong><br><br>
+          「ご登録ありがとうございます！福岡ビルド株式会社です。<br><br>
+          まずは、ご興味のある内容を教えてください👇<br><br>
+          A：【投資用アパート建築】に興味がある<br>
+          B：【マイホーム購入（FBホーム）】に興味がある<br><br>
+          該当するボタンをタップしてください！」<br><br>
+          <span style="font-size:12px;color:var(--text-light);">→ A/Bの選択に応じて、自動的にタグ付け＆それぞれのリッチメニューを表示</span>
+        </div>
+
+        <h4 style="margin-top:20px;">配信時の注意点</h4>
+        <ul>
+          <li><strong>タグで配信先を絞る：</strong>投資向け情報は「投資家」タグのみに配信、住宅向け情報は「住宅購入者」タグのみに配信</li>
+          <li><strong>誤配信を防ぐチェックリスト：</strong>配信前に必ず「配信対象タグ」を確認する習慣をつける</li>
+          <li><strong>メッセージ通数に注意：</strong>LINE公式は通数課金なので、無駄な配信を避ける</li>
+        </ul>
+      </div>
+
+      <!-- FBホームLINE作成手順 -->
+      <div class="card">
+        <h3>&#128736; STEP2：FBホームのLINE公式アカウント作成手順</h3>
+        <p>1ヶ月以内に、FBホーム専用のLINE公式アカウントを作成します。</p>
+
+        <div class="step-flow">
+          <div class="step-item">
+            <div class="step-dot" style="border-color:var(--accent);">1</div>
+            <div class="step-content">
+              <div class="step-title">LINE公式アカウントを新規作成</div>
+              <div class="step-desc">LINE公式アカウント管理画面から「新しいアカウントを作成」→ アカウント名「FB HOME（福岡ビルド）」で登録</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot" style="border-color:var(--accent);">2</div>
+            <div class="step-content">
+              <div class="step-title">プロフィール設定</div>
+              <div class="step-desc">プロフィール画像、カバー画像、紹介文を「FBホームの世界観」（カリフォルニアスタイル、高性能住宅）に合わせて設定</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot" style="border-color:var(--accent);">3</div>
+            <div class="step-content">
+              <div class="step-title">リッチメニュー作成</div>
+              <div class="step-desc">「見学会予約」「住宅性能」「施工事例」「来店特典」の4つのボタンを配置</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot" style="border-color:var(--accent);">4</div>
+            <div class="step-content">
+              <div class="step-title">ステップ配信シナリオ設定</div>
+              <div class="step-desc">登録直後、3日後、7日後、14日後、21日後のメッセージを設定（前述のFBホームLINEステップ配信シナリオを参照）</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot" style="border-color:var(--accent);">5</div>
+            <div class="step-content">
+              <div class="step-title">Instagram / HPの誘導先を変更</div>
+              <div class="step-desc">FBホームのInstagram、HPのLINE誘導ボタンを、新しいFBホームLINEアカウントに変更</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#e8f5e9;padding:16px 20px;border-radius:10px;margin-top:16px;border-left:4px solid var(--success);">
+          <strong>&#128161; 作成時のポイント：</strong>最初から「認証済アカウント」を取得すると、LINE検索で見つけやすくなります。審査には1〜2週間かかるため、早めに申請しましょう。
+        </div>
+      </div>
+
+      <!-- 移行手順 -->
+      <div class="card">
+        <h3>&#128736; STEP3：既存登録者の移行手順</h3>
+        <p>福岡ビルドLINEに登録している「住宅購入者」タグの方を、FBホームLINEへ移行します。</p>
+
+        <h4>移行メッセージ例</h4>
+        <div style="background:#f0f5fa;padding:18px;border-radius:10px;margin-top:12px;">
+          <strong>【重要】FB HOMEの公式LINEができました！</strong><br><br>
+          「いつもご覧いただきありがとうございます。<br><br>
+          この度、マイホーム購入をご検討中の方に向けて、<strong>FB HOME専用の公式LINE</strong>をオープンしました！🎉<br><br>
+          今後は、<br>
+          ・モデルハウス見学会の最新情報<br>
+          ・住宅性能に関するコラム<br>
+          ・来店予約特典<br>
+          などを、FB HOME公式LINEで配信していきます。<br><br>
+          こちらのアカウント（福岡ビルド）では、今後<strong>投資用アパート</strong>の情報のみを配信します。<br><br>
+          <strong>▼ FB HOME公式LINEはこちら</strong><br>
+          [友だち追加ボタン]<br><br>
+          ※投資用アパートにもご興味がある方は、両方のLINEにご登録いただくことも可能です！」
+        </div>
+
+        <h4 style="margin-top:20px;">移行のタイミング</h4>
+        <ul>
+          <li><strong>FBホームLINEの作成完了後、1週間以内に移行メッセージを送信</strong></li>
+          <li><strong>移行メッセージは1回だけ送り、しつこく誘導しない</strong>（顧客体験を損なわないため）</li>
+          <li><strong>移行後も、福岡ビルドLINEで「住宅購入者」タグは残しておく</strong>（クロスセルの可能性があるため）</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>&#128736; STEP4：完全分離運用後の体制</h3>
+        <p>3ヶ月以内に、2つのLINEアカウントを完全に分離運用し、それぞれの顧客体験を最適化します。</p>
+
+        <h4>分離運用後のチェックリスト</h4>
+        <div style="background:#f0f5fa;padding:18px;border-radius:10px;margin-top:12px;">
+          <strong>✅ 福岡ビルドLINE</strong><br>
+          □ リッチメニューを「投資家向け」のみに統一<br>
+          □ ステップ配信を「投資家向け」に最適化<br>
+          □ Instagram、Facebook、HPの誘導先が正しく設定されているか確認<br><br>
+          <strong>✅ FBホームLINE</strong><br>
+          □ リッチメニューを「住宅購入者向け」に設定<br>
+          □ ステップ配信を「住宅購入者向け」に設定<br>
+          □ FBホームのInstagram、HPの誘導先が正しく設定されているか確認<br><br>
+          <strong>✅ クロスセルの仕組み</strong><br>
+          □ 福岡ビルドLINEのリッチメニューに「FBホーム紹介」ボタンを設置<br>
+          □ FBホームLINEのリッチメニューに「福岡ビルド紹介」ボタンを設置<br>
+          □ 月1回、クロスセル用のメッセージを配信する仕組みを構築
+        </div>
+
+        <div style="background:#fff8ed;padding:18px 24px;border-radius:10px;margin-top:16px;border-left:4px solid var(--accent);">
+          <strong>&#128161; 移行期間の目安：</strong><br>
+          <strong>今月：</strong>暫定運用開始（タグ管理）<br>
+          <strong>1ヶ月後：</strong>FBホームLINE作成完了<br>
+          <strong>2ヶ月後：</strong>既存登録者の移行完了<br>
+          <strong>3ヶ月後：</strong>完全分離運用＋クロスセル体制構築完了
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>&#9989; 最終形：分離＋相互送客モデル</h3>
+        <p>アカウントは分けた上で、<strong>クロスセルの仕組み</strong>を組み込み、顧客単価を最大化します。</p>
+
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;margin:24px 0;align-items:stretch;">
+          <!-- 左：福岡ビルドLINE -->
+          <div style="background:linear-gradient(135deg,#e8f4fd,#d1e9f7);border-radius:14px;padding:24px;border:2px solid var(--primary);">
+            <div style="text-align:center;margin-bottom:16px;">
+              <div style="background:var(--primary);color:#fff;display:inline-block;padding:6px 16px;border-radius:8px;font-weight:700;font-size:14px;">福岡ビルド LINE</div>
+              <div style="font-size:12px;color:var(--text-light);margin-top:4px;">投資家向け</div>
+            </div>
+            <ul style="font-size:13px;padding-left:16px;line-height:2;">
+              <li>利回りシミュレーション</li>
+              <li>市場動向レポート</li>
+              <li>セミナー・見学会案内</li>
+              <li>オーナー成功事例</li>
+              <li>非公開物件情報</li>
+            </ul>
+            <div style="margin-top:16px;padding:10px;background:rgba(255,255,255,0.7);border-radius:8px;font-size:12px;text-align:center;color:var(--primary);font-weight:600;">
+              &#10148; FBホームの紹介導線を設置<br>「ご自宅の建替え・住替えもご相談を」
+            </div>
+          </div>
+
+          <!-- 中央：矢印 -->
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 8px;">
+            <div style="font-size:24px;">&#8644;</div>
+            <div style="writing-mode:vertical-rl;font-size:11px;color:var(--text-light);font-weight:600;letter-spacing:2px;">相互送客</div>
+          </div>
+
+          <!-- 右：FBホームLINE -->
+          <div style="background:linear-gradient(135deg,#fef9f0,#fdf0db);border-radius:14px;padding:24px;border:2px solid var(--accent);">
+            <div style="text-align:center;margin-bottom:16px;">
+              <div style="background:var(--accent);color:#fff;display:inline-block;padding:6px 16px;border-radius:8px;font-weight:700;font-size:14px;">FB HOME LINE</div>
+              <div style="font-size:12px;color:var(--text-light);margin-top:4px;">住宅購入者向け</div>
+            </div>
+            <ul style="font-size:13px;padding-left:16px;line-height:2;">
+              <li>完成見学会・モデルハウス案内</li>
+              <li>住宅性能コラム（断熱・耐震）</li>
+              <li>暮らしのイメージ写真</li>
+              <li>来店予約特典</li>
+              <li>入居者の声</li>
+            </ul>
+            <div style="margin-top:16px;padding:10px;background:rgba(255,255,255,0.7);border-radius:8px;font-size:12px;text-align:center;color:var(--accent);font-weight:600;">
+              &#10148; 投資LINEの紹介導線を設置<br>「資産運用にも興味がある方はこちら」
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>&#128241; FBホーム LINE リッチメニュー設計</h3>
+        <div class="rich-menu-mock" style="border-color:var(--accent);">
+          <div class="rich-menu-header" style="background:var(--accent);">FB HOME 公式LINE</div>
+          <div class="rich-menu-grid">
+            <div class="rich-menu-cell">
+              <div class="rm-icon">&#127968;</div>
+              見学会を予約
+            </div>
+            <div class="rich-menu-cell">
+              <div class="rm-icon">&#127777;</div>
+              住宅性能を知る
+            </div>
+            <div class="rich-menu-cell">
+              <div class="rm-icon">&#128247;</div>
+              施工事例ギャラリー
+            </div>
+            <div class="rich-menu-cell">
+              <div class="rm-icon">&#127873;</div>
+              来店予約特典
+            </div>
+          </div>
+        </div>
+
+        <h4>FBホーム LINE ステップ配信シナリオ</h4>
+        <div class="step-flow">
+          <div class="step-item">
+            <div class="step-dot">即</div>
+            <div class="step-content">
+              <div class="step-title">ウェルカム ＋「家づくりチェックリスト」PDF配布</div>
+              <div class="step-desc">登録直後に実用的な価値を提供</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot">3日</div>
+            <div class="step-content">
+              <div class="step-title">「UA値0.16の家は光熱費がこんなに違う」性能コラム</div>
+              <div class="step-desc">数字で他社との差を実感させる</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot">7日</div>
+            <div class="step-content">
+              <div class="step-title">CALIFORNIA STYLE / WAON の施工事例＋入居者の声</div>
+              <div class="step-desc">実際の暮らしのイメージを具体化</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot">14日</div>
+            <div class="step-content">
+              <div class="step-title">モデルハウス見学会の案内 ＋ 来店特典（Amazonギフトカード）</div>
+              <div class="step-desc">来場インセンティブで対面接触を実現</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot">21日</div>
+            <div class="step-content">
+              <div class="step-title">個別相談・資金計画のご案内</div>
+              <div class="step-desc">具体的な購入ステップへ誘導</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-dot" style="font-size:10px;">以降</div>
+            <div class="step-content">
+              <div class="step-title">月2回：新着物件情報＋季節の暮らしコラム</div>
+              <div class="step-desc">未成約者との接点を継続維持</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>&#128196; Instagram運用も分離を維持</h3>
+        <p>既にInstagramアカウントは分離されています（本体 ＋ @fb_home_fukuokabuild）。この方針は正解です。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>福岡ビルド Instagram</th>
+                <th>FBホーム Instagram</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>世界観</strong></td>
+                <td>信頼・実績・数字（ビジネス感）</td>
+                <td>ライフスタイル・温かみ・憧れ</td>
+              </tr>
+              <tr>
+                <td><strong>メイン投稿</strong></td>
+                <td>完成アパート・利回り実績・投資知識</td>
+                <td>モデルハウス内観・暮らしのシーン・性能紹介</td>
+              </tr>
+              <tr>
+                <td><strong>リール</strong></td>
+                <td>「3分でわかるアパート投資」</td>
+                <td>「ルームツアー」「家事ラク動線」</td>
+              </tr>
+              <tr>
+                <td><strong>ストーリーズ誘導先</strong></td>
+                <td>福岡ビルド LINE</td>
+                <td>FBホーム LINE</td>
+              </tr>
+              <tr>
+                <td><strong>相互リンク</strong></td>
+                <td>プロフィールにFBホーム紹介</td>
+                <td>プロフィールに福岡ビルド紹介</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>&#128161; クロスセルで顧客単価を最大化</h3>
+        <p>分離しても「同じ会社」であることは最大の武器です。以下のシナリオで事業間の送客を仕組み化します。</p>
+        <ol>
+          <li><strong>FBホームで家を買った人</strong> → 「住まいの次は資産運用。福岡ビルドのアパート投資をご紹介」</li>
+          <li><strong>福岡ビルドの投資オーナー</strong> → 「ご自宅の建替え・住替えは高性能住宅のFBホームで」</li>
+          <li><strong>セミナー参加者</strong> → 投資に興味がなかったが住宅には興味あり → FBホーム LINE へ誘導</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6: HP改善 ===== -->
+    <section id="sec6">
+      <div class="section-header">
+        <div class="section-number">6</div>
+        <h2>ホームページ改善提案</h2>
+      </div>
+
+      <div class="card">
+        <h3><span class="icon-badge web">W</span>売上直結のための改善ポイント</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th>現状</th>
+                <th>改善案</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ブログ/コラム</strong></td>
+                <td>なし or 少ない</td>
+                <td>投資知識記事を月4本以上。SEOで「福岡 アパート投資」等の流入を獲得</td>
+              </tr>
+              <tr>
+                <td><strong>利回りシミュレーター</strong></td>
+                <td>なし</td>
+                <td>簡易計算ツールを設置。入力→結果→LINE登録 or 問い合わせへ誘導</td>
+              </tr>
+              <tr>
+                <td><strong>施工実績ページ</strong></td>
+                <td>あり</td>
+                <td>各物件に「投資金額」「利回り」「入居率」の数字を追加</td>
+              </tr>
+              <tr>
+                <td><strong>お客様の声</strong></td>
+                <td>3名</td>
+                <td>動画インタビューを追加。テキスト＋写真より説得力が段違い</td>
+              </tr>
+              <tr>
+                <td><strong>Googleビジネスプロフィール</strong></td>
+                <td>未確認</td>
+                <td>必ず登録・最適化。ローカル検索で上位表示</td>
+              </tr>
+              <tr>
+                <td><strong>SEO対策キーワード</strong></td>
+                <td>&#8212;</td>
+                <td>「福岡 投資用アパート 建築」「高利回り アパート 福岡」等で記事を量産</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 7: ファネル ===== -->
+    <section id="sec7">
+      <div class="section-header">
+        <div class="section-number">7</div>
+        <h2>集客ファネル設計</h2>
+      </div>
+
+      <div class="card">
+        <h3>&#127891; 全体の導線設計（2事業分離型）</h3>
+        <p>各事業の認知チャネルから<strong>それぞれ専用のLINEに集約</strong>し、ステップ配信で育成→成約。成約後に<strong>相互送客</strong>で顧客単価を最大化します。</p>
+
+        <h4 style="margin-top:20px;margin-bottom:8px;">福岡ビルド（投資事業）ファネル</h4>
+        <div class="funnel">
+          <div class="funnel-stage">
+            <div class="funnel-label">&#128226; 認知</div>
+            <div class="funnel-items">
+              <strong>Instagram リール</strong><br>
+              <strong>Facebook 広告</strong><br>
+              <strong>Google検索（SEO）</strong><br>
+              <strong>投資セミナー</strong>
+            </div>
+          </div>
+          <div class="funnel-stage">
+            <div class="funnel-label">&#128300; 興味・検討</div>
+            <div class="funnel-items">
+              <strong>福岡ビルド LINE</strong><br>
+              ステップ配信で教育<br>
+              HPコラム・実績閲覧<br>
+              利回りシミュレーション
+            </div>
+          </div>
+          <div class="funnel-stage">
+            <div class="funnel-label">&#127919; 行動・成約</div>
+            <div class="funnel-items">
+              <strong>個別相談予約</strong><br>
+              <strong>アパート見学会</strong><br>
+              <strong>資料請求</strong><br>
+              <strong>建築契約</strong>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin-top:28px;margin-bottom:8px;">FBホーム（住宅事業）ファネル</h4>
+        <div class="funnel">
+          <div class="funnel-stage" style="background:linear-gradient(135deg,#fef9f0,#fdf0db);border-radius:12px 0 0 12px;">
+            <div class="funnel-label">&#128226; 認知</div>
+            <div class="funnel-items">
+              <strong>FBホーム Instagram</strong><br>
+              <strong>Instagram / Meta広告</strong><br>
+              <strong>Google検索（SEO）</strong><br>
+              <strong>モデルハウス見学会</strong>
+            </div>
+          </div>
+          <div class="funnel-stage" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">
+            <div class="funnel-label">&#128300; 興味・検討</div>
+            <div class="funnel-items">
+              <strong>FBホーム LINE</strong><br>
+              性能コラム配信<br>
+              施工事例ギャラリー<br>
+              来店予約特典
+            </div>
+          </div>
+          <div class="funnel-stage" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:0 12px 12px 0;">
+            <div class="funnel-label">&#127919; 行動・成約</div>
+            <div class="funnel-items">
+              <strong>見学会来場</strong><br>
+              <strong>個別相談・資金計画</strong><br>
+              <strong>購入申込</strong><br>
+              <strong>契約</strong>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:20px;padding:16px;background:linear-gradient(135deg,#f0f5fa,#e8eef5);border-radius:12px;">
+          <div style="font-size:16px;font-weight:700;color:var(--primary);margin-bottom:4px;">&#8595; 成約後クロスセル &#8595;</div>
+          <div style="font-size:13px;color:var(--text-light);">投資オーナー → FBホームで自宅購入 ／ FBホーム購入者 → 福岡ビルドで資産運用</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 8: TOP5 ===== -->
+    <section id="sec8">
+      <div class="section-header">
+        <div class="section-number">8</div>
+        <h2>差別化 重点施策 TOP5</h2>
+      </div>
+
+      <div class="top5-list">
+        <div class="top5-item">
+          <h3>セミナー / 完成見学会の定期開催</h3>
+          <p>競合のグリード・セイコーエステートは毎月実施して集客に成功しています。</p>
+          <ul>
+            <li>「初心者向け福岡アパート投資セミナー」を月1回開催（オンライン＋現地）</li>
+            <li>完成物件の見学会を新築引渡し前に毎回実施</li>
+            <li>集客はInstagram・LINE・Facebook広告で。参加者は全員LINE登録へ</li>
+          </ul>
+        </div>
+
+        <div class="top5-item">
+          <h3>YouTube / リール動画の量産</h3>
+          <p>動画コンテンツは信頼構築と認知拡大に最も効果的です。</p>
+          <ul>
+            <li>「3分でわかる木造アパート投資」シリーズ</li>
+            <li>建築工程のタイムラプス動画（着工→完成）</li>
+            <li>代表 or 営業担当が顔出しで語る「投資家に伝えたいこと」</li>
+          </ul>
+        </div>
+
+        <div class="top5-item">
+          <h3>投資家向けコンテンツ SEO</h3>
+          <p>月4本以上のブログ記事で検索流入を積み上げます。</p>
+          <ul>
+            <li>「福岡で不動産投資を始めるべき5つの理由」</li>
+            <li>「木造アパートの減価償却メリットとは」</li>
+            <li>「初心者が失敗しないアパート投資の始め方」</li>
+          </ul>
+        </div>
+
+        <div class="top5-item">
+          <h3>紹介プログラムの構築</h3>
+          <p>既存オーナーからの口コミは最も成約率が高い集客チャネルです。</p>
+          <ul>
+            <li>既存オーナーからの紹介で新規成約 → 特典を用意</li>
+            <li>オーナー同士のコミュニティ（LINEグループ or Facebook非公開グループ）</li>
+          </ul>
+        </div>
+
+        <div class="top5-item">
+          <h3>Google広告 &times; 専用LP</h3>
+          <p>検索意図の高いユーザーをピンポイントで獲得します。</p>
+          <ul>
+            <li>「福岡 アパート投資」「投資用アパート 建築」等でリスティング広告</li>
+            <li>専用LPで「無料シミュレーション」or「資料請求」に特化して成約率UP</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 9: ROADMAP ===== -->
+    <section id="sec9">
+      <div class="section-header">
+        <div class="section-number">9</div>
+        <h2>実行ロードマップ</h2>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-item">
+          <span class="phase-badge phase-1">PHASE 1</span>
+          <h3>基盤整備</h3>
+          <div class="period">今月〜1ヶ月目</div>
+          <p>LINE公式のステップ配信設計 ＋ リッチメニュー整備、Googleビジネスプロフィール登録・最適化</p>
+          <div class="effect">&#10148; 問い合わせ導線の最適化</div>
+        </div>
+
+        <div class="roadmap-item">
+          <span class="phase-badge phase-2">PHASE 2</span>
+          <h3>SNS運用開始</h3>
+          <div class="period">1〜2ヶ月目</div>
+          <p>Instagram投稿開始（週3〜4回）、リール動画制作体制の構築、ハッシュタグ戦略の実行</p>
+          <div class="effect">&#10148; 認知拡大・フォロワー獲得</div>
+        </div>
+
+        <div class="roadmap-item">
+          <span class="phase-badge phase-3">PHASE 3</span>
+          <h3>コンテンツ拡充</h3>
+          <div class="period">2〜3ヶ月目</div>
+          <p>ブログ記事制作開始（月4本）、セミナー初回開催、お客様の声 動画撮影</p>
+          <div class="effect">&#10148; SEO流入増・見込み客獲得</div>
+        </div>
+
+        <div class="roadmap-item">
+          <span class="phase-badge phase-4">PHASE 4</span>
+          <h3>有料集客開始</h3>
+          <div class="period">3〜6ヶ月目</div>
+          <p>Facebook広告・Google広告開始、専用LP制作、紹介プログラム構築</p>
+          <div class="effect">&#10148; 有料集客による成約数UP</div>
+        </div>
+
+        <div class="roadmap-item">
+          <span class="phase-badge phase-5">PHASE 5</span>
+          <h3>最適化・拡大</h3>
+          <div class="period">6ヶ月目〜</div>
+          <p>データ分析 → PDCA。成果の出た施策に集中投資。紹介の仕組み化。</p>
+          <div class="effect">&#10148; 売上の安定的な拡大</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 10: まとめ ===== -->
+    <section id="sec10">
+      <div class="section-header">
+        <div class="section-number">10</div>
+        <h2>まとめ</h2>
+      </div>
+
+      <div class="card">
+        <p>福岡ビルドさんの最大の武器は<strong>「高利回り × 設計施工一貫」という明確な強み</strong>と、<strong>競合がまだSNSを本格活用していないという市場の隙間</strong>です。</p>
+      </div>
+
+      <div class="summary-box">
+        <h2>売上に最も早く直結する 3つの施策</h2>
+        <p>この3つを軸に、段階的にSEO・広告・紹介施策を追加していくことで、持続的な売上成長が見込めます。</p>
+        <ul class="summary-points">
+          <li>
+            <span class="num">1</span>
+            <span><strong>LINE公式のステップ配信</strong>を整備して見込み客を自動育成</span>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <span><strong>Instagramリール</strong>で認知を広げてLINEに流す</span>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <span><strong>セミナー / 見学会</strong>で対面接触 → 成約</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>福岡ビルド株式会社 SNS・Web戦略提案書 &mdash; 2026年2月作成</p>
+    <p style="margin-top:8px;"><a href="https://f-build.co.jp/" target="_blank">https://f-build.co.jp/</a></p>
+  </footer>
+
+</body>
+</html>
