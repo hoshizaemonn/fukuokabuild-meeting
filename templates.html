@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram投稿テンプレート ── 福岡ビルド & FBホーム</title>
+  <style>
+    :root {
+      --fb-primary: #1a3a5c;
+      --fb-primary-light: #2a5a8c;
+      --fb-accent: #e8913a;
+      --fbh-primary: #3d2c1e;
+      --fbh-primary-light: #6b5344;
+      --fbh-accent: #c4956a;
+      --fbh-blue: #5b8fa8;
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #2c3e50;
+      --text-light: #6b7c93;
+      --border: #e2e8f0;
+      --success: #27ae60;
+      --info: #3498db;
+      --warning: #f39c12;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1a3a5c 0%, #2a6a9c 50%, #c4956a 100%);
+      color: #fff;
+      padding: 60px 40px 50px;
+      text-align: center;
+    }
+
+    .hero h1 { font-size: clamp(24px, 4vw, 40px); font-weight: 800; margin-bottom: 8px; }
+    .hero .subtitle { font-size: clamp(13px, 2vw, 16px); opacity: 0.85; }
+    .hero-meta { margin-top: 24px; font-size: 13px; opacity: 0.7; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .brand-tabs {
+      display: flex;
+      gap: 0;
+      margin: 32px 0 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      padding: 8px 0;
+    }
+
+    .brand-tab {
+      flex: 1;
+      padding: 16px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 12px 12px 0 0;
+      transition: all 0.3s;
+      border: 2px solid var(--border);
+      border-bottom: none;
+      background: #fff;
+    }
+
+    .brand-tab.active-fb { background: var(--fb-primary); color: #fff; border-color: var(--fb-primary); }
+    .brand-tab.active-fbh { background: var(--fbh-primary); color: #fff; border-color: var(--fbh-primary); }
+    .brand-tab:not(.active-fb):not(.active-fbh):hover { background: #f0f0f0; }
+
+    .brand-section { display: none; }
+    .brand-section.active { display: block; }
+
+    section { margin-bottom: 40px; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .section-number {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+    }
+
+    .section-header h2 { font-size: clamp(18px, 3vw, 24px); font-weight: 700; }
+
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+
+    .card h3 { font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .card h4 { font-size: 15px; margin: 20px 0 10px; }
+    .card ul, .card ol { padding-left: 20px; margin: 8px 0; }
+    .card li { margin-bottom: 4px; }
+
+    .template-box {
+      background: #f8f9fb;
+      border: 2px dashed var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 16px 0;
+    }
+
+    .template-box h4 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .slide-spec {
+      background: #fff;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 10px 0;
+      border-left: 4px solid var(--info);
+    }
+
+    .slide-spec strong { display: block; color: var(--fb-primary); margin-bottom: 4px; }
+
+    .input-field {
+      display: inline-block;
+      background: #fff3cd;
+      border: 1px dashed #f39c12;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-weight: 700;
+      color: #856404;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .caption-template {
+      background: #f0f5fa;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      font-size: 14px;
+      line-height: 2;
+      white-space: pre-line;
+      border-left: 4px solid var(--info);
+    }
+
+    .hashtag-set {
+      background: #f0f9ff;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 10px 0;
+      font-size: 13px;
+      color: var(--info);
+      line-height: 2;
+    }
+
+    .hashtag-set .label {
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; font-size: 14px; }
+    th { background: #f0f5fa; font-weight: 700; }
+
+    .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 12px; border: 1px solid var(--border); }
+
+    .ratio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .ratio-item {
+      text-align: center;
+      padding: 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f0f5fa, #e8eef5);
+    }
+
+    .ratio-item .pct { font-size: 28px; font-weight: 800; }
+    .ratio-item .label { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      margin: 16px 0;
+    }
+
+    .schedule-cell {
+      text-align: center;
+      padding: 12px 8px;
+      border-radius: 10px;
+      font-size: 12px;
+      min-height: 80px;
+    }
+
+    .schedule-cell .day { font-weight: 700; margin-bottom: 4px; font-size: 13px; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #fff8ed, #fff3e0);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin: 20px 0;
+      border-left: 5px solid var(--fb-accent);
+    }
+
+    .highlight-box h3 { margin-bottom: 12px; }
+
+    .cta-box {
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      border-left: 4px solid var(--success);
+    }
+
+    .format-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .badge-carousel { background: var(--info); }
+    .badge-reel { background: #e74c3c; }
+    .badge-feed { background: var(--success); }
+    .badge-story { background: #9b59b6; }
+
+    .toc {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: -30px auto 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      max-width: 900px;
+      position: relative;
+    }
+
+    .toc h2 { font-size: 16px; color: var(--fb-primary); margin-bottom: 12px; }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 6px;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .toc a:hover { background: var(--bg); color: var(--fb-primary); }
+
+    .toc-num {
+      background: var(--fb-primary);
+      color: #fff;
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .card { padding: 20px 16px; }
+      .template-box { padding: 16px; }
+      .schedule-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media print {
+      .brand-tabs { display: none; }
+      .brand-section { display: block !important; page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <h1>Instagram 投稿テンプレート集</h1>
+  <div class="subtitle">福岡ビルド & FBホーム ── 情報を入れるだけで投稿が完成する仕組み</div>
+  <div class="hero-meta">作成日: 2026年2月24日 ｜ 福岡ビルド株式会社 SNSマーケティング支援</div>
+</div>
+
+<div class="container">
+
+  <!-- ===== TOC ===== -->
+  <div class="toc">
+    <h2>目次</h2>
+    <div class="toc-grid">
+      <a href="#overview"><span class="toc-num">0</span>運用方針・全体設計</a>
+      <a href="#fb-t1"><span class="toc-num">1</span>福岡ビルド: 物件紹介</a>
+      <a href="#fb-t2"><span class="toc-num">2</span>福岡ビルド: 数字で見るシリーズ</a>
+      <a href="#fb-t3"><span class="toc-num">3</span>福岡ビルド: オーナー成功事例</a>
+      <a href="#fb-t4"><span class="toc-num">4</span>福岡ビルド: 投資ノウハウ</a>
+      <a href="#fb-t5"><span class="toc-num">5</span>福岡ビルド: 施工リール</a>
+      <a href="#fb-t6"><span class="toc-num">6</span>福岡ビルド: エリア情報</a>
+      <a href="#fbh-t1"><span class="toc-num">7</span>FBホーム: 施工事例</a>
+      <a href="#fbh-t2"><span class="toc-num">8</span>FBホーム: ルームツアー</a>
+      <a href="#fbh-t3"><span class="toc-num">9</span>FBホーム: 間取り解説</a>
+      <a href="#fbh-t4"><span class="toc-num">10</span>FBホーム: 暮らし提案</a>
+      <a href="#fbh-t5"><span class="toc-num">11</span>FBホーム: 性能・素材</a>
+      <a href="#fbh-t6"><span class="toc-num">12</span>FBホーム: お客様の声</a>
+      <a href="#fbh-t7"><span class="toc-num">13</span>FBホーム: 家づくり知識</a>
+      <a href="#hashtags"><span class="toc-num">14</span>ハッシュタグ辞書</a>
+      <a href="#schedule"><span class="toc-num">15</span>週間スケジュール</a>
+    </div>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- SECTION 0: 全体設計 -->
+  <!-- ====================================================================== -->
+  <section id="overview">
+    <div class="section-header">
+      <div class="section-number" style="background:linear-gradient(135deg,#1a3a5c,#c4956a);">0</div>
+      <h2>運用方針・全体設計</h2>
+    </div>
+
+    <div class="card">
+      <h3>2つのブランドの世界観を分離する</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th></th><th style="background:#1a3a5c;color:#fff;">福岡ビルド @fukuokabuild</th><th style="background:#3d2c1e;color:#fff;">FBホーム @fb_home_fukuokabuild</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>事業</strong></td><td>投資用木造アパート建築</td><td>分譲住宅（CALIFORNIA STYLE / WAON）</td></tr>
+            <tr><td><strong>ターゲット</strong></td><td>30〜55歳の男性投資家・土地オーナー</td><td>30〜50代の子育て世帯・趣味重視層</td></tr>
+            <tr><td><strong>世界観</strong></td><td>信頼・実績・数字（ビジネス感）</td><td>ライフスタイル・温かみ・憧れ</td></tr>
+            <tr><td><strong>トーン</strong></td><td>紺 + オレンジ、クリーン、データ重視</td><td>ブルー + ウッド + ホワイト、西海岸感</td></tr>
+            <tr><td><strong>CTA誘導先</strong></td><td>福岡ビルド LINE</td><td>FBホーム LINE</td></tr>
+            <tr><td><strong>投稿頻度</strong></td><td>週3〜4回 + ストーリーズ毎日</td><td>週3〜4回 + ストーリーズ毎日</td></tr>
+            <tr><td><strong>KPI</strong></td><td>保存率 &gt; いいね率（投資家は「後で見返す」）</td><td>保存率 + リーチ数（憧れ &rarr; 見学予約）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>投稿カテゴリ配分</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div>
+          <h4 style="color:var(--fb-primary);">福岡ビルド（投資系）</h4>
+          <div class="ratio-grid">
+            <div class="ratio-item"><div class="pct" style="color:var(--fb-primary);">25%</div><div class="label">物件紹介</div></div>
+            <div class="ratio-item"><div class="pct" style="color:var(--info);">20%</div><div class="label">数字・データ</div></div>
+            <div class="ratio-item"><div class="pct" style="color:var(--success);">15%</div><div class="label">オーナーの声</div></div>
+            <div class="ratio-item"><div class="pct" style="color:var(--warning);">20%</div><div class="label">投資ノウハウ</div></div>
+            <div class="ratio-item"><div class="pct" style="color:#e74c3c;">10%</div><div class="label">施工現場</div></div>
+            <div class="ratio-item"><div class="pct" style="color:#9b59b6;">10%</div><div class="label">エリア情報</div></div>
+          </div>
+        </div>
+        <div>
+          <h4 style="color:var(--fbh-primary);">FBホーム（住宅系）</h4>
+          <div class="ratio-grid">
+            <div class="ratio-item"><div class="pct" style="color:var(--fbh-primary);">25%</div><div class="label">施工事例</div></div>
+            <div class="ratio-item"><div class="pct" style="color:#e74c3c;">20%</div><div class="label">ルームツアー</div></div>
+            <div class="ratio-item"><div class="pct" style="color:var(--info);">15%</div><div class="label">間取り解説</div></div>
+            <div class="ratio-item"><div class="pct" style="color:var(--fbh-accent);">15%</div><div class="label">暮らし提案</div></div>
+            <div class="ratio-item"><div class="pct" style="color:var(--success);">10%</div><div class="label">性能・素材</div></div>
+            <div class="ratio-item"><div class="pct" style="color:#9b59b6;">10%</div><div class="label">お客様の声</div></div>
+            <div class="ratio-item"><div class="pct" style="color:var(--warning);">5%</div><div class="label">家づくり知識</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h3>このテンプレートの使い方</h3>
+      <ol>
+        <li>各テンプレートの <span class="input-field">黄色の枠</span> に実際の情報を入れる</li>
+        <li>キャプションテンプレートの [ ] 内を書き換える</li>
+        <li>ハッシュタグ辞書から投稿カテゴリに合ったセットをコピー</li>
+        <li>デザイン仕様に従って画像を作成（Canva等）</li>
+        <li>完成 &rarr; 投稿スケジュールに従って公開</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ====================================================================== -->
+  <!-- 福岡ビルド テンプレート群 -->
+  <!-- ====================================================================== -->
+  <div style="background:var(--fb-primary);color:#fff;padding:24px 32px;border-radius:14px;margin:40px 0 20px;text-align:center;">
+    <h2 style="font-size:24px;">PART 1: 福岡ビルド（投資用アパート）</h2>
+    <p style="opacity:0.8;font-size:14px;">@fukuokabuild ── 投資家向け・数字重視・信頼感</p>
+  </div>
+
+  <!-- FB Template 1: 物件紹介 -->
+  <section id="fb-t1">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fb-primary);">1</div>
+      <h2>テンプレート1: 物件紹介カルーセル</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> 完成物件・施工実績の紹介</h3>
+      <p><strong>目的:</strong> 実物件を見せて「こんなアパートが建てられる」と具体的にイメージさせる<br>
+      <strong>枚数:</strong> 5〜8枚 ｜ <strong>投稿頻度:</strong> 週1回 ｜ <strong>KPI:</strong> 保存数</p>
+
+      <div class="template-box">
+        <h4>必要な情報（クライアントから取得）</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:200px;">項目</th><th>入力内容</th><th style="width:120px;">例</th></tr>
+            <tr><td>物件所在地</td><td><span class="input-field">エリア名</span></td><td>福岡市早良区</td></tr>
+            <tr><td>構造・規模</td><td><span class="input-field">構造＋戸数</span></td><td>木造2階建 8戸</td></tr>
+            <tr><td>想定利回り</td><td><span class="input-field">○.○%</span></td><td>7.8%</td></tr>
+            <tr><td>想定家賃収入</td><td><span class="input-field">月○万円</span></td><td>月48万円</td></tr>
+            <tr><td>間取りタイプ</td><td><span class="input-field">間取り</span></td><td>1LDK</td></tr>
+            <tr><td>入居率</td><td><span class="input-field">○%</span></td><td>98%</td></tr>
+            <tr><td>建築費概算</td><td><span class="input-field">○,○○○万円</span></td><td>5,800万円</td></tr>
+            <tr><td>外観写真</td><td>高解像度 / 青空バック推奨</td><td>-</td></tr>
+            <tr><td>内装写真</td><td>キッチン・浴室・居室 各1枚以上</td><td>-</td></tr>
+            <tr><td>特記事項</td><td><span class="input-field">差別化ポイント</span></td><td>宅配BOX全戸標準</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>スライド構成</h4>
+        <div class="slide-spec">
+          <strong>1枚目（表紙 = フィードに表示）</strong>
+          <ul>
+            <li>外観写真の下半分に半透明紺グラデーション</li>
+            <li>テキスト: 「<span class="input-field">エリア名</span> 新築アパート完成」</li>
+            <li>大きく: 「想定利回り <span class="input-field">○.○</span>%」（オレンジ）</li>
+            <li>小さく: 「<span class="input-field">構造</span> / <span class="input-field">戸数</span>戸」</li>
+          </ul>
+        </div>
+        <div class="slide-spec">
+          <strong>2枚目（スペック概要）</strong>
+          <ul>
+            <li>白背景のインフォグラフィック</li>
+            <li>4つの数字を大きく: 利回り / 家賃収入 / 戸数 / 入居率</li>
+            <li>各数字の下に1行解説</li>
+          </ul>
+        </div>
+        <div class="slide-spec">
+          <strong>3枚目（外観 or エントランス）</strong>
+          <ul>
+            <li>外観別角度 or エントランス写真</li>
+            <li>テロップ: 「<span class="input-field">差別化ポイント</span>」</li>
+          </ul>
+        </div>
+        <div class="slide-spec">
+          <strong>4〜6枚目（内装ハイライト）</strong>
+          <ul>
+            <li>各部屋のベストショット</li>
+            <li>テロップで入居者目線の訴求: 「<span class="input-field">間取り</span> / 想定家賃 <span class="input-field">○万円</span>」</li>
+          </ul>
+        </div>
+        <div class="slide-spec">
+          <strong>7枚目（収支シミュレーション）</strong>
+          <ul>
+            <li>建築費 &rarr; 年間家賃収入 &rarr; 利回り の図解</li>
+            <li>「自己資金 <span class="input-field">○万円</span> からスタート可能」</li>
+          </ul>
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fb-accent);">
+          <strong>最終枚（CTA）</strong>
+          <ul>
+            <li>「あなたの場合の利回りは？」（大きく）</li>
+            <li>「LINE登録で無料シミュレーション」</li>
+            <li>福岡ビルドロゴ + LINEアイコン</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+[エリア名] に新築木造アパートが完成しました。
+
+[構造・規模]、想定利回り [○.○]%
+月額家賃収入 [○○万円]
+
+[差別化ポイント]を標準装備し、
+入居者満足度と長期安定経営を両立。
+
+福岡ビルドは設計・施工・管理まで一貫対応。
+年間30棟以上の実績で、投資家様の資産形成をサポートします。
+
+「自分の場合はどうなる？」
+プロフィールのリンクからLINE登録で
+無料シミュレーションをお試しください。
+
+#福岡アパート投資 #木造アパート #利回り[○]パーセント
+（※ハッシュタグは別紙「ハッシュタグ辞書」から選択）
+      </div>
+    </div>
+  </section>
+
+  <!-- FB Template 2: 数字で見るシリーズ -->
+  <section id="fb-t2">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fb-primary);">2</div>
+      <h2>テンプレート2: 数字で見るシリーズ</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> データ・統計で投資判断を支援</h3>
+      <p><strong>目的:</strong> 「保存して後で見返したい」と思わせる教育コンテンツ<br>
+      <strong>枚数:</strong> 8〜10枚 ｜ <strong>投稿頻度:</strong> 週1回 ｜ <strong>KPI:</strong> 保存数・シェア数</p>
+
+      <div class="template-box">
+        <h4>テーマ候補（ストック案）</h4>
+        <ol>
+          <li>「福岡のアパート投資 利回り相場は何%？」</li>
+          <li>「木造 vs RC どっちが投資に向いてる？」</li>
+          <li>「福岡市vs鳥栖市、どっちが稼げる？」エリア別比較</li>
+          <li>「年収500万円のサラリーマンが受けられる融資額は？」</li>
+          <li>「新築vs中古アパート 10年後の収支を比較」</li>
+          <li>「空室率を下げる間取り・設備 TOP5」</li>
+          <li>「アパートオーナーの確定申告 3つのポイント」</li>
+          <li>「福岡の人口動態から見る賃貸需要の未来」</li>
+          <li>「減価償却とは？木造アパートが節税に強い理由」</li>
+          <li>「頭金ゼロでアパート投資は可能か？」</li>
+        </ol>
+      </div>
+
+      <div class="template-box">
+        <h4>必要な情報</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">項目</th><th>説明</th></tr>
+            <tr><td>テーマタイトル</td><td><span class="input-field">1枚目に使うキャッチコピー</span></td></tr>
+            <tr><td>データ・数字</td><td><span class="input-field">統計値・利回り・家賃相場等</span>（3〜5個の数字）</td></tr>
+            <tr><td>データ出典</td><td><span class="input-field">出典元</span>（信頼性のため明記）</td></tr>
+            <tr><td>自社実績との紐付け</td><td><span class="input-field">福岡ビルドならこう対応</span>（9枚目用）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>10枚スライド構成（固定フォーマット）</h4>
+        <div class="slide-spec">
+          <strong>1枚目（フック）</strong>
+          紺背景 + 白文字で大きく: 「<span class="input-field">テーマタイトル</span>」<br>
+          サブテキスト: 「データで見る <span class="input-field">テーマ</span>」
+        </div>
+        <div class="slide-spec">
+          <strong>2枚目（問題提起）</strong>
+          「あなたはこんな疑問ありませんか？」<br>
+          3つの疑問を箇条書き
+        </div>
+        <div class="slide-spec">
+          <strong>3〜7枚目（データ解説）</strong>
+          1スライド = 1つの数字 or 1つのポイント<br>
+          グラフ・図解・アイコンを活用<br>
+          数字は大きくオレンジで表示
+        </div>
+        <div class="slide-spec">
+          <strong>8枚目（まとめ）</strong>
+          「ポイントまとめ」として3〜5個を箇条書き<br>
+          「保存して見返してくださいね」のひと言
+        </div>
+        <div class="slide-spec">
+          <strong>9枚目（福岡ビルドの対応）</strong>
+          「福岡ビルドでは〜」と自社の強みに紐付け<br>
+          実績数字を1〜2個提示
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fb-accent);">
+          <strong>10枚目（CTA）</strong>
+          「もっと詳しく知りたい方は」<br>
+          「LINE登録で [特典名] プレゼント」<br>
+          ロゴ + LINEアイコン
+        </div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+[テーマに関する1行フック。疑問形が効果的]
+
+今回は「[テーマタイトル]」を
+データで詳しく解説します。
+
+結論から言うと...
+[核心となる結論を1〜2行で]
+
+詳しくはスライドをスワイプしてご覧ください &rarr;
+
+------
+
+「自分の場合はどうなる？」と気になった方は
+プロフィールのリンクからLINE登録で
+無料個別シミュレーションをお試しください。
+
+参考になったら保存して見返してくださいね。
+      </div>
+    </div>
+  </section>
+
+  <!-- FB Template 3: オーナー成功事例 -->
+  <section id="fb-t3">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fb-primary);">3</div>
+      <h2>テンプレート3: オーナー成功事例</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> 実際のオーナー様のストーリー</h3>
+      <p><strong>目的:</strong> 「自分にもできそう」と思わせる共感＋信頼の構築<br>
+      <strong>枚数:</strong> 5〜6枚 ｜ <strong>投稿頻度:</strong> 隔週1回 ｜ <strong>KPI:</strong> 保存数・フォロー</p>
+
+      <div class="template-box">
+        <h4>必要な情報（オーナー様から取得）</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">項目</th><th>入力内容</th><th style="width:140px;">例</th></tr>
+            <tr><td>オーナー属性</td><td><span class="input-field">年代・職業</span>（匿名可）</td><td>38歳 会社員</td></tr>
+            <tr><td>投資のきっかけ</td><td><span class="input-field">なぜ始めたか</span></td><td>老後の不安</td></tr>
+            <tr><td>投資前の状況</td><td><span class="input-field">Before</span></td><td>貯金のみ</td></tr>
+            <tr><td>物件スペック</td><td><span class="input-field">エリア・構造・戸数</span></td><td>鳥栖市 8戸</td></tr>
+            <tr><td>月間家賃収入</td><td><span class="input-field">月○万円</span></td><td>月36万円</td></tr>
+            <tr><td>利回り</td><td><span class="input-field">○.○%</span></td><td>8.2%</td></tr>
+            <tr><td>満足ポイント</td><td><span class="input-field">オーナーの声</span></td><td>管理まで任せられる安心感</td></tr>
+            <tr><td>福岡ビルドを選んだ理由</td><td><span class="input-field">決め手</span></td><td>利回りシミュレーションの精度</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>スライド構成</h4>
+        <div class="slide-spec">
+          <strong>1枚目（フック）</strong>
+          「<span class="input-field">年代</span><span class="input-field">職業</span>、副業で月<span class="input-field">○○</span>万円を実現」<br>
+          人物シルエット or イメージ写真
+        </div>
+        <div class="slide-spec">
+          <strong>2枚目（Before）</strong>
+          「投資を始める前の悩み」<br>
+          吹き出しデザインで: 「<span class="input-field">投資前の状況</span>」
+        </div>
+        <div class="slide-spec">
+          <strong>3枚目（物件＆数字）</strong>
+          物件写真 + スペック概要<br>
+          利回り・家賃収入を大きく表示
+        </div>
+        <div class="slide-spec">
+          <strong>4枚目（オーナーの声）</strong>
+          吹き出しデザインで: 「<span class="input-field">満足ポイント</span>」<br>
+          「<span class="input-field">選んだ理由</span>」
+        </div>
+        <div class="slide-spec">
+          <strong>5枚目（After）</strong>
+          「現在の資産状況」をビジュアル化<br>
+          Before &rarr; After の対比
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fb-accent);">
+          <strong>6枚目（CTA）</strong>
+          「あなたも第一歩を」<br>
+          LINE登録で無料相談
+        </div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+「[投資のきっかけ]」
+
+[年代][職業]の[匿名イニシャル]さんは
+[投資前の状況]でした。
+
+そんな[匿名イニシャル]さんが
+福岡ビルドでアパートを建てたところ...
+
+月[○○]万円の家賃収入を得られるように。
+
+[匿名イニシャル]さんの声:
+「[満足ポイント]」
+
+[匿名イニシャル]さんのように、
+会社員をしながら安定した副収入を
+得ている方が増えています。
+
+「自分の場合はどうだろう？」
+まずはLINE登録で無料シミュレーションから。
+プロフィールのリンクからどうぞ。
+      </div>
+    </div>
+  </section>
+
+  <!-- FB Template 4: 投資ノウハウ -->
+  <section id="fb-t4">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fb-primary);">4</div>
+      <h2>テンプレート4: 投資ノウハウ</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> 「これ、知らないと損する」系コンテンツ</h3>
+      <p><strong>目的:</strong> フォローする理由を作る＝「この人をフォローすれば投資で儲かる情報が手に入る」<br>
+      <strong>枚数:</strong> 8〜10枚 ｜ <strong>投稿頻度:</strong> 週1回 ｜ <strong>KPI:</strong> 保存数</p>
+
+      <div class="template-box">
+        <h4>テーマ候補（ストック案）</h4>
+        <ol>
+          <li>「銀行が融資したくなる物件の3つの条件」</li>
+          <li>「アパート投資の落とし穴、3つの失敗パターン」</li>
+          <li>「空室を埋めるために今すぐできる5つのこと」</li>
+          <li>「初めてのアパート投資、何から始めればいい？」</li>
+          <li>「管理会社の選び方で年間○万円変わる」</li>
+          <li>「修繕積立金の目安、木造アパートの場合」</li>
+          <li>「アパートローンの金利、今がチャンスな理由」</li>
+          <li>「サラリーマン大家の確定申告、ここだけ押さえろ」</li>
+        </ol>
+      </div>
+
+      <div class="template-box">
+        <h4>必要な情報</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">項目</th><th>説明</th></tr>
+            <tr><td>テーマ</td><td><span class="input-field">○○のための△△つのポイント</span></td></tr>
+            <tr><td>ポイント数</td><td>3〜5個（多すぎない。3が最も反応が良い）</td></tr>
+            <tr><td>各ポイントの解説</td><td><span class="input-field">見出し + 2〜3行の解説</span> x ポイント数</td></tr>
+            <tr><td>実例・数字</td><td><span class="input-field">具体的な数字や事例</span>（説得力のため）</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>スライド構成（鉄板パターン）</h4>
+        <div class="slide-spec">
+          <strong>1枚目（フック）</strong>
+          「<span class="input-field">テーマタイトル</span>」<br>
+          紺背景、数字をオレンジで大きく
+        </div>
+        <div class="slide-spec">
+          <strong>2枚目（問題提起）</strong>
+          「こんなこと思っていませんか？」<br>
+          ターゲットの悩みを3つ列挙
+        </div>
+        <div class="slide-spec">
+          <strong>3〜7枚目（各ポイント解説）</strong>
+          1スライド = 1ポイント<br>
+          見出し（大きく） + 解説文（2〜3行） + アイコン or 図解
+        </div>
+        <div class="slide-spec">
+          <strong>8枚目（まとめ）</strong>
+          全ポイントを1枚にまとめ<br>
+          「保存して見返してください」
+        </div>
+        <div class="slide-spec">
+          <strong>9枚目（福岡ビルドの対応力）</strong>
+          「福岡ビルドでは [具体的なサポート内容]」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fb-accent);">
+          <strong>10枚目（CTA）</strong>
+          LINE登録誘導
+        </div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+[1行の衝撃的な事実 or 疑問形のフック]
+
+今回は「[テーマ名]」について
+[ポイント数]つに絞って解説します。
+
+特に[ポイント数]つ目は
+知らないと大きな損をする可能性があるので
+最後までスワイプしてご確認ください &rarr;
+
+------
+
+福岡ビルドでは[テーマに関連する自社の強み]。
+投資が初めての方でも安心してスタートできます。
+
+個別の相談はLINEで受け付けています。
+プロフィールのリンクから登録できます。
+      </div>
+    </div>
+  </section>
+
+  <!-- FB Template 5: 施工リール -->
+  <section id="fb-t5">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fb-primary);">5</div>
+      <h2>テンプレート5: 施工現場リール</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-reel">リール</span> 建築現場の裏側を見せる動画</h3>
+      <p><strong>目的:</strong> リーチ拡大＋「ちゃんとした会社」という信頼感<br>
+      <strong>時間:</strong> 15〜30秒 ｜ <strong>投稿頻度:</strong> 隔週1回 ｜ <strong>KPI:</strong> リーチ数・再生数</p>
+
+      <div class="template-box">
+        <h4>必要な素材</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">素材</th><th>内容</th></tr>
+            <tr><td>動画素材</td><td>施工現場の動画クリップ 5〜10本（各5秒程度）</td></tr>
+            <tr><td>所在地</td><td><span class="input-field">エリア名</span></td></tr>
+            <tr><td>工事段階</td><td><span class="input-field">基礎 / 上棟 / 内装 / 完成等</span></td></tr>
+            <tr><td>物件スペック</td><td><span class="input-field">構造・戸数</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>リール構成（30秒ver）</h4>
+        <div class="slide-spec">
+          <strong>0〜3秒（フック）</strong>
+          テロップ: 「新築アパート建築中」<br>
+          外観の引き画像 or 工事全景
+        </div>
+        <div class="slide-spec">
+          <strong>3〜10秒（基礎〜構造）</strong>
+          基礎工事 &rarr; フレーミング &rarr; 上棟の流れ<br>
+          テロップ: 「設計・施工 自社一貫対応」
+        </div>
+        <div class="slide-spec">
+          <strong>10〜20秒（内装・仕上げ）</strong>
+          内装工事 &rarr; 設備設置 &rarr; 仕上げ<br>
+          テロップ: 「<span class="input-field">構造</span> <span class="input-field">戸数</span>戸」
+        </div>
+        <div class="slide-spec">
+          <strong>20〜25秒（完成）</strong>
+          完成外観 &rarr; エントランス &rarr; 内装<br>
+          テロップ: 「想定利回り <span class="input-field">○.○</span>%」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fb-accent);">
+          <strong>25〜30秒（CTA）</strong>
+          テロップ: 「お気軽にご相談ください」<br>
+          ロゴ + 「詳しくはプロフィールから」
+        </div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+[エリア名]の新築木造アパート、着工から完成まで。
+
+設計・施工・管理まで自社一貫対応。
+年間30棟以上の実績で安定品質を実現しています。
+
+想定利回り[○.○]%、[間取り] x [戸数]戸。
+
+投資用アパートの建築をご検討の方は
+プロフィールのリンクからLINE登録で
+無料相談を受け付けています。
+      </div>
+    </div>
+  </section>
+
+  <!-- FB Template 6: エリア情報 -->
+  <section id="fb-t6">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fb-primary);">6</div>
+      <h2>テンプレート6: エリア・マーケット情報</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> 福岡の不動産市場トピック</h3>
+      <p><strong>目的:</strong> 「福岡の不動産に詳しい会社」というポジション確立<br>
+      <strong>枚数:</strong> 5〜8枚 ｜ <strong>投稿頻度:</strong> 月2回 ｜ <strong>KPI:</strong> 保存数</p>
+
+      <div class="template-box">
+        <h4>テーマ候補</h4>
+        <ol>
+          <li>「天神ビッグバンで変わる福岡の賃貸需要」</li>
+          <li>「博多コネクティッド、投資家が注目すべき3エリア」</li>
+          <li>「七隈線延伸で賃貸需要が伸びるエリアは？」</li>
+          <li>「福岡の単身世帯増加と1LDK需要の関係」</li>
+          <li>「鳥栖・久留米エリアの利回りが高い理由」</li>
+          <li>「福岡 vs 大阪 vs 名古屋、投資するならどこ？」</li>
+        </ol>
+      </div>
+
+      <div class="template-box">
+        <h4>必要な情報</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">項目</th><th>説明</th></tr>
+            <tr><td>エリア名</td><td><span class="input-field">対象エリア</span></td></tr>
+            <tr><td>統計データ</td><td><span class="input-field">人口・家賃相場・利回り等の数字</span></td></tr>
+            <tr><td>開発情報</td><td><span class="input-field">再開発・新駅・商業施設等</span></td></tr>
+            <tr><td>出典</td><td><span class="input-field">データ出典元</span></td></tr>
+            <tr><td>自社実績</td><td><span class="input-field">当該エリアでの建築実績</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>スライド構成</h4>
+        <div class="slide-spec"><strong>1枚目:</strong> 地図ビジュアル + 「<span class="input-field">エリア名</span>、投資家が今注目すべき理由」</div>
+        <div class="slide-spec"><strong>2枚目:</strong> エリアの基本データ（人口・世帯数・家賃相場）</div>
+        <div class="slide-spec"><strong>3〜5枚目:</strong> 注目ポイントを1枚1テーマで解説</div>
+        <div class="slide-spec"><strong>6枚目:</strong> 福岡ビルドの当該エリア実績</div>
+        <div class="slide-spec" style="border-left-color:var(--fb-accent);"><strong>7枚目:</strong> CTA（LINE登録で最新エリア情報配信）</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================================================== -->
+  <!-- FBホーム テンプレート群 -->
+  <!-- ====================================================================== -->
+  <div style="background:linear-gradient(135deg,#3d2c1e,#5b8fa8);color:#fff;padding:24px 32px;border-radius:14px;margin:60px 0 20px;text-align:center;">
+    <h2 style="font-size:24px;">PART 2: FBホーム（分譲住宅）</h2>
+    <p style="opacity:0.8;font-size:14px;">@fb_home_fukuokabuild ── ライフスタイル・憧れ・西海岸テイスト</p>
+  </div>
+
+  <!-- FBH Template 1: 施工事例 -->
+  <section id="fbh-t1">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fbh-primary);">7</div>
+      <h2>テンプレート7: 施工事例フォトギャラリー</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> 完成住宅の魅力を写真で伝える</h3>
+      <p><strong>目的:</strong> 「こんな家に住みたい」という憧れを生む<br>
+      <strong>枚数:</strong> 8〜10枚 ｜ <strong>投稿頻度:</strong> 週1回 ｜ <strong>KPI:</strong> 保存数・いいね</p>
+
+      <div class="template-box">
+        <h4>必要な情報（クライアントから取得）</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:200px;">項目</th><th>入力内容</th><th style="width:140px;">例</th></tr>
+            <tr><td>物件シリーズ</td><td><span class="input-field">CALIFORNIA / WAON / GARAGE</span></td><td>CALIFORNIA STYLE</td></tr>
+            <tr><td>所在エリア</td><td><span class="input-field">市区町村</span></td><td>福津市</td></tr>
+            <tr><td>延床面積</td><td><span class="input-field">○○坪</span></td><td>32坪</td></tr>
+            <tr><td>LDK広さ</td><td><span class="input-field">○○帖</span></td><td>20帖</td></tr>
+            <tr><td>間取り</td><td><span class="input-field">○LDK</span></td><td>4LDK</td></tr>
+            <tr><td>こだわりポイント</td><td><span class="input-field">3つまで</span></td><td>吹き抜けリビング / カバードポーチ / 無垢材フロア</td></tr>
+            <tr><td>外観写真</td><td>青空バック必須。正面 + 斜め</td><td>-</td></tr>
+            <tr><td>内装写真</td><td>リビング / キッチン / 寝室 / 収納 / ポーチ 各1枚以上</td><td>-</td></tr>
+            <tr><td>本体価格帯</td><td><span class="input-field">○,○○○万円〜</span></td><td>2,480万円〜</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>スライド構成</h4>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>1枚目（外観ヒーロー）</strong>
+          <ul>
+            <li>青空バックの外観ベストショット</li>
+            <li>テキスト最小限: 「<span class="input-field">シリーズ名</span>」+ 小さく「<span class="input-field">エリア</span>」</li>
+            <li>写真の美しさを最優先。テキストは控えめに</li>
+          </ul>
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>2枚目（リビング / LDK）</strong>
+          自然光が入るリビングの写真。生活小物でスタイリング<br>
+          テロップ: 「<span class="input-field">○○</span>帖の開放的なLDK」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>3枚目（キッチン）</strong>
+          対面キッチンの全景 or 調理中の手元写真<br>
+          テロップ: 「家族の顔が見えるキッチン」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>4枚目（こだわりポイント1）</strong>
+          <span class="input-field">こだわり1</span>のクローズアップ写真<br>
+          例: カバードポーチでコーヒーを飲むシーン
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>5枚目（こだわりポイント2）</strong>
+          <span class="input-field">こだわり2</span>のクローズアップ写真<br>
+          例: 無垢材フローリングの質感
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>6〜7枚目（寝室 / 子供部屋 / 収納）</strong>
+          各部屋のハイライト。実生活がイメージできる写真
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>8枚目（間取り図 + スペック）</strong>
+          間取り図 + 延床面積 + LDK広さ + 間取り
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>9枚目（性能ハイライト）</strong>
+          「耐震等級3 / UA値0.16 / ZEH対応」をアイコン付きで<br>
+          「デザインだけじゃない。性能も妥協しません。」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-accent);">
+          <strong>10枚目（CTA）</strong>
+          「この家、実際に見てみませんか？」<br>
+          「見学予約はLINEから」+ ロゴ + LINEアイコン
+        </div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+[シリーズ名] / [エリア名]
+
+[こだわりポイント1]と[こだわりポイント2]が特徴の
+[間取り] / 延床[○○]坪の住まい。
+
+[こだわりポイントの具体的な魅力を2〜3行で]
+
+FBホームは「デザイン x 性能 x メンテナンス」の
+三位一体で、毎日が楽しくなる家をつくっています。
+
+耐震等級3 / UA値0.16 / 全棟気密測定実施。
+見た目だけじゃない、住んでからの安心も。
+
+見学のご予約はプロフィールのリンクから。
+      </div>
+    </div>
+  </section>
+
+  <!-- FBH Template 2: ルームツアー -->
+  <section id="fbh-t2">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fbh-primary);">8</div>
+      <h2>テンプレート8: ルームツアー動画</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-reel">リール</span> 住宅のウォークスルー動画</h3>
+      <p><strong>目的:</strong> 非フォロワーへのリーチ拡大。「住んでみたい」を動画で体感<br>
+      <strong>時間:</strong> 30〜60秒 ｜ <strong>投稿頻度:</strong> 週1回 ｜ <strong>KPI:</strong> リーチ数・再生数</p>
+
+      <div class="template-box">
+        <h4>必要な素材</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">素材</th><th>撮影ポイント</th></tr>
+            <tr><td>動画撮影機材</td><td>スマホ + ジンバル（手ブレ防止）推奨。iPhone超広角モード</td></tr>
+            <tr><td>撮影時間帯</td><td>自然光が最も美しい10:00〜14:00</td></tr>
+            <tr><td>撮影ルート</td><td>玄関 &rarr; LDK &rarr; キッチン &rarr; 洗面・浴室 &rarr; 寝室 &rarr; ポーチ</td></tr>
+            <tr><td>BGM</td><td>チルな洋楽（著作権フリー）。Instagram音源推奨</td></tr>
+            <tr><td>シリーズ名</td><td><span class="input-field">CALIFORNIA / WAON / GARAGE</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>リール構成（45秒ver）</h4>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>0〜3秒（フック）</strong>
+          外観ワイドショット<br>
+          テロップ: 「<span class="input-field">シリーズ名</span> ルームツアー」<br>
+          <em>※冒頭3秒で離脱されるため、最も映える画から始める</em>
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>3〜8秒（玄関 &rarr; リビング）</strong>
+          ドアを開けて入る動き &rarr; LDKへの視界が開ける瞬間<br>
+          テロップ: 「<span class="input-field">○○</span>帖の吹き抜けリビング」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>8〜18秒（LDK &rarr; キッチン）</strong>
+          リビング全景をゆっくりパン &rarr; キッチンへ<br>
+          テロップ: 「<span class="input-field">こだわりポイント1</span>」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>18〜28秒（水回り &rarr; 寝室）</strong>
+          洗面台 &rarr; 浴室チラ見せ &rarr; 寝室<br>
+          テロップ: 「<span class="input-field">こだわりポイント2</span>」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);">
+          <strong>28〜38秒（ガレージ or ポーチ）</strong>
+          ガレージのシャッターが開く or ポーチに出る<br>
+          テロップ: 「<span class="input-field">シリーズの特徴的な空間</span>」
+        </div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-accent);">
+          <strong>38〜45秒（CTA）</strong>
+          外観を引きで + ロゴ<br>
+          テロップ: 「見学予約受付中 &rarr; プロフィールから」
+        </div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+[シリーズ名] ルームツアー
+
+[こだわりポイント1]が映える
+[間取り]の住まいをご紹介。
+
+[2〜3行で住まいの魅力を語る]
+
+FBホームは本体価格2,480万円〜。
+耐震等級3、UA値0.16の高性能住宅を
+手の届く価格で実現しています。
+
+モデルハウス見学のご予約は
+プロフィールのリンクからどうぞ。
+      </div>
+    </div>
+  </section>
+
+  <!-- FBH Template 3: 間取り解説 -->
+  <section id="fbh-t3">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fbh-primary);">9</div>
+      <h2>テンプレート9: 間取り解説</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> 「この間取り、神」と保存される投稿</h3>
+      <p><strong>目的:</strong> 家づくり検討中の人が「保存して参考にしたい」と思う実用コンテンツ<br>
+      <strong>枚数:</strong> 5〜6枚 ｜ <strong>投稿頻度:</strong> 隔週1回 ｜ <strong>KPI:</strong> 保存数</p>
+
+      <div class="template-box">
+        <h4>テーマ候補</h4>
+        <ol>
+          <li>「共働き夫婦のための回遊動線プラン」</li>
+          <li>「子育て世帯に最適な間取り3つの工夫」</li>
+          <li>「30坪でも広く感じる間取りの秘密」</li>
+          <li>「将来2部屋に分けられる子ども部屋」</li>
+          <li>「家事動線が神な間取り」</li>
+          <li>「ガレージから直接リビングへ繋がる間取り」</li>
+          <li>「帰宅動線で生活が変わる玄関設計」</li>
+        </ol>
+      </div>
+
+      <div class="template-box">
+        <h4>必要な情報</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">項目</th><th>説明</th></tr>
+            <tr><td>間取り図</td><td><span class="input-field">CADデータ or 手書きを清書</span></td></tr>
+            <tr><td>ターゲット家族</td><td><span class="input-field">家族構成</span>（共働き夫婦+子2人 等）</td></tr>
+            <tr><td>動線のポイント</td><td><span class="input-field">3つの工夫</span></td></tr>
+            <tr><td>各部屋の広さ</td><td><span class="input-field">帖数</span></td></tr>
+            <tr><td>実際の写真</td><td>間取りに対応する施工写真</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>スライド構成</h4>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>1枚目:</strong> 「<span class="input-field">テーマ名</span>」キャッチコピー（白背景 + ブルー文字）</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>2枚目:</strong> 間取り図全体 + 家族構成アイコン + 延床面積</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>3枚目:</strong> 動線をハイライト（矢印で示す） + 工夫ポイント1の解説</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>4枚目:</strong> 工夫ポイント2の解説 + 該当箇所の施工写真</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>5枚目:</strong> 工夫ポイント3の解説 + 該当箇所の施工写真</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-accent);"><strong>6枚目:</strong> CTA「間取り相談はLINEから」</div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+[テーマ名を疑問形 or 提案形で]
+
+[ターゲット家族]のための間取りを
+[工夫のポイント数]つのポイントで解説します。
+
+[工夫1]:
+[1〜2行で説明]
+
+[工夫2]:
+[1〜2行で説明]
+
+[工夫3]:
+[1〜2行で説明]
+
+「うちの家族に合う間取りはどれ？」
+気になる方はプロフィールのリンクから
+LINE登録で無料相談を受け付けています。
+
+参考になったら保存しておいてくださいね。
+      </div>
+    </div>
+  </section>
+
+  <!-- FBH Template 4: 暮らし提案 -->
+  <section id="fbh-t4">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fbh-primary);">10</div>
+      <h2>テンプレート10: 暮らし提案</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-feed">フィード</span><span class="format-badge badge-carousel" style="margin-left:4px;">カルーセル</span> 「この家での暮らし」を売る</h3>
+      <p><strong>目的:</strong> 家そのものではなく「その家で過ごす時間」の憧れを生む<br>
+      <strong>枚数:</strong> 1〜5枚 ｜ <strong>投稿頻度:</strong> 週1回 ｜ <strong>KPI:</strong> いいね数・リーチ</p>
+
+      <div class="template-box">
+        <h4>テーマ候補（季節・ライフスタイル別）</h4>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div>
+            <strong>ライフスタイル系:</strong>
+            <ul>
+              <li>「カバードポーチでコーヒーモーニング」</li>
+              <li>「ガレージで楽しむ週末DIY」</li>
+              <li>「ウッドデッキでBBQパーティー」</li>
+              <li>「吹き抜けリビングでの映画鑑賞」</li>
+              <li>「ペットと暮らすカリフォルニアハウス」</li>
+              <li>「趣味のサーフボードが映えるガレージ」</li>
+            </ul>
+          </div>
+          <div>
+            <strong>季節系:</strong>
+            <ul>
+              <li>春:「新生活スタートの家」</li>
+              <li>夏:「涼しく過ごすZEH住宅」</li>
+              <li>秋:「ポーチで読書の秋」</li>
+              <li>冬:「断熱性能UA値0.16の暖かさ」</li>
+              <li>年末:「おうちクリスマスの過ごし方」</li>
+              <li>GW:「おうちアウトドアのススメ」</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>必要な素材</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">素材</th><th>ポイント</th></tr>
+            <tr><td>写真（最重要）</td><td>生活感のあるスタイリング写真。人物 or 手元を入れる。自然光必須</td></tr>
+            <tr><td>テーマ</td><td><span class="input-field">暮らしのシーン名</span></td></tr>
+            <tr><td>関連する住宅性能</td><td><span class="input-field">このシーンを実現する性能・設計</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="caption-template">
+<strong>キャプションテンプレート:</strong>
+
+[テーマに合った1行の情景描写]
+
+[シーンの魅力を2〜3行で語る]
+
+FBホームの[シリーズ名]なら
+[このシーンを実現する設計・性能]で
+こんな暮らしが毎日の日常になります。
+
+本体価格2,480万円〜。
+デザインも性能も諦めない家づくり。
+
+モデルハウスで実際に体感してみませんか？
+プロフィールのリンクからご予約できます。
+      </div>
+    </div>
+  </section>
+
+  <!-- FBH Template 5: 性能・素材 -->
+  <section id="fbh-t5">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fbh-primary);">11</div>
+      <h2>テンプレート11: 性能・素材クローズアップ</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> 「デザインだけじゃない」を伝える</h3>
+      <p><strong>目的:</strong> 見た目だけで選ぶ競合との差別化。性能で選ぶ層の獲得<br>
+      <strong>枚数:</strong> 5〜8枚 ｜ <strong>投稿頻度:</strong> 月2回 ｜ <strong>KPI:</strong> 保存数</p>
+
+      <div class="template-box">
+        <h4>テーマ候補</h4>
+        <ol>
+          <li>「UA値0.16って何がすごい？光熱費で年18万円の差」</li>
+          <li>「耐震等級3、388項目の構造計算とは」</li>
+          <li>「FPウレタン断熱パネルの秘密」</li>
+          <li>「ラップサイディングとは？カリフォルニアスタイルの外壁」</li>
+          <li>「無垢フローリング vs 複合フローリング」</li>
+          <li>「全棟気密測定 C値0.7以下保証のこだわり」</li>
+          <li>「ZEH住宅で実現する35年で630万円の光熱費削減」</li>
+          <li>「太陽光発電 + EV充電対応、未来を見据えた住宅」</li>
+        </ol>
+      </div>
+
+      <div class="template-box">
+        <h4>必要な情報</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:180px;">項目</th><th>説明</th></tr>
+            <tr><td>テーマ</td><td><span class="input-field">性能・素材名</span></td></tr>
+            <tr><td>数値データ</td><td><span class="input-field">UA値 / C値 / 耐震等級 / 光熱費等</span></td></tr>
+            <tr><td>比較データ</td><td><span class="input-field">一般住宅との比較数値</span></td></tr>
+            <tr><td>クローズアップ写真</td><td>素材の質感 or 施工中の写真</td></tr>
+            <tr><td>完成写真</td><td>実際に使われている場面の写真</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>スライド構成</h4>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>1枚目:</strong> 「<span class="input-field">テーマ名</span>」+ 大きな数字（例: UA値0.16）</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>2枚目:</strong> 「それって何がすごいの？」一般住宅との比較図</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>3枚目:</strong> 仕組みの図解（断面図・構造図等）</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>4枚目:</strong> メリット1（数字で証明）</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>5枚目:</strong> メリット2（暮らしへの影響）</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>6枚目:</strong> 実際の施工写真 + 「見えなくなる部分にこだわる」</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>7枚目:</strong> まとめ（性能スペック一覧）</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-accent);"><strong>8枚目:</strong> CTA「性能を体感するならモデルハウスへ」</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FBH Template 6: お客様の声 -->
+  <section id="fbh-t6">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fbh-primary);">12</div>
+      <h2>テンプレート12: お客様の声・引渡し</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span><span class="format-badge badge-reel" style="margin-left:4px;">リール</span> 家づくりのリアルストーリー</h3>
+      <p><strong>目的:</strong> 「実際に建てた人がこんなに満足している」という安心感<br>
+      <strong>枚数:</strong> 5枚 or 30秒動画 ｜ <strong>投稿頻度:</strong> 月2回 ｜ <strong>KPI:</strong> 信頼醸成</p>
+
+      <div class="template-box">
+        <h4>必要な情報（お客様から取得 ※許諾必須）</h4>
+        <div class="table-wrap">
+          <table>
+            <tr><th style="width:200px;">項目</th><th>入力内容</th><th style="width:140px;">例</th></tr>
+            <tr><td>家族構成</td><td><span class="input-field">○代夫婦 + 子○人</span></td><td>30代夫婦 + 子2人</td></tr>
+            <tr><td>家づくりのきっかけ</td><td><span class="input-field">Before</span></td><td>賃貸の手狭さ</td></tr>
+            <tr><td>FBホームを選んだ理由</td><td><span class="input-field">決め手</span></td><td>デザインと性能の両立</td></tr>
+            <tr><td>お気に入りポイント</td><td><span class="input-field">TOP3</span></td><td>カバードポーチ / 無垢フロア / 収納量</td></tr>
+            <tr><td>住んでみての感想</td><td><span class="input-field">リアルな声</span></td><td>光熱費が前の家の半分に</td></tr>
+            <tr><td>引渡し写真</td><td>鍵を持つ家族写真（許諾済）</td><td>-</td></tr>
+            <tr><td>SNS掲載許諾</td><td>書面で取得</td><td>-</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="template-box">
+        <h4>スライド構成</h4>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>1枚目:</strong> 引渡し写真 + 「<span class="input-field">家族構成</span>のマイホーム完成」</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>2枚目:</strong> Before: 「家づくり前の悩み: <span class="input-field">きっかけ</span>」</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>3枚目:</strong> 「FBホームに決めた理由: <span class="input-field">決め手</span>」（吹き出しデザイン）</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-blue);"><strong>4枚目:</strong> お気に入りTOP3 + 各箇所の写真</div>
+        <div class="slide-spec" style="border-left-color:var(--fbh-accent);"><strong>5枚目:</strong> CTA「次はあなたの番です」+ 見学予約誘導</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FBH Template 7: 家づくり知識 -->
+  <section id="fbh-t7">
+    <div class="section-header">
+      <div class="section-number" style="background:var(--fbh-primary);">13</div>
+      <h2>テンプレート13: 家づくりミニ知識</h2>
+    </div>
+
+    <div class="card">
+      <h3><span class="format-badge badge-carousel">カルーセル</span> 「これ知ってたら得する」教育コンテンツ</h3>
+      <p><strong>目的:</strong> フォローする理由＝「家づくりに役立つ情報が手に入る」<br>
+      <strong>枚数:</strong> 8〜10枚 ｜ <strong>投稿頻度:</strong> 月2回 ｜ <strong>KPI:</strong> 保存数・フォロー</p>
+
+      <div class="template-box">
+        <h4>テーマ候補</h4>
+        <ol>
+          <li>「住宅ローン、変動 vs 固定 どっちが得？」</li>
+          <li>「土地探しで絶対見るべき5つのポイント」</li>
+          <li>「子育て世代が使える住宅補助金まとめ2026」</li>
+          <li>「家づくりで後悔したポイントTOP5」</li>
+          <li>「工務店 vs ハウスメーカー、どっちがいい？」</li>
+          <li>「ZEH住宅って何？35年で630万円お得な理由」</li>
+          <li>「収納で後悔しない3つのルール」</li>
+          <li>「注文住宅の打ち合わせ、何回するの？」</li>
+        </ol>
+      </div>
+
+      <p>スライド構成はテンプレート2（数字で見るシリーズ）と同様の10枚構成を使用。<br>
+      カラーリングをFBホームのトーン（ブラウン + ブルー + ホワイト）に変更。</p>
+    </div>
+  </section>
+
+
+  <!-- ====================================================================== -->
+  <!-- ハッシュタグ辞書 -->
+  <!-- ====================================================================== -->
+  <section id="hashtags">
+    <div class="section-header">
+      <div class="section-number" style="background:linear-gradient(135deg,#1a3a5c,#c4956a);">14</div>
+      <h2>ハッシュタグ辞書</h2>
+    </div>
+
+    <div class="card">
+      <h3>福岡ビルド用ハッシュタグセット</h3>
+      <p>1投稿あたり20〜25個を目安に、以下から組み合わせて使用。毎回同一セットは避ける。</p>
+
+      <div class="hashtag-set">
+        <span class="label">セットA: 物件紹介・施工実績用</span>
+        #福岡アパート投資 #木造アパート #不動産投資 #アパート経営 #投資用アパート #高利回り #利回り #福岡不動産 #土地活用 #新築アパート #賃貸経営 #アパート建築 #福岡ビルド #不動産投資家 #サラリーマン大家 #副業 #資産運用 #不労所得 #福岡 #那珂川市 #佐賀
+      </div>
+
+      <div class="hashtag-set">
+        <span class="label">セットB: 数字・ノウハウ系用</span>
+        #不動産投資初心者 #アパート投資入門 #利回り計算 #不動産投資の始め方 #融資 #不動産ローン #確定申告 #節税 #減価償却 #キャッシュフロー #福岡投資 #資産形成 #老後資金 #年金対策 #副収入 #サラリーマン投資家 #不動産投資セミナー #福岡ビルド
+      </div>
+
+      <div class="hashtag-set">
+        <span class="label">セットC: オーナーの声・エリア情報用</span>
+        #アパートオーナー #不動産オーナー #大家さん #家賃収入 #投資成功 #不動産投資体験談 #福岡市 #博多 #天神 #鳥栖 #久留米 #糟屋郡 #早良区 #中央区 #福岡の暮らし #福岡移住 #福岡ビルド #土地活用
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>FBホーム用ハッシュタグセット</h3>
+
+      <div class="hashtag-set" style="background:#fdf8f0;">
+        <span class="label">セットA: 施工事例・ルームツアー用</span>
+        #FBホーム #カリフォルニアスタイル #カリフォルニアハウス #西海岸スタイル #サーファーズハウス #ガレージハウス #カバードポーチ #ラップサイディング #マイホーム #新築一戸建て #注文住宅 #家づくり #マイホーム計画 #おしゃれな家 #デザイン住宅 #ルームツアー #福岡新築 #福岡マイホーム #福岡工務店 #那珂川市
+      </div>
+
+      <div class="hashtag-set" style="background:#fdf8f0;">
+        <span class="label">セットB: 間取り・暮らし提案用</span>
+        #間取り #間取り図 #家事動線 #回遊動線 #収納アイデア #子育て #子育てママ #共働き夫婦 #暮らしを楽しむ #丁寧な暮らし #マイホーム記録 #家づくり記録 #新居 #インテリア #無垢フローリング #吹き抜けリビング #FBホーム #福岡の家づくり
+      </div>
+
+      <div class="hashtag-set" style="background:#fdf8f0;">
+        <span class="label">セットC: 性能・知識系用</span>
+        #高性能住宅 #耐震等級3 #ZEH住宅 #断熱 #気密測定 #省エネ住宅 #太陽光発電 #EV充電 #住宅ローン #住宅補助金 #家づくりの知識 #家づくり初心者 #工務店選び #FBホーム #福岡ビルド #FPウレタン断熱パネル
+      </div>
+
+      <div class="hashtag-set" style="background:#fdf8f0;">
+        <span class="label">セットD: ガレージ・趣味系用</span>
+        #ガレージのある家 #インナーガレージ #ビルトインガレージ #ガレージライフ #趣味の部屋 #サーフィン #DIY #バイクガレージ #車好き #アメリカンハウス #西海岸インテリア #ヴィンテージ #カリフォルニアインテリア #FBホーム
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ====================================================================== -->
+  <!-- 週間スケジュール -->
+  <!-- ====================================================================== -->
+  <section id="schedule">
+    <div class="section-header">
+      <div class="section-number" style="background:linear-gradient(135deg,#1a3a5c,#c4956a);">15</div>
+      <h2>週間投稿スケジュール</h2>
+    </div>
+
+    <div class="card">
+      <h3>福岡ビルド @fukuokabuild（週3〜4回）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>曜日</th><th>テンプレート</th><th>フォーマット</th><th>例</th></tr>
+          </thead>
+          <tbody>
+            <tr style="background:#f0f5fa;"><td><strong>月</strong></td><td>T2: 数字で見るシリーズ</td><td><span class="format-badge badge-carousel">カルーセル</span></td><td>「福岡の利回り相場は何%？」</td></tr>
+            <tr><td><strong>水</strong></td><td>T1: 物件紹介 or T5: 施工リール</td><td><span class="format-badge badge-carousel">カルーセル</span> or <span class="format-badge badge-reel">リール</span></td><td>完成物件写真 or 施工タイムラプス</td></tr>
+            <tr style="background:#f0f5fa;"><td><strong>金</strong></td><td>T4: 投資ノウハウ</td><td><span class="format-badge badge-carousel">カルーセル</span></td><td>「銀行が融資したくなる物件の条件」</td></tr>
+            <tr><td><strong>日<br><span style="font-size:11px;color:var(--text-light);">（隔週）</span></strong></td><td>T3: オーナー成功事例 or T6: エリア情報</td><td><span class="format-badge badge-carousel">カルーセル</span></td><td>「35歳会社員、月30万円を実現」</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="margin-top:20px;">ストーリーズ（毎日）</h4>
+      <ul>
+        <li>施工現場の進捗写真（「今日の現場: ○○市」）</li>
+        <li>フィード投稿のリシェア + 「詳しくはフィードを見てね」</li>
+        <li>LINE登録への誘導リンク（常時）</li>
+        <li>質問スタンプで投資家の悩みを収集 &rarr; 次の投稿ネタに</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>FBホーム @fb_home_fukuokabuild（週3〜4回）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>曜日</th><th>テンプレート</th><th>フォーマット</th><th>例</th></tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fdf8f0;"><td><strong>火</strong></td><td>T7: 施工事例フォトギャラリー</td><td><span class="format-badge badge-carousel">カルーセル</span></td><td>CALIFORNIA STYLE 完成事例</td></tr>
+            <tr><td><strong>木</strong></td><td>T8: ルームツアー or T9: 間取り解説</td><td><span class="format-badge badge-reel">リール</span> or <span class="format-badge badge-carousel">カルーセル</span></td><td>ルームツアー45秒 or 間取り解説</td></tr>
+            <tr style="background:#fdf8f0;"><td><strong>土</strong></td><td>T10: 暮らし提案 or T11: 性能・素材</td><td><span class="format-badge badge-feed">フィード</span> or <span class="format-badge badge-carousel">カルーセル</span></td><td>「ポーチでコーヒーモーニング」</td></tr>
+            <tr><td><strong>日<br><span style="font-size:11px;color:var(--text-light);">（隔週）</span></strong></td><td>T12: お客様の声 or T13: 家づくり知識</td><td><span class="format-badge badge-carousel">カルーセル</span></td><td>引渡しレポート or 住宅ローン講座</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="margin-top:20px;">ストーリーズ（毎日）</h4>
+      <ul>
+        <li>モデルハウスの日常風景（自然光・季節感）</li>
+        <li>フィード投稿のリシェア</li>
+        <li>見学会・イベントの告知</li>
+        <li>アンケートスタンプ（「どっちの外壁が好み？」等）</li>
+        <li>LINE登録への誘導リンク（常時）</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <h3>投稿の鉄則（両ブランド共通）</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div style="background:#fff;padding:16px;border-radius:10px;">
+          <strong style="color:var(--success);">DO（やるべきこと）</strong>
+          <ul style="margin-top:8px;font-size:13px;">
+            <li>1枚目に必ず「数字」or「フック」</li>
+            <li>毎投稿の最後に明確なCTA</li>
+            <li>キャプション冒頭1行にフックを入れる</li>
+            <li>「保存してね」の一言を添える</li>
+            <li>コメントには1時間以内に返信</li>
+            <li>ストーリーズでフィードをリシェア</li>
+            <li>リールの冒頭3秒に最も映える画を</li>
+            <li>写真は自然光・青空で撮影</li>
+          </ul>
+        </div>
+        <div style="background:#fff;padding:16px;border-radius:10px;">
+          <strong style="color:#e74c3c;">DON'T（やってはいけないこと）</strong>
+          <ul style="margin-top:8px;font-size:13px;">
+            <li>会社紹介だけの投稿を連発しない</li>
+            <li>毎回同じハッシュタグセットを使わない</li>
+            <li>写真なしのテキストだけ投稿はNG</li>
+            <li>曇り空の外観写真は使わない</li>
+            <li>CTAなしで終わる投稿はNG</li>
+            <li>1週間以上投稿を空けない</li>
+            <li>ポップすぎる・キラキラ系のデザインはNG</li>
+            <li>関係ないハッシュタグを入れない</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h3>投稿時間のベストタイミング</h3>
+      <div class="table-wrap" style="margin-top:12px;">
+        <table>
+          <tr><th>時間帯</th><th>ターゲット</th><th>推奨ブランド</th></tr>
+          <tr><td><strong>7:00〜8:00</strong></td><td>通勤中のサラリーマン投資家</td><td>福岡ビルド</td></tr>
+          <tr><td><strong>12:00〜13:00</strong></td><td>昼休みの閲覧（全世代）</td><td>両方</td></tr>
+          <tr><td><strong>20:00〜22:00</strong></td><td>夜のリラックスタイム</td><td>FBホーム</td></tr>
+          <tr><td><strong>土日 10:00〜12:00</strong></td><td>週末の家族時間</td><td>FBホーム</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div style="text-align:center;padding:40px 0;color:var(--text-light);font-size:13px;">
+    <p>福岡ビルド株式会社 SNS・Web戦略支援 ｜ Instagram投稿テンプレート集</p>
+    <p>作成: 2026年2月24日</p>
+  </div>
+
+</div><!-- /.container -->
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福岡ビルド × FBホーム ── Instagram運用の仕組み 2026.2.25</title>
+  <style>
+    :root {
+      --blue: #1a3a5c;
+      --blue-light: #2a5a8c;
+      --orange: #e8913a;
+      --orange-light: #f5a623;
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #2c3e50;
+      --text-light: #6b7c93;
+      --border: #e2e8f0;
+      --green: #27ae60;
+      --red: #e74c3c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: "Hiragino Kaku Gothic ProN","Noto Sans JP","Meiryo",sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; font-size: 15px; }
+
+    .hero { background: linear-gradient(135deg, var(--blue), var(--blue-light), #3a7abd); color: #fff; padding: 56px 40px 44px; text-align: center; position: relative; }
+    .hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--blue), var(--orange), var(--blue)); }
+    .hero-label { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); padding: 4px 18px; border-radius: 50px; font-size: 12px; letter-spacing: 1px; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(24px,4.5vw,36px); font-weight: 800; margin-bottom: 8px; }
+    .hero .sub { font-size: clamp(13px,2vw,16px); opacity: 0.85; }
+    .hero-meta { margin-top: 20px; display: flex; justify-content: center; gap: 24px; font-size: 13px; opacity: 0.75; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px 0; }
+
+    .sec { margin-bottom: 44px; }
+    .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+    .sec-num { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .sec-num.blue { background: linear-gradient(135deg, var(--blue), var(--blue-light)); }
+    .sec-num.orange { background: linear-gradient(135deg, #c76b1e, var(--orange)); }
+    .sec-num.green { background: linear-gradient(135deg, #1e8449, var(--green)); }
+    .sec-head h2 { font-size: clamp(18px,3vw,24px); font-weight: 700; color: var(--blue); }
+
+    .card { background: var(--card); border-radius: 12px; padding: 24px 28px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid var(--border); }
+    .card h3 { font-size: 17px; color: var(--blue); margin-bottom: 12px; }
+    .card h4 { font-size: 14px; color: var(--blue-light); margin: 16px 0 8px; font-weight: 700; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:768px) { .two-col { grid-template-columns: 1fr; } }
+
+    .tw { overflow-x: auto; margin: 12px 0; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead { background: var(--blue); color: #fff; }
+    th { padding: 10px 14px; text-align: left; font-weight: 600; white-space: nowrap; }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    tbody tr:last-child td { border: none; }
+    tbody tr:hover { background: #f8fafc; }
+
+    .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+    .badge.done { background: #d5f5e3; color: #1e8449; }
+    .badge.now { background: #fef9e7; color: #d4ac0d; }
+    .badge.next { background: #eaecee; color: #6b7c93; }
+
+    .hl { border-radius: 10px; padding: 16px 20px; margin: 12px 0; font-size: 14px; }
+    .hl.blue { background: #e8f4fd; border-left: 4px solid var(--blue); }
+    .hl.orange { background: #fef9f0; border-left: 4px solid var(--orange); }
+    .hl.green { background: #e8f5e9; border-left: 4px solid var(--green); }
+    .hl strong { color: var(--blue); }
+
+    .brand-box { border-radius: 14px; padding: 24px; }
+    .brand-box.invest { background: linear-gradient(135deg, #e8f4fd, #d1e9f7); border: 2px solid var(--blue); }
+    .brand-box.home { background: linear-gradient(135deg, #fef9f0, #fdf0db); border: 2px solid var(--orange); }
+    .brand-tag { display: inline-block; color: #fff; padding: 4px 14px; border-radius: 6px; font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+    .brand-tag.blue { background: var(--blue); }
+    .brand-tag.orange { background: var(--orange); }
+
+    .todo-list { list-style: none; margin: 8px 0; }
+    .todo-list li { padding: 8px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; border-bottom: 1px solid #f0f2f5; }
+    .todo-list li:last-child { border: none; }
+    .todo-list li::before { content: "\2610"; font-size: 16px; color: var(--blue); flex-shrink: 0; margin-top: 1px; }
+
+    /* STEP FLOW */
+    .step-flow { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin: 24px 0; }
+    .step-box { border-radius: 14px; padding: 20px 14px; text-align: center; position: relative; }
+    .step-box .step-num { font-size: 11px; font-weight: 800; letter-spacing: 1px; margin-bottom: 8px; }
+    .step-box .step-icon { font-size: 32px; margin-bottom: 8px; }
+    .step-box .step-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .step-box .step-desc { font-size: 11px; color: var(--text-light); }
+    .step-box::after { content: "\25B6"; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); font-size: 16px; color: var(--text-light); z-index: 2; }
+    .step-box:last-child::after { display: none; }
+
+    /* CODE MOCK */
+    .code-mock { background: #1e1e2e; color: #cdd6f4; border-radius: 10px; padding: 20px 24px; font-family: "SF Mono","Menlo","Consolas",monospace; font-size: 12px; line-height: 2; overflow-x: auto; margin: 12px 0; }
+    .code-mock .cm-comment { color: #6c7086; }
+    .code-mock .cm-key { color: #89b4fa; }
+    .code-mock .cm-val { color: #a6e3a1; }
+    .code-mock .cm-highlight { color: #f9e2af; font-weight: 700; }
+
+    /* AI OUTPUT MOCK */
+    .ai-mock { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 2px solid var(--green); border-radius: 10px; padding: 20px 24px; margin: 12px 0; }
+    .ai-mock-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 13px; font-weight: 700; color: var(--green); }
+    .ai-mock-body { font-size: 12px; line-height: 2; color: var(--text); }
+    .ai-mock-body strong { color: var(--blue); }
+
+    /* CANVA MOCK */
+    .canva-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin: 16px 0; }
+    .canva-slide { border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid var(--border); }
+    .canva-slide-img { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #fff; text-align: center; padding: 12px; line-height: 1.5; }
+    .canva-slide-label { padding: 6px 8px; background: #fff; font-size: 10px; text-align: center; color: var(--text-light); }
+
+    /* TEMPLATE LINK LIST */
+    .tpl-list { list-style: none; margin: 12px 0; }
+    .tpl-list li { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px; }
+    .tpl-list li:last-child { border: none; }
+    .tpl-list li:hover { background: #f8fafc; }
+    .tpl-num { background: var(--blue); color: #fff; width: 28px; height: 28px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+    .tpl-num.org { background: var(--orange); }
+    .tpl-info { flex: 1; }
+    .tpl-info .tpl-name { font-weight: 700; color: var(--text); }
+    .tpl-info .tpl-type { font-size: 11px; color: var(--text-light); }
+    .tpl-link { font-size: 11px; color: var(--blue); text-decoration: none; background: #e8f4fd; padding: 4px 10px; border-radius: 6px; white-space: nowrap; font-weight: 600; }
+    .tpl-link:hover { background: #d1e9f7; }
+    .tpl-link.org { color: var(--orange); background: #fef9f0; }
+    .tpl-link.org:hover { background: #fdf0db; }
+
+    /* SCHEDULE */
+    .sched-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .sched-table thead { background: var(--blue); color: #fff; }
+    .sched-table th { padding: 8px 10px; text-align: center; font-weight: 600; font-size: 11px; }
+    .sched-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: center; font-size: 11px; }
+    .sched-table .day { font-weight: 700; color: var(--blue); font-size: 13px; }
+
+    footer { text-align: center; padding: 36px 24px; color: var(--text-light); font-size: 12px; }
+
+    @media(max-width:768px) {
+      .step-flow { grid-template-columns: 1fr 1fr; }
+      .step-box::after { display: none; }
+      .canva-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media print {
+      body { font-size: 12px; }
+      .hero { padding: 32px 20px 24px; }
+      .card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-label">INSTAGRAM OPERATION SYSTEM</div>
+    <h1>Instagram投稿の仕組み</h1>
+    <p class="sub">情報を渡すだけで投稿が完成する &mdash; AI活用のInstagram運用システム</p>
+    <div class="hero-meta">
+      <span>2026年2月25日</span>
+      <span>|</span>
+      <span>福岡ビルド &times; FBホーム</span>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ========== 1. 全体の流れ ========== -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-num green">1</div>
+        <h2>投稿完成までの流れ</h2>
+      </div>
+
+      <div class="card">
+        <h3>情報・写真を渡すだけで、投稿が完成します</h3>
+        <p style="margin-bottom:8px;">投稿に必要なテキスト（キャプション・スライド文・ハッシュタグ）はすべて<strong>AIが自動生成</strong>します。<br>デザインもCanvaのテンプレートに差し替えるだけなので、<strong>1投稿あたり約5分</strong>で完成します。</p>
+
+        <div class="step-flow">
+          <div class="step-box" style="background:linear-gradient(135deg,#e8f4fd,#d1e9f7);">
+            <div class="step-num" style="color:var(--blue);">STEP 1</div>
+            <div class="step-icon">&#128241;</div>
+            <div class="step-title" style="color:var(--blue);">素材をもらう</div>
+            <div class="step-desc">物件スペック・写真・<br>お客様の声など</div>
+          </div>
+          <div class="step-box" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);">
+            <div class="step-num" style="color:var(--green);">STEP 2</div>
+            <div class="step-icon">&#129302;</div>
+            <div class="step-title" style="color:var(--green);">AIに渡す</div>
+            <div class="step-desc">テンプレートファイルに<br>情報を貼り付けて送信</div>
+          </div>
+          <div class="step-box" style="background:linear-gradient(135deg,#fef9f0,#fdf0db);">
+            <div class="step-num" style="color:var(--orange);">STEP 3</div>
+            <div class="step-icon">&#127912;</div>
+            <div class="step-title" style="color:var(--orange);">Canvaで仕上げ</div>
+            <div class="step-desc">テキスト差し替え &amp;<br>写真入れ替え</div>
+          </div>
+          <div class="step-box" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);">
+            <div class="step-num" style="color:#c2185b;">STEP 4</div>
+            <div class="step-icon">&#128247;</div>
+            <div class="step-title" style="color:#c2185b;">投稿！</div>
+            <div class="step-desc">Instagramに投稿<br>ストーリーズでリシェア</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 詳細：AIへの渡し方 -->
+      <div class="card">
+        <h3>STEP 2 の詳細 ── テンプレートファイルの使い方</h3>
+        <p style="margin-bottom:12px;">投稿カテゴリごとに<strong>「テンプレートファイル（.md）」</strong>を用意しています。<br>このファイルの中には「ここに情報を入れてください」という<strong>入力欄</strong>があります。</p>
+
+        <h4>テンプレートファイルの中身（例：T1 物件紹介カルーセル）</h4>
+        <div class="code-mock">
+          <div class="cm-comment"># Instagram投稿生成プロンプト: 物件紹介カルーセル</div>
+          <br>
+          <div class="cm-comment">## 入力情報（以下を埋めてください）</div>
+          <br>
+          <div><span class="cm-key">物件所在地:</span> <span class="cm-val">福岡市早良区</span></div>
+          <div><span class="cm-key">構造・規模:</span> <span class="cm-val">木造2階建 8戸</span></div>
+          <div><span class="cm-key">想定利回り:</span> <span class="cm-val">7.8%</span></div>
+          <div><span class="cm-key">想定家賃収入:</span> <span class="cm-val">月額48万円</span></div>
+          <div><span class="cm-key">間取り:</span> <span class="cm-val">1LDK</span></div>
+          <div><span class="cm-key">入居率:</span> <span class="cm-val">98%</span></div>
+          <div><span class="cm-key">建築費概算:</span> <span class="cm-val">5,800万円</span></div>
+          <div><span class="cm-key">差別化ポイント:</span> <span class="cm-val">宅配BOX全戸標準、ネット無料</span></div>
+          <br>
+          <div class="cm-comment" style="color:#f9e2af;">&#8593; ここに福岡ビルドさんからもらった情報を入れるだけ！</div>
+          <div class="cm-comment" style="color:#f9e2af;">  きれいにまとめなくてOK。箇条書きメモでも大丈夫です。</div>
+        </div>
+
+        <div class="hl green" style="font-size:13px;">
+          <strong>入力のコツ：</strong>入力欄をきちんと埋めなくてもOK。福岡ビルドさんからもらった情報（メモやLINEメッセージ）をそのまま貼り付ければ、AIが必要な項目を自動で拾って整理します。
+        </div>
+
+        <h4>AIに送信すると &#8230; こんな感じで出力されます</h4>
+        <div class="ai-mock">
+          <div class="ai-mock-head">&#129302; AI出力結果</div>
+          <div class="ai-mock-body">
+            <strong>【スライド1 / 表紙】</strong><br>
+            &emsp;背景: 外観写真 + 下半分に紺グラデーション<br>
+            &emsp;テキスト: <span style="color:var(--orange);font-weight:700;font-size:16px;">利回り7.8%</span> 福岡市早良区 新築アパート完成<br>
+            <br>
+            <strong>【スライド2 / スペック】</strong><br>
+            &emsp;白背景に4つの数字を大きく: 7.8% / 48万円/月 / 8戸 / 入居率98%<br>
+            <br>
+            <strong>【スライド3〜6 / 内装ハイライト】</strong><br>
+            &emsp;各写真 + テロップ:「全戸に宅配BOX」「インターネット無料」...<br>
+            <br>
+            <strong>【最終スライド / CTA】</strong><br>
+            &emsp;「あなたの場合の利回りは？」→ LINE登録で無料シミュレーション<br>
+            <br>
+            <strong>【キャプション】</strong><br>
+            &emsp;利回り7.8%の新築アパート、福岡市早良区に完成しました。<br>
+            &emsp;木造2階建・全8戸・1LDK ... <span style="color:var(--text-light);">(コピペでそのまま使える完成文)</span><br>
+            <br>
+            <strong>【ハッシュタグ 25個】</strong><br>
+            &emsp;#福岡アパート投資 #木造アパート #不動産投資 #利回り7パーセント ...
+          </div>
+        </div>
+
+        <div class="hl blue" style="font-size:13px;">
+          <strong>つまり：</strong>AIがスライドごとの文章・キャプション・ハッシュタグを<strong>全部まとめて出力</strong>してくれるので、あとはこれをCanvaに入れるだけです。
+        </div>
+      </div>
+
+      <!-- STEP 3 詳細：Canvaでの作業 -->
+      <div class="card">
+        <h3>STEP 3 の詳細 ── Canvaテンプレートの使い方</h3>
+        <p style="margin-bottom:12px;">最初に<strong>ベースのデザインテンプレートを1回だけ作成</strong>します。<br>以降は毎回「複製 → テキスト差し替え → 写真入れ替え」だけ。ゼロから作ることはありません。</p>
+
+        <div class="canva-grid">
+          <div class="canva-slide">
+            <div class="canva-slide-img" style="background:var(--blue);">
+              <div>
+                <div style="font-size:8px;opacity:0.6;margin-bottom:4px;">スライド1</div>
+                <div style="font-size:20px;font-weight:800;color:var(--orange);">7.8%</div>
+                <div style="font-size:9px;margin-top:4px;">福岡市早良区<br>新築アパート完成</div>
+              </div>
+            </div>
+            <div class="canva-slide-label">表紙 &#8592; <strong style="color:var(--orange);">写真差し替え</strong></div>
+          </div>
+          <div class="canva-slide">
+            <div class="canva-slide-img" style="background:#f8fafc;color:var(--blue);">
+              <div>
+                <div style="font-size:8px;opacity:0.5;margin-bottom:4px;">スライド2</div>
+                <div style="font-size:13px;font-weight:800;color:var(--orange);">7.8%</div>
+                <div style="font-size:9px;">48万円/月 | 8戸<br>入居率 98%</div>
+              </div>
+            </div>
+            <div class="canva-slide-label">スペック &#8592; <strong style="color:var(--green);">数字差し替え</strong></div>
+          </div>
+          <div class="canva-slide">
+            <div class="canva-slide-img" style="background:linear-gradient(135deg,#ddd,#bbb);color:#555;">
+              <div>
+                <div style="font-size:8px;opacity:0.5;margin-bottom:4px;">スライド3〜6</div>
+                <div style="font-size:24px;">&#128247;</div>
+                <div style="font-size:9px;margin-top:4px;">内装写真<br>+ テロップ</div>
+              </div>
+            </div>
+            <div class="canva-slide-label">内装 &#8592; <strong style="color:var(--orange);">写真＆文字差し替え</strong></div>
+          </div>
+          <div class="canva-slide">
+            <div class="canva-slide-img" style="background:var(--blue);">
+              <div>
+                <div style="font-size:8px;opacity:0.6;margin-bottom:4px;">最終スライド</div>
+                <div style="font-size:9px;line-height:1.6;">あなたの場合の<br>利回りは？</div>
+                <div style="background:var(--orange);color:#fff;font-size:8px;font-weight:700;padding:3px 8px;border-radius:4px;margin-top:6px;">LINE登録</div>
+              </div>
+            </div>
+            <div class="canva-slide-label">CTA &#8592; <strong style="color:var(--blue);">毎回同じ</strong></div>
+          </div>
+        </div>
+
+        <div style="background:#f8fafc;border-radius:10px;padding:16px 20px;margin:16px 0;font-size:13px;border:1px solid var(--border);">
+          <div style="font-weight:700;color:var(--blue);margin-bottom:8px;">Canvaでの作業手順</div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-items:start;">
+            <span style="background:var(--blue);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">1</span>
+            <span>ベーステンプレートを<strong>「複製」</strong>する（元は残したまま）</span>
+            <span style="background:var(--blue);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">2</span>
+            <span>AIが出力した<strong>テキストをコピペ</strong>で差し替え（数字・テロップ・CTAなど）</span>
+            <span style="background:var(--blue);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">3</span>
+            <span>福岡ビルドさんからもらった<strong>写真をドラッグ&amp;ドロップ</strong>で入れ替え</span>
+            <span style="background:var(--blue);color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;">4</span>
+            <span><strong>ダウンロード or 直接投稿</strong>（CanvaからInstagramに投稿可能）</span>
+          </div>
+        </div>
+
+        <div class="hl green">
+          <strong>まとめ：</strong>レイアウト・色・フォントは毎回同じ。変わるのは<strong>「数字」「テキスト」「写真」</strong>の3つだけ。だから統一感のある投稿が誰でも素早く作れます。
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========== 2. テンプレート一覧 ========== -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-num blue">2</div>
+        <h2>用意したテンプレート一覧</h2>
+      </div>
+
+      <!-- 福岡ビルド -->
+      <div class="card">
+        <h3>福岡ビルド @fukuokabuild ── 投資家向け 6テンプレート</h3>
+        <ul class="tpl-list">
+          <li>
+            <span class="tpl-num">T1</span>
+            <div class="tpl-info">
+              <div class="tpl-name">物件紹介カルーセル</div>
+              <div class="tpl-type">カルーセル 5〜8枚 ── 完成物件の写真+スペック+利回りを紹介</div>
+            </div>
+            <a href="templates.html#fb-t1" class="tpl-link">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num">T2</span>
+            <div class="tpl-info">
+              <div class="tpl-name">数字で見るシリーズ</div>
+              <div class="tpl-type">カルーセル 10枚 ── 福岡の利回り相場、木造vsRC比較、融資データなど</div>
+            </div>
+            <a href="templates.html#fb-t2" class="tpl-link">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num">T3</span>
+            <div class="tpl-info">
+              <div class="tpl-name">オーナー成功事例</div>
+              <div class="tpl-type">カルーセル 6枚 ── 実際のオーナー様のBefore→After</div>
+            </div>
+            <a href="templates.html#fb-t3" class="tpl-link">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num">T4</span>
+            <div class="tpl-info">
+              <div class="tpl-name">投資ノウハウ</div>
+              <div class="tpl-type">カルーセル 8〜10枚 ── 融資のコツ、失敗パターン、物件選びの基準</div>
+            </div>
+            <a href="templates.html#fb-t4" class="tpl-link">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num">T5</span>
+            <div class="tpl-info">
+              <div class="tpl-name">施工リール</div>
+              <div class="tpl-type">リール 30秒 ── 施工現場のタイムラプスや完成までの過程</div>
+            </div>
+            <a href="templates.html#fb-t5" class="tpl-link">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num">T6</span>
+            <div class="tpl-info">
+              <div class="tpl-name">エリア情報</div>
+              <div class="tpl-type">カルーセル 5〜8枚 ── 天神ビッグバン、エリア別利回り比較</div>
+            </div>
+            <a href="templates.html#fb-t6" class="tpl-link">詳細を見る</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FBホーム -->
+      <div class="card">
+        <h3>FBホーム @fb_home_fukuokabuild ── 住宅購入者向け 7テンプレート</h3>
+        <ul class="tpl-list">
+          <li>
+            <span class="tpl-num org">T7</span>
+            <div class="tpl-info">
+              <div class="tpl-name">施工事例フォトギャラリー</div>
+              <div class="tpl-type">カルーセル 8〜10枚 ── 完成住宅の外観・内装写真ギャラリー</div>
+            </div>
+            <a href="templates.html#fbh-t1" class="tpl-link org">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num org">T8</span>
+            <div class="tpl-info">
+              <div class="tpl-name">ルームツアー</div>
+              <div class="tpl-type">リール 45秒 ── 住宅内のウォークスルー動画</div>
+            </div>
+            <a href="templates.html#fbh-t2" class="tpl-link org">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num org">T9</span>
+            <div class="tpl-info">
+              <div class="tpl-name">間取り解説</div>
+              <div class="tpl-type">カルーセル 6枚 ── 間取りの工夫、回遊動線、収納設計の解説</div>
+            </div>
+            <a href="templates.html#fbh-t3" class="tpl-link org">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num org">T10</span>
+            <div class="tpl-info">
+              <div class="tpl-name">暮らし提案</div>
+              <div class="tpl-type">フィード/カルーセル ── ポーチでコーヒー、ガレージDIY等のライフスタイル</div>
+            </div>
+            <a href="templates.html#fbh-t4" class="tpl-link org">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num org">T11</span>
+            <div class="tpl-info">
+              <div class="tpl-name">性能・素材</div>
+              <div class="tpl-type">カルーセル 5〜8枚 ── UA値0.16、耐震等級3、断熱パネルの解説</div>
+            </div>
+            <a href="templates.html#fbh-t5" class="tpl-link org">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num org">T12</span>
+            <div class="tpl-info">
+              <div class="tpl-name">お客様の声</div>
+              <div class="tpl-type">カルーセル 5枚 ── 引渡しレポート、お客様インタビュー</div>
+            </div>
+            <a href="templates.html#fbh-t6" class="tpl-link org">詳細を見る</a>
+          </li>
+          <li>
+            <span class="tpl-num org">T13</span>
+            <div class="tpl-info">
+              <div class="tpl-name">家づくり知識</div>
+              <div class="tpl-type">カルーセル 8〜10枚 ── 住宅ローン、補助金、土地探しのコツ</div>
+            </div>
+            <a href="templates.html#fbh-t7" class="tpl-link org">詳細を見る</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="hl blue" style="font-size:13px;">
+        <strong>「詳細を見る」</strong>をクリックすると、各テンプレートのスライド構成・デザイン仕様・ハッシュタグ一覧などを確認できます。<br>
+        &#128196; テンプレート全体のHTML参照ファイル: <a href="templates.html" style="color:var(--blue);font-weight:700;">templates.html</a>
+      </div>
+    </div>
+
+
+    <!-- ========== 3. 週間スケジュール ========== -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-num blue">3</div>
+        <h2>週間投稿スケジュール</h2>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <h3 style="font-size:15px;">福岡ビルド @fukuokabuild</h3>
+          <div class="tw">
+            <table class="sched-table">
+              <thead><tr><th>曜日</th><th>カテゴリ</th><th>時間</th></tr></thead>
+              <tbody>
+                <tr><td class="day">月</td><td>T2: 数字で見るシリーズ</td><td>7:00〜8:00</td></tr>
+                <tr><td class="day">水</td><td>T1: 物件紹介 / T5: 施工リール</td><td>7:00〜8:00</td></tr>
+                <tr><td class="day">金</td><td>T4: 投資ノウハウ</td><td>12:00〜13:00</td></tr>
+                <tr><td class="day">日</td><td>T3: オーナー事例 / T6: エリア情報</td><td>10:00〜12:00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:15px;">FBホーム @fb_home_fukuokabuild</h3>
+          <div class="tw">
+            <table class="sched-table">
+              <thead><tr style="background:var(--orange);"><th>曜日</th><th>カテゴリ</th><th>時間</th></tr></thead>
+              <tbody>
+                <tr><td class="day">火</td><td>T7: 施工事例フォトギャラリー</td><td>20:00〜22:00</td></tr>
+                <tr><td class="day">木</td><td>T8: ルームツアー / T9: 間取り解説</td><td>20:00〜22:00</td></tr>
+                <tr><td class="day">土</td><td>T10: 暮らし提案 / T11: 性能素材</td><td>10:00〜12:00</td></tr>
+                <tr><td class="day">日</td><td>T12: お客様の声 / T13: 家づくり知識</td><td>10:00〜12:00</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========== 4. お願いしたいこと ========== -->
+    <div class="sec">
+      <div class="sec-head">
+        <div class="sec-num orange">4</div>
+        <h2>福岡ビルドさんにお願いしたいこと</h2>
+      </div>
+
+      <div class="card" style="border:2px solid var(--orange);">
+        <h3 style="color:var(--orange);">運用スタートに必要な素材をください</h3>
+        <p style="margin-bottom:16px;">テンプレートの準備は完了しています。<strong>あとは素材をいただければ、すぐに投稿を開始できます。</strong></p>
+
+        <div class="two-col">
+          <div class="brand-box invest" style="padding:20px;">
+            <div class="brand-tag blue">福岡ビルド（投資事業）</div>
+            <h4 style="font-size:13px;color:var(--blue);margin:12px 0 6px;">投稿時にあるとありがたい情報</h4>
+            <ul class="todo-list" style="font-size:12px;">
+              <li><strong>物件スペック</strong>（所在地・構造・利回り・家賃・建築費など）<br><span style="color:var(--text-light);">※ 分かる範囲でOK。メモ書きレベルで十分です</span></li>
+              <li><strong>施工中の動画</strong>（スマホで30秒程度でOK）<br><span style="color:var(--text-light);">※ リール動画に使用します</span></li>
+              <li>オーナー様のコメント or インタビュー<br><span style="color:var(--text-light);">※ 成功事例の投稿に使用。口頭メモでもOK</span></li>
+            </ul>
+          </div>
+          <div class="brand-box home" style="padding:20px;">
+            <div class="brand-tag orange">FBホーム（住宅事業）</div>
+            <h4 style="font-size:13px;color:var(--orange);margin:12px 0 6px;">投稿時にあるとありがたい情報</h4>
+            <ul class="todo-list" style="font-size:12px;">
+              <li><strong>モデルハウスのウォークスルー動画</strong>（スマホ45秒でOK）<br><span style="color:var(--text-light);">※ ルームツアーリールに使用します</span></li>
+              <li><strong>間取り図</strong>（PDF or 画像）<br><span style="color:var(--text-light);">※ 間取り解説の投稿に使用します</span></li>
+              <li>お引渡し時の写真やお客様の声<br><span style="color:var(--text-light);">※ お客様の声テンプレートに使用。アンケートでもOK</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hl orange" style="margin-top:16px;font-size:13px;">
+          <strong>写真：</strong>いただいているものも活用させていただきます。新しい物件の写真があればその都度共有いただけると助かります。<br>
+          <strong>情報の渡し方：</strong>LINEでもメールでも何でもOK。箇条書きメモで十分です。こちらで整理して投稿に仕上げます。
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>福岡ビルド &times; FBホーム Instagram運用の仕組み &mdash; 2026年2月25日</p>
+  </footer>
+
+</body>
+</html>
