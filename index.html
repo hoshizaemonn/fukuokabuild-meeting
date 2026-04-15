@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>福岡ビルド × FBホーム ── 戦略サマリー 2026.2.15</title>
+  <title>FBホーム 住宅事業 現状と販売戦略 ── 2026.4.15</title>
   <style>
     :root {
       --blue: #1a3a5c;
@@ -17,14 +17,13 @@
       --border: #e2e8f0;
       --green: #27ae60;
       --red: #e74c3c;
-      --line: #06c755;
+      --yellow: #f39c12;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: "Hiragino Kaku Gothic ProN","Noto Sans JP","Meiryo",sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; font-size: 15px; }
 
-    /* HERO */
-    .hero { background: linear-gradient(135deg, var(--blue), var(--blue-light), #3a7abd); color: #fff; padding: 56px 40px 44px; text-align: center; position: relative; }
-    .hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--blue), var(--orange), var(--blue)); }
+    .hero { background: linear-gradient(135deg, #c76b1e, var(--orange), var(--orange-light)); color: #fff; padding: 56px 40px 44px; text-align: center; position: relative; }
+    .hero::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 6px; background: linear-gradient(90deg, var(--orange), var(--blue), var(--orange)); }
     .hero-label { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); padding: 4px 18px; border-radius: 50px; font-size: 12px; letter-spacing: 1px; margin-bottom: 16px; }
     .hero h1 { font-size: clamp(24px,4.5vw,40px); font-weight: 800; margin-bottom: 8px; }
     .hero .sub { font-size: clamp(13px,2vw,16px); opacity: 0.85; }
@@ -32,41 +31,28 @@
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-    /* AGENDA */
     .agenda { background: var(--card); border-radius: 14px; padding: 28px 32px; margin: -28px auto 40px; max-width: 700px; box-shadow: 0 8px 28px rgba(0,0,0,0.08); position: relative; }
-    .agenda h2 { font-size: 15px; color: var(--blue); margin-bottom: 12px; }
+    .agenda h2 { font-size: 15px; color: var(--orange); margin-bottom: 12px; }
     .agenda-list { list-style: none; }
     .agenda-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; display: flex; align-items: center; gap: 10px; }
     .agenda-list li:last-child { border: none; }
-    .agenda-num { background: var(--blue); color: #fff; width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+    .agenda-num { background: var(--orange); color: #fff; width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
 
-    /* SECTION */
     .sec { margin-bottom: 44px; }
     .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
     .sec-num { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; flex-shrink: 0; }
-    .sec-num.blue { background: linear-gradient(135deg, var(--blue), var(--blue-light)); }
     .sec-num.orange { background: linear-gradient(135deg, #c76b1e, var(--orange)); }
+    .sec-num.blue { background: linear-gradient(135deg, var(--blue), var(--blue-light)); }
     .sec-num.green { background: linear-gradient(135deg, #1e8449, var(--green)); }
     .sec-head h2 { font-size: clamp(18px,3vw,24px); font-weight: 700; color: var(--blue); }
 
-    /* CARD */
     .card { background: var(--card); border-radius: 12px; padding: 24px 28px; margin-bottom: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.04); border: 1px solid var(--border); }
     .card h3 { font-size: 17px; color: var(--blue); margin-bottom: 12px; }
     .card h4 { font-size: 14px; color: var(--blue-light); margin: 16px 0 8px; font-weight: 700; }
 
-    /* 2-COL */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media(max-width:768px) { .two-col { grid-template-columns: 1fr; } }
 
-    /* BRAND BOX */
-    .brand-box { border-radius: 14px; padding: 24px; position: relative; }
-    .brand-box.invest { background: linear-gradient(135deg, #e8f4fd, #d1e9f7); border: 2px solid var(--blue); }
-    .brand-box.home { background: linear-gradient(135deg, #fef9f0, #fdf0db); border: 2px solid var(--orange); }
-    .brand-tag { display: inline-block; color: #fff; padding: 4px 14px; border-radius: 6px; font-weight: 700; font-size: 13px; margin-bottom: 10px; }
-    .brand-tag.blue { background: var(--blue); }
-    .brand-tag.orange { background: var(--orange); }
-
-    /* TABLE */
     .tw { overflow-x: auto; margin: 12px 0; border-radius: 10px; border: 1px solid var(--border); }
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
     thead { background: var(--blue); color: #fff; }
@@ -75,69 +61,67 @@
     tbody tr:last-child td { border: none; }
     tbody tr:hover { background: #f8fafc; }
 
-    /* FUNNEL */
-    .funnel { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; margin: 16px 0; }
-    .funnel-s { text-align: center; padding: 20px 12px; position: relative; }
-    .funnel-s:nth-child(1) { border-radius: 10px 0 0 10px; }
-    .funnel-s:nth-child(3) { border-radius: 0 10px 10px 0; }
-    .funnel-s::after { content: "\25B6"; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-size: 16px; color: var(--text-light); z-index: 1; }
-    .funnel-s:last-child::after { display: none; }
-    .funnel-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--text-light); margin-bottom: 8px; text-transform: uppercase; }
-    .funnel-items { font-size: 12px; line-height: 2; }
-    .funnel-items strong { color: var(--blue); }
+    .hl { border-radius: 10px; padding: 16px 20px; margin: 12px 0; font-size: 14px; }
+    .hl.blue { background: #e8f4fd; border-left: 4px solid var(--blue); }
+    .hl.orange { background: #fef9f0; border-left: 4px solid var(--orange); }
+    .hl.green { background: #e8f5e9; border-left: 4px solid var(--green); }
+    .hl.red { background: #fdedec; border-left: 4px solid var(--red); }
+    .hl.yellow { background: #fef9e7; border-left: 4px solid var(--yellow); }
+    .hl strong { color: var(--blue); }
 
-    /* CHANNEL CARD */
-    .ch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 12px 0; }
-    .ch-item { border-radius: 10px; padding: 16px; text-align: center; }
-    .ch-item.ig { background: linear-gradient(135deg, #fce4ec, #f8bbd0); border: 1px solid #f48fb1; }
-    .ch-item.line { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 1px solid #81c784; }
-    .ch-item.fb { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 1px solid #64b5f6; }
-    .ch-item.hp { background: linear-gradient(135deg, #f3e5f5, #e1bee7); border: 1px solid #ba68c8; }
-    .ch-icon { font-size: 28px; margin-bottom: 6px; }
-    .ch-name { font-size: 13px; font-weight: 700; }
-    .ch-status { font-size: 11px; color: var(--text-light); margin-top: 4px; }
-
-    /* STATUS BADGE */
     .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
     .badge.done { background: #d5f5e3; color: #1e8449; }
     .badge.now { background: #fef9e7; color: #d4ac0d; }
     .badge.next { background: #eaecee; color: #6b7c93; }
     .badge.red { background: #fdedec; color: #e74c3c; }
 
-    /* STEP TIMELINE */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+    .kpi-box { border-radius: 12px; padding: 18px 14px; text-align: center; }
+    .kpi-box .kpi-val { font-size: 28px; font-weight: 800; }
+    .kpi-box .kpi-label { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+    .kpi-box .kpi-sub { font-size: 10px; color: var(--text-light); margin-top: 2px; }
+
+    .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 12px 0; }
+    .status-item { border-radius: 10px; padding: 16px; text-align: center; }
+    .status-icon { font-size: 28px; margin-bottom: 6px; }
+    .status-name { font-size: 13px; font-weight: 700; }
+    .status-detail { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+    .funnel { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin: 16px 0; }
+    .funnel-s { text-align: center; padding: 20px 12px; position: relative; }
+    .funnel-s::after { content: "\25B6"; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-size: 16px; color: var(--text-light); z-index: 1; }
+    .funnel-s:last-child::after { display: none; }
+    .funnel-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--text-light); margin-bottom: 8px; text-transform: uppercase; }
+    .funnel-items { font-size: 12px; line-height: 2; }
+    .funnel-items strong { color: var(--blue); }
+
     .timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin: 16px 0; }
     .tl-step { text-align: center; padding: 16px 10px; position: relative; }
     .tl-step::after { content: "\25B6"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--text-light); z-index: 1; }
     .tl-step:last-child::after { display: none; }
-    .tl-num { font-size: 11px; font-weight: 700; color: #fff; background: var(--blue); width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 8px; }
-    .tl-step.active .tl-num { background: var(--orange); animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(232,145,58,0.4); } 50% { box-shadow: 0 0 0 8px rgba(232,145,58,0); } }
+    .tl-num { font-size: 11px; font-weight: 700; color: #fff; background: var(--orange); width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+    .tl-step.active .tl-num { background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(39,174,96,0.4); } 50% { box-shadow: 0 0 0 8px rgba(39,174,96,0); } }
     .tl-title { font-size: 12px; font-weight: 700; color: var(--text); }
     .tl-desc { font-size: 11px; color: var(--text-light); margin-top: 4px; }
 
-    /* HIGHLIGHT */
-    .hl { border-radius: 10px; padding: 16px 20px; margin: 12px 0; font-size: 14px; }
-    .hl.blue { background: #e8f4fd; border-left: 4px solid var(--blue); }
-    .hl.orange { background: #fef9f0; border-left: 4px solid var(--orange); }
-    .hl.green { background: #e8f5e9; border-left: 4px solid var(--green); }
-    .hl.red { background: #fdedec; border-left: 4px solid var(--red); }
-    .hl strong { color: var(--blue); }
+    .action-list { list-style: none; margin: 8px 0; }
+    .action-list li { padding: 10px 14px; font-size: 13px; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--border); }
+    .action-list li:last-child { border: none; }
+    .action-num { background: var(--orange); color: #fff; width: 24px; height: 24px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .action-list .priority { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; margin-left: 6px; }
+    .action-list .p-high { background: #fdedec; color: var(--red); }
+    .action-list .p-mid { background: #fef9e7; color: var(--yellow); }
+    .action-list .p-low { background: #eaecee; color: var(--text-light); }
 
-    /* RICH MENU MINI */
-    .rm-mini { max-width: 240px; margin: 12px auto; border-radius: 10px; overflow: hidden; border: 2px solid; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    .rm-mini-head { color: #fff; text-align: center; padding: 6px; font-weight: 700; font-size: 11px; }
-    .rm-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
-    .rm-mini-cell { background: #fff; padding: 10px 6px; text-align: center; font-size: 10px; font-weight: 600; }
-    .rm-mini-cell .rmi { font-size: 18px; margin-bottom: 2px; }
+    .phase-card { border-radius: 12px; padding: 20px; margin-bottom: 12px; border: 2px solid var(--border); }
+    .phase-card.active { border-color: var(--green); background: linear-gradient(135deg, #e8f5e9, #fff); }
+    .phase-card h4 { font-size: 15px; color: var(--blue); margin-bottom: 8px; }
+    .phase-card p { font-size: 13px; color: var(--text-light); }
 
-    /* CROSS SELL */
-    .cross { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; margin: 16px 0; align-items: center; }
-    .cross-arrow { text-align: center; font-size: 20px; color: var(--text-light); }
-
-    /* TODO */
-    .todo-list { list-style: none; margin: 8px 0; }
-    .todo-list li { padding: 6px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
-    .todo-list li::before { content: "\2610"; font-size: 16px; color: var(--blue); flex-shrink: 0; margin-top: 1px; }
+    .ga4-placeholder { background: linear-gradient(135deg, #f8f9fa, #e9ecef); border: 2px dashed var(--border); border-radius: 12px; padding: 24px; text-align: center; margin: 12px 0; }
+    .ga4-placeholder .ga4-title { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+    .ga4-placeholder .ga4-note { font-size: 12px; color: var(--text-light); }
 
     footer { text-align: center; padding: 36px 24px; color: var(--text-light); font-size: 12px; }
 
@@ -153,10 +137,10 @@
 
   <div class="hero">
     <div class="hero-label">CLIENT MEETING</div>
-    <h1>福岡ビルド &times; FBホーム<br>SNS・Web戦略サマリー</h1>
-    <p class="sub">2事業の戦略全体像と進捗 &mdash; クライアント打ち合わせ資料</p>
+    <h1>FBホーム 住宅事業<br>現状分析と販売戦略</h1>
+    <p class="sub">「家を売る仕組み」を構築する &mdash; 現状の数字から次の一手へ</p>
     <div class="hero-meta">
-      <span>2026年2月15日 14:00</span>
+      <span>2026年4月15日 15:00</span>
       <span>|</span>
       <span>福岡ビルド株式会社</span>
     </div>
@@ -168,426 +152,727 @@
     <div class="agenda">
       <h2>本日のアジェンダ</h2>
       <ol class="agenda-list">
-        <li><span class="agenda-num">1</span>集客戦略の全体像 ── どうやって売上を伸ばすか</li>
-        <li><span class="agenda-num">2</span>2事業の分離運用 + 相互送客モデル</li>
-        <li><span class="agenda-num">3</span>福岡ビルド（投資事業）── SNS・LINE・Web戦略</li>
-        <li><span class="agenda-num">4</span>FBホーム（住宅事業）── SNS・LINE・Web戦略</li>
+        <li><span class="agenda-num">1</span>FBホーム 現状の数字 ── LP・Instagram・LINE・HPの実態</li>
+        <li><span class="agenda-num">2</span>課題の整理 ── なぜ今、家が売れていないのか</li>
+        <li><span class="agenda-num">3</span>販売戦略 ── どうやって家を売っていくか</li>
+        <li><span class="agenda-num">4</span>アクションプラン ── 具体的な次のステップ</li>
       </ol>
     </div>
 
-    <!-- ========== 1. 集客戦略の全体像 ========== -->
+    <!-- ========== 1. 現状の数字 ========== -->
     <div class="sec">
       <div class="sec-head">
-        <div class="sec-num blue">1</div>
-        <h2>集客戦略の全体像</h2>
+        <div class="sec-num orange">1</div>
+        <h2>FBホーム 現状の数字</h2>
       </div>
 
+      <!-- チャネル稼働状況 -->
       <div class="card">
-        <h3>どうやって売上を伸ばすか</h3>
-        <p style="margin-bottom:16px;">2つの事業それぞれに最適な集客導線を構築し、<strong>「認知 → 興味・検討 → 行動・成約」</strong>の流れを仕組み化します。</p>
-
-        <!-- 福岡ビルド ファネル -->
-        <div style="margin-bottom:20px;">
-          <div class="brand-tag blue" style="margin-bottom:10px;">福岡ビルド ── 投資事業</div>
-          <div class="funnel">
-            <div class="funnel-s" style="background:linear-gradient(135deg,#e8f4fd,#d1e9f7);border-radius:10px 0 0 10px;">
-              <div class="funnel-label">認知</div>
-              <div class="funnel-items"><strong>Instagram / Facebook</strong><br>（リール＋Meta広告）<br><strong>Google検索（SEO）</strong><br><strong>投資セミナー</strong></div>
-            </div>
-            <div class="funnel-s" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">
-              <div class="funnel-label">興味・検討</div>
-              <div class="funnel-items"><strong>福岡ビルド LINE</strong><br>ステップ配信で教育<br>HPコラム・実績閲覧<br>利回りシミュレーション</div>
-            </div>
-            <div class="funnel-s" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:0 10px 10px 0;">
-              <div class="funnel-label">行動・成約</div>
-              <div class="funnel-items"><strong>個別相談予約</strong><br><strong>アパート見学会</strong><br><strong>資料請求</strong><br><strong>建築契約</strong></div>
-            </div>
+        <h3>チャネル別 稼働状況</h3>
+        <div class="status-grid">
+          <div class="status-item" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);border:1px solid #ba68c8;">
+            <div class="status-icon">&#127760;</div>
+            <div class="status-name">LP（fb-home.jp）</div>
+            <div class="status-detail"><span class="badge done">公開中</span><br>WordPress + SWELL子テーマ<br>GTM・GA4設定済み</div>
+          </div>
+          <div class="status-item" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);border:1px solid #f48fb1;">
+            <div class="status-icon">&#128247;</div>
+            <div class="status-name">Instagram</div>
+            <div class="status-detail"><span class="badge now">稼働中（4投稿）</span><br>@fb_home_fukuokabuild<br>リール3本 + カルーセル1本</div>
+          </div>
+          <div class="status-item" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border:1px solid #81c784;">
+            <div class="status-icon">&#128172;</div>
+            <div class="status-name">LINE公式</div>
+            <div class="status-detail"><span class="badge done">LP連携済み</span><br>LPに複数ボタン設置<br>施工実例集PDF特典付き</div>
+          </div>
+          <div class="status-item" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb);border:1px solid #64b5f6;">
+            <div class="status-icon">&#128226;</div>
+            <div class="status-name">広告</div>
+            <div class="status-detail"><span class="badge red">未実施</span><br>Meta広告・Google広告<br>ともに未着手</div>
           </div>
         </div>
-
-        <!-- FBホーム ファネル -->
-        <div>
-          <div class="brand-tag orange" style="margin-bottom:10px;">FBホーム ── 住宅事業</div>
-          <div class="funnel">
-            <div class="funnel-s" style="background:linear-gradient(135deg,#fef9f0,#fdf0db);border-radius:10px 0 0 10px;">
-              <div class="funnel-label">認知</div>
-              <div class="funnel-items"><strong>FBホーム Instagram</strong><br><strong>Instagram / Meta広告</strong><br><strong>Google検索（SEO）</strong><br><strong>モデルハウス見学会</strong></div>
-            </div>
-            <div class="funnel-s" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">
-              <div class="funnel-label">興味・検討</div>
-              <div class="funnel-items"><strong>FBホーム LINE</strong><br>性能コラム配信<br>施工事例ギャラリー<br>来店予約特典</div>
-            </div>
-            <div class="funnel-s" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:0 10px 10px 0;">
-              <div class="funnel-label">行動・成約</div>
-              <div class="funnel-items"><strong>見学会来場</strong><br><strong>個別相談・資金計画</strong><br><strong>購入申込</strong><br><strong>契約</strong></div>
-            </div>
-          </div>
+        <div class="hl yellow">
+          <strong>現実：</strong>LP公開済み、LINE導線設置済み、Instagram投稿開始済み。しかしGA4データでは<strong>月40セッション・21ユーザー</strong>。<br>
+          LPの中身は良い（滞在3分12秒）が、<strong>そもそも人が来ていない。集客が最優先課題。</strong>
         </div>
       </div>
 
+      <!-- Instagram実績 -->
       <div class="card">
-        <h3>共通する集客の仕組み</h3>
+        <h3>&#128247; Instagram 投稿実績（3/2〜3/4 ・ 全4投稿）</h3>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">3月初旬にリール3本＋カルーセル1本を投稿。フォロワーほぼゼロからのスタート。</p>
+
+        <h4>投稿別パフォーマンス</h4>
+        <div class="tw">
+          <table>
+            <thead><tr><th>投稿</th><th>形式</th><th>閲覧数</th><th>いいね</th><th>保存</th><th>コメント</th><th>スキップ率</th><th>平均再生</th><th>新規フォロー</th></tr></thead>
+            <tbody>
+              <tr><td><strong>投稿1</strong>（3/4）</td><td>リール 18秒</td><td style="font-weight:700;color:var(--blue);">126</td><td>2</td><td>0</td><td>0</td><td style="color:var(--red);">82.1%</td><td style="color:var(--red);">3秒</td><td style="color:var(--red);">0</td></tr>
+              <tr><td><strong>投稿2</strong>（3/3）</td><td>リール 13秒</td><td style="font-weight:700;color:var(--blue);">119</td><td>2</td><td>0</td><td>0</td><td style="color:var(--red);">85.6%</td><td style="color:var(--red);">2秒</td><td style="color:var(--red);">0</td></tr>
+              <tr><td><strong>投稿3</strong></td><td>リール 15秒</td><td>-</td><td>1</td><td>0</td><td>0</td><td>-</td><td>-</td><td>0</td></tr>
+              <tr><td><strong>投稿4</strong>（3/2）</td><td>カルーセル</td><td style="color:var(--red);">16</td><td>2</td><td>0</td><td>0</td><td>-</td><td>-</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>良いサイン</h4>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0;">
-          <div style="background:linear-gradient(135deg,#e8f4fd,#d1e9f7);border-radius:10px;padding:16px;text-align:center;">
-            <div style="font-size:24px;margin-bottom:6px;">&#128247;</div>
-            <div style="font-size:13px;font-weight:700;color:var(--blue);">Instagram で認知</div>
-            <div style="font-size:11px;color:var(--text-light);margin-top:4px;">有益な情報発信で<br>フォロワーを集める</div>
+          <div style="background:#e8f5e9;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:24px;font-weight:800;color:var(--green);">95%</div>
+            <div style="font-size:11px;color:var(--text-light);">フォロワー以外からの閲覧</div>
+            <div style="font-size:10px;color:var(--green);margin-top:4px;">新規リーチが取れている</div>
           </div>
-          <div style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:10px;padding:16px;text-align:center;">
-            <div style="font-size:24px;margin-bottom:6px;">&#128172;</div>
-            <div style="font-size:13px;font-weight:700;color:var(--blue);">LINE で教育・育成</div>
-            <div style="font-size:11px;color:var(--text-light);margin-top:4px;">ステップ配信で<br>信頼関係を構築</div>
+          <div style="background:#e8f5e9;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:24px;font-weight:800;color:var(--green);">126</div>
+            <div style="font-size:11px;color:var(--text-light);">最高閲覧数（リール）</div>
+            <div style="font-size:10px;color:var(--green);margin-top:4px;">フォロワー0でも届く</div>
           </div>
-          <div style="background:linear-gradient(135deg,#fef9f0,#fdf0db);border-radius:10px;padding:16px;text-align:center;">
-            <div style="font-size:24px;margin-bottom:6px;">&#129309;</div>
-            <div style="font-size:13px;font-weight:700;color:var(--blue);">対面で成約</div>
-            <div style="font-size:11px;color:var(--text-light);margin-top:4px;">見学会・個別相談で<br>契約に繋げる</div>
+          <div style="background:#e8f5e9;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:14px;font-weight:800;color:var(--green);">リールタブ<br>54-64%</div>
+            <div style="font-size:11px;color:var(--text-light);">主要流入元</div>
+            <div style="font-size:10px;color:var(--green);margin-top:4px;">アルゴリズムが拡散中</div>
           </div>
+        </div>
+
+        <h4>課題（改善が必要）</h4>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0;">
+          <div style="background:#fdedec;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:20px;font-weight:800;color:var(--red);">82-86%</div>
+            <div style="font-size:11px;color:var(--text-light);">スキップ率</div>
+            <div style="font-size:10px;color:var(--red);margin-top:4px;">冒頭1-2秒で離脱</div>
+          </div>
+          <div style="background:#fdedec;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:20px;font-weight:800;color:var(--red);">2-3秒</div>
+            <div style="font-size:11px;color:var(--text-light);">平均再生時間</div>
+            <div style="font-size:10px;color:var(--red);margin-top:4px;">13-18秒の動画に対して短い</div>
+          </div>
+          <div style="background:#fdedec;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:20px;font-weight:800;color:var(--red);">0件</div>
+            <div style="font-size:11px;color:var(--text-light);">保存・シェア・コメント</div>
+            <div style="font-size:10px;color:var(--red);margin-top:4px;">行動に繋がっていない</div>
+          </div>
+          <div style="background:#fdedec;border-radius:10px;padding:14px;text-align:center;">
+            <div style="font-size:20px;font-weight:800;color:var(--red);">0人</div>
+            <div style="font-size:11px;color:var(--text-light);">新規フォロー</div>
+            <div style="font-size:10px;color:var(--red);margin-top:4px;">プロフ訪問すらゼロ</div>
+          </div>
+        </div>
+
+        <h4>オーディエンス（リーチした層）</h4>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;">
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;">
+            <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;">投稿1</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <div style="font-size:12px;width:40px;">男性</div>
+              <div style="flex:1;background:#e0e0e0;border-radius:4px;height:16px;"><div style="width:43.6%;background:var(--blue);border-radius:4px;height:100%;"></div></div>
+              <div style="font-size:12px;font-weight:700;">43.6%</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="font-size:12px;width:40px;">女性</div>
+              <div style="flex:1;background:#e0e0e0;border-radius:4px;height:16px;"><div style="width:56.4%;background:var(--orange);border-radius:4px;height:100%;"></div></div>
+              <div style="font-size:12px;font-weight:700;">56.4%</div>
+            </div>
+          </div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;">
+            <div style="font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;">投稿2</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <div style="font-size:12px;width:40px;">男性</div>
+              <div style="flex:1;background:#e0e0e0;border-radius:4px;height:16px;"><div style="width:60%;background:var(--blue);border-radius:4px;height:100%;"></div></div>
+              <div style="font-size:12px;font-weight:700;">60%</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="font-size:12px;width:40px;">女性</div>
+              <div style="flex:1;background:#e0e0e0;border-radius:4px;height:16px;"><div style="width:40%;background:var(--orange);border-radius:4px;height:100%;"></div></div>
+              <div style="font-size:12px;font-weight:700;">40%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hl orange">
+          <strong>総合評価：</strong>フォロワーゼロの初期投稿としてリーチ100超は悪くない。ただし<strong>「見て終わり」</strong>になっている。<br>
+          改善ポイントは明確：<strong>&#9312; 冒頭フック強化（スキップ率改善）</strong> <strong>&#9313; 保存したくなる情報型コンテンツ</strong> <strong>&#9314; プロフィールへの導線設計</strong>
+        </div>
+      </div>
+
+      <!-- LP現状 -->
+      <div class="card">
+        <h3>&#127760; LP（fb-home.jp）現状</h3>
+        <h4>実装済みの機能 ── かなり充実している</h4>
+        <div class="tw">
+          <table>
+            <thead><tr><th>項目</th><th>状態</th><th>詳細</th></tr></thead>
+            <tbody>
+              <tr><td><strong>WordPressテーマ</strong></td><td><span class="badge done">完了</span></td><td>SWELL子テーマ（fb-home-theme）</td></tr>
+              <tr><td><strong>GTM / GA4</strong></td><td><span class="badge done">設定済</span></td><td>GTM-KCDJC3R8 統合、計測可能</td></tr>
+              <tr><td><strong>性能数値の表示</strong></td><td><span class="badge done">完了</span></td><td>UA値0.16 / C値0.7以下 / 熱伝導率0.019 / 耐震等級3</td></tr>
+              <tr><td><strong>光熱費シミュレーション</strong></td><td><span class="badge done">完了</span></td><td>年間12万円 vs 一般30万円、35年差額630万円</td></tr>
+              <tr><td><strong>LINE登録導線</strong></td><td><span class="badge done">完了</span></td><td>ヘッダー・追従ボタン・特典セクション等に複数配置。施工実例集PDF特典付き</td></tr>
+              <tr><td><strong>お問い合わせフォーム</strong></td><td><span class="badge done">完了</span></td><td>reCAPTCHA v3 + メール自動送信（sumida@, ekuni@）</td></tr>
+              <tr><td><strong>イベント・見学会</strong></td><td><span class="badge done">完了</span></td><td>EVENTセクション実装。毎週平日無料相談会（要予約）</td></tr>
+              <tr><td><strong>施工事例</strong></td><td><span class="badge done">完了</span></td><td>3件表示（カリフォルニアヴィレッジ福間ビーチ / UMINAKAモデルハウス / アバンセヴィラ筑前山隈）</td></tr>
+              <tr><td><strong>スタイル紹介</strong></td><td><span class="badge done">完了</span></td><td>CALIFORNIA STYLE（6特徴）+ GARAGE STYLE を詳細セクションで紹介</td></tr>
+              <tr><td><strong>CTA設計</strong></td><td><span class="badge done">完了</span></td><td>FV: LINE相談+問合せ / PC追従: 訪問予約+LINE / モバイル追従: 訪問+資料請求</td></tr>
+              <tr><td><strong>画像最適化</strong></td><td><span class="badge done">完了</span></td><td>87MB → 7.5MB（91.4%削減）WebP化</td></tr>
+              <tr><td><strong>構造化データ</strong></td><td><span class="badge done">完了</span></td><td>HomeAndConstructionBusiness スキーマ</td></tr>
+            </tbody>
+          </table>
         </div>
         <div class="hl green">
-          <strong>ポイント：</strong>どちらの事業も<strong>「SNSで集めて → LINEで育てて → 対面で決める」</strong>の3ステップ。この仕組みを両ブランドで確立します。
+          <strong>LPの完成度は高い。</strong>性能数値・LINE導線・CTA・イベント・施工事例まで揃っている。<br>
+          <strong>問題はLPの中身ではなく「LPに人が来ていない」こと。</strong>集客チャネル（Instagram・広告）の強化が最優先。
+        </div>
+
+        <h4>GA4 実データ（直近30日間: 3/16〜4/15）</h4>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0;">
+          <div style="background:linear-gradient(135deg,#fdedec,#f9e0de);border-radius:12px;padding:18px 14px;text-align:center;border:2px solid var(--red);">
+            <div style="font-size:28px;font-weight:800;color:var(--red);">40</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:4px;">セッション数</div>
+            <div style="font-size:10px;color:var(--red);">1日平均 約1.3回</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#fdedec,#f9e0de);border-radius:12px;padding:18px 14px;text-align:center;border:2px solid var(--red);">
+            <div style="font-size:28px;font-weight:800;color:var(--red);">21</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:4px;">ユーザー数（新規12）</div>
+            <div style="font-size:10px;color:var(--red);">ほぼ誰も見ていない</div>
+          </div>
+          <div style="background:#f8f9fa;border-radius:12px;padding:18px 14px;text-align:center;border:2px solid var(--border);">
+            <div style="font-size:28px;font-weight:800;color:var(--green);">3分12秒</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:4px;">平均滞在時間</div>
+            <div style="font-size:10px;color:var(--green);">来た人はちゃんと見ている</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#fef9e7,#fdf2d1);border-radius:12px;padding:18px 14px;text-align:center;border:2px solid var(--yellow);">
+            <div style="font-size:28px;font-weight:800;color:var(--yellow);">65.0%</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:4px;">直帰率</div>
+            <div style="font-size:10px;color:var(--yellow);">改善余地あり</div>
+          </div>
+        </div>
+
+        <h4>流入元 ── お客さんはどこから来ているか</h4>
+        <div class="tw">
+          <table>
+            <thead><tr><th>流入元</th><th>セッション</th><th>割合</th><th>ユーザー</th><th>平均滞在</th><th>直帰率</th></tr></thead>
+            <tbody>
+              <tr><td><strong>直接アクセス（direct）</strong></td><td style="font-weight:800;">23</td><td style="font-weight:800;">57.5%</td><td>12</td><td>1分11秒</td><td style="color:var(--red);">73.9%</td></tr>
+              <tr style="background:#e8f5e9;"><td><strong>Google検索（organic）</strong></td><td>8</td><td>20.0%</td><td>3</td><td style="color:var(--green);font-weight:700;">5分14秒</td><td style="color:var(--green);font-weight:700;">37.5%</td></tr>
+              <tr><td><strong>Instagram（organic）</strong></td><td>5</td><td>12.5%</td><td>5</td><td style="color:var(--green);font-weight:700;">6分07秒</td><td style="color:var(--red);">80.0%</td></tr>
+              <tr><td><strong>Bing検索（organic）</strong></td><td>4</td><td>10.0%</td><td>1</td><td style="color:var(--green);font-weight:700;">7分08秒</td><td>50.0%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>デバイス別</h4>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0;">
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);">
+            <div style="font-size:20px;font-weight:800;color:var(--blue);">82.5%</div>
+            <div style="font-size:12px;color:var(--text-light);">PC（33セッション）</div>
+            <div style="font-size:10px;color:var(--text-light);">直帰率 66.7%</div>
+          </div>
+          <div style="background:#f8f9fa;border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);">
+            <div style="font-size:20px;font-weight:800;color:var(--blue);">17.5%</div>
+            <div style="font-size:12px;color:var(--text-light);">スマホ（7セッション）</div>
+            <div style="font-size:10px;color:var(--text-light);">直帰率 57.1%</div>
+          </div>
+        </div>
+
+        <div class="hl red">
+          <strong>GA4データから分かること：</strong><br>
+          &#9312; <strong>月40セッション ＝ ほぼ誰も見ていない。</strong>集客が最大の課題であることが数字で確定<br>
+          &#9313; 来た人の滞在時間は3分12秒と<strong>LPの中身は読まれている</strong>（特にGoogle検索5分14秒、Instagram6分07秒）<br>
+          &#9314; <strong>広告は未実施。</strong>流入は直接アクセス + 検索 + Instagramのみ<br>
+          &#9315; Instagram経由は5セッションだが滞在6分07秒 → <strong>興味を持って来た人はじっくり見ている</strong><br>
+          &#9316; PC 82.5% → 現状の訪問者は業界関係者が多い可能性。一般ユーザー（スマホ）が少ない
+        </div>
+      </div>
+
+      <!-- 住宅性能（武器） -->
+      <div class="card">
+        <h3>&#127777; FBホームの「武器」── 住宅性能</h3>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">FBホームは性能面で競合を圧倒するポテンシャルがある。この武器をちゃんとお客さんに届けられていないのが現状の課題。</p>
+        <div class="kpi-grid">
+          <div class="kpi-box" style="background:linear-gradient(135deg,#fef9f0,#fff5e6);border:2px solid var(--orange);">
+            <div class="kpi-val" style="color:var(--orange);">0.16</div>
+            <div class="kpi-label">UA値（断熱性能）</div>
+            <div class="kpi-sub">断熱等級7 / 業界トップクラス</div>
+          </div>
+          <div class="kpi-box" style="background:linear-gradient(135deg,#fef9f0,#fff5e6);border:2px solid var(--orange);">
+            <div class="kpi-val" style="color:var(--orange);">0.1</div>
+            <div class="kpi-label">C値（気密性能）</div>
+            <div class="kpi-sub">全棟気密測定実施</div>
+          </div>
+          <div class="kpi-box" style="background:linear-gradient(135deg,#fef9f0,#fff5e6);border:2px solid var(--orange);">
+            <div class="kpi-val" style="color:var(--orange);">50<span style="font-size:14px;">年</span></div>
+            <div class="kpi-label">無結露保証</div>
+            <div class="kpi-sub">FPパネル壁体内</div>
+          </div>
+          <div class="kpi-box" style="background:linear-gradient(135deg,#fef9f0,#fff5e6);border:2px solid var(--orange);">
+            <div class="kpi-val" style="color:var(--orange);">6<span style="font-size:14px;">種</span></div>
+            <div class="kpi-label">プランラインナップ</div>
+            <div class="kpi-sub">California / WAON / BOSCO 等</div>
+          </div>
+        </div>
+
+        <h4>競合との性能比較</h4>
+        <div class="tw">
+          <table>
+            <thead><tr><th>項目</th><th style="background:var(--orange);">FBホーム</th><th>WITHDOM</th><th>リブワーク</th><th>一般的な住宅</th></tr></thead>
+            <tbody>
+              <tr><td><strong>UA値</strong></td><td style="color:var(--orange);font-weight:800;">0.16</td><td>0.46</td><td>0.4前後</td><td>0.87</td></tr>
+              <tr><td><strong>C値</strong></td><td style="color:var(--orange);font-weight:800;">0.1</td><td>0.4</td><td>非公開</td><td>2.0以上</td></tr>
+              <tr><td><strong>断熱等級</strong></td><td style="color:var(--orange);font-weight:800;">等級7対応</td><td>等級5-6</td><td>等級5</td><td>等級4（義務）</td></tr>
+              <tr><td><strong>保証</strong></td><td style="color:var(--orange);font-weight:800;">無結露50年</td><td>10-20年</td><td>10年</td><td>10年</td></tr>
+              <tr><td><strong>断熱材</strong></td><td style="color:var(--orange);font-weight:800;">FPパネル<br>(0.019W/mK)</td><td>グラスウール</td><td>吹付け断熱</td><td>グラスウール</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hl green">
+          <strong>結論：</strong>性能で勝っている。問題は「この武器が届いていない」こと。<strong>認知と導線の問題</strong>であり、商品力の問題ではない。
         </div>
       </div>
     </div>
 
-    <!-- ========== 2. 分離運用 ========== -->
+    <!-- ========== 2. 課題の整理 ========== -->
     <div class="sec">
       <div class="sec-head">
         <div class="sec-num blue">2</div>
-        <h2>2事業の分離運用 + 相互送客モデル</h2>
+        <h2>課題の整理 ── なぜ家が売れていないのか</h2>
       </div>
 
       <div class="card">
-        <h3>なぜ分離するのか</h3>
-        <p>福岡ビルド（投資事業）とFBホーム（住宅事業）は、<strong>ターゲット・訴求軸・購買動機</strong>がまったく異なります。</p>
+        <h3>3つのボトルネック</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;">
+          <div style="background:linear-gradient(135deg,#fdedec,#f9e0de);border-radius:12px;padding:20px;text-align:center;border:2px solid var(--red);">
+            <div style="font-size:32px;margin-bottom:8px;">&#128683;</div>
+            <div style="font-size:15px;font-weight:800;color:var(--red);margin-bottom:6px;">認知は取れたが<br>素通りされている</div>
+            <div style="font-size:12px;color:var(--text-light);">リール閲覧126回だが<br>スキップ率82%<br>プロフ訪問0<br>フォロー0</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#fef9e7,#fdf2d1);border-radius:12px;padding:20px;text-align:center;border:2px solid var(--yellow);">
+            <div style="font-size:32px;margin-bottom:8px;">&#128279;</div>
+            <div style="font-size:15px;font-weight:800;color:var(--yellow);margin-bottom:6px;">広告ゼロ<br>流入が少なすぎ</div>
+            <div style="font-size:12px;color:var(--text-light);">月40セッションのうち<br>57%が直接アクセス（関係者？）<br>広告未実施<br>自然流入のみ</div>
+          </div>
+          <div style="background:linear-gradient(135deg,#e8f4fd,#d1e9f7);border-radius:12px;padding:20px;text-align:center;border:2px solid var(--blue);">
+            <div style="font-size:32px;margin-bottom:8px;">&#128196;</div>
+            <div style="font-size:15px;font-weight:800;color:var(--blue);margin-bottom:6px;">LPに人が来ない</div>
+            <div style="font-size:12px;color:var(--text-light);">LPの中身は充実<br>（性能・LINE・CTA完備）<br>しかしそもそも<br>流入がほぼゼロ</div>
+          </div>
+        </div>
+        <div class="hl yellow">
+          <strong>要するに：</strong>LPの中身は良い（来た人は3分以上滞在）。しかし<strong>月40セッションでは話にならない。</strong><br>
+          &#9312; <strong>Instagram改善で認知拡大</strong>（スキップ率82%→50%以下。プロフ訪問0を改善）<br>
+          &#9313; <strong>広告投入でLPへの流入を一気に増やす</strong>（現在ゼロ → Meta広告開始）<br>
+          &#9314; <strong>LINEステップ配信で育成</strong>（来た人を見学会に誘導する仕組み）
+        </div>
+      </div>
 
+      <div class="card">
+        <h3>前回（2/15）の打ち合わせからの進捗</h3>
         <div class="tw">
           <table>
-            <thead><tr><th></th><th style="background:var(--blue);">福岡ビルド（投資事業）</th><th style="background:var(--orange);">FBホーム（住宅事業）</th></tr></thead>
+            <thead><tr><th>項目</th><th>2/15時点</th><th>4/15現在</th><th>状態</th></tr></thead>
             <tbody>
-              <tr><td><strong>顧客</strong></td><td>投資家・資産運用層</td><td>マイホームを探すファミリー</td></tr>
-              <tr><td><strong>購買動機</strong></td><td>「お金を増やしたい」</td><td>「いい家に住みたい」</td></tr>
-              <tr><td><strong>判断基準</strong></td><td>利回り・入居率・減価償却</td><td>断熱性能・デザイン・間取り</td></tr>
-              <tr><td><strong>年齢層</strong></td><td>30〜55歳（会社員・経営者）</td><td>25〜45歳（子育て世代）</td></tr>
-              <tr><td><strong>刺さるコンテンツ</strong></td><td>投資シミュレーション・市場分析</td><td>見学会案内・暮らしのイメージ</td></tr>
-              <tr><td><strong>トーン</strong></td><td>信頼・数字・ロジック</td><td>ワクワク・ライフスタイル感</td></tr>
+              <tr><td><strong>LP制作</strong></td><td>GitHub Pages公開</td><td>WordPress（SWELL）で本番公開</td><td><span class="badge done">完了</span></td></tr>
+              <tr><td><strong>GTM / GA4</strong></td><td>未設定</td><td>GTM-KCDJC3R8 設定済み</td><td><span class="badge done">完了</span></td></tr>
+              <tr><td><strong>お問い合わせフォーム</strong></td><td>未実装</td><td>reCAPTCHA v3対応で実装</td><td><span class="badge done">完了</span></td></tr>
+              <tr><td><strong>画像最適化</strong></td><td>87MB</td><td>7.5MB（91.4%削減）</td><td><span class="badge done">完了</span></td></tr>
+              <tr><td><strong>Instagram投稿</strong></td><td>テンプレート作成中</td><td>4投稿済み（リール3+カルーセル1）</td><td><span class="badge done">稼働中</span></td></tr>
+              <tr><td><strong>LINE公式</strong></td><td>設計中</td><td>LP上に複数導線設置済み。施工実例集PDF特典付き</td><td><span class="badge done">稼働中</span></td></tr>
+              <tr><td><strong>広告</strong></td><td>未着手</td><td>未着手（GA4で確認済み：広告流入ゼロ）</td><td><span class="badge red">未着手</span></td></tr>
             </tbody>
           </table>
         </div>
-
         <div class="hl blue">
-          <strong>結論：</strong>LINE公式・Instagram・コンテンツすべて分離。ただし<strong>相互送客（クロスセル）</strong>で顧客単価を最大化。
-        </div>
-      </div>
-
-      <!-- 分離 + 相互送客 -->
-      <div class="card">
-        <h3>分離 + 相互送客モデル</h3>
-        <div class="cross">
-          <div class="brand-box invest">
-            <div class="brand-tag blue">福岡ビルド LINE</div>
-            <div style="font-size:12px;color:var(--text-light);">投資家向け</div>
-            <ul style="font-size:12px;padding-left:16px;margin-top:8px;line-height:2;">
-              <li>利回りシミュレーション</li>
-              <li>市場動向レポート</li>
-              <li>セミナー・見学会案内</li>
-              <li>オーナー成功事例</li>
-            </ul>
-            <div style="margin-top:10px;padding:8px;background:rgba(255,255,255,0.7);border-radius:6px;font-size:11px;text-align:center;color:var(--orange);font-weight:700;">
-              &#10148; FBホームへの紹介導線
-            </div>
-          </div>
-          <div class="cross-arrow">&#8644;<br><span style="font-size:10px;">相互送客</span></div>
-          <div class="brand-box home">
-            <div class="brand-tag orange">FB HOME LINE</div>
-            <div style="font-size:12px;color:var(--text-light);">住宅購入者向け</div>
-            <ul style="font-size:12px;padding-left:16px;margin-top:8px;line-height:2;">
-              <li>完成見学会・モデルハウス案内</li>
-              <li>住宅性能コラム（UA値0.16）</li>
-              <li>暮らしのイメージ写真</li>
-              <li>来店予約特典</li>
-            </ul>
-            <div style="margin-top:10px;padding:8px;background:rgba(255,255,255,0.7);border-radius:6px;font-size:11px;text-align:center;color:var(--blue);font-weight:700;">
-              &#10148; 投資LINEへの紹介導線
-            </div>
-          </div>
+          <strong>評価：</strong>LP・LINE・計測・フォーム・イベント・施工事例まですべて完成。Instagram投稿も開始済み。<strong>「土台」は完璧に整った。次は集客の「質と量」を上げるフェーズ。</strong>
         </div>
       </div>
     </div>
 
-    <!-- ========== 3. 福岡ビルド ========== -->
+    <!-- ========== 3. 販売戦略 ========== -->
     <div class="sec">
       <div class="sec-head">
-        <div class="sec-num blue">3</div>
-        <h2>福岡ビルド（投資事業）戦略</h2>
+        <div class="sec-num green">3</div>
+        <h2>販売戦略 ── どうやって家を売っていくか</h2>
       </div>
 
-      <!-- チャネル一覧 -->
+      <!-- 全体設計 -->
       <div class="card">
-        <h3>チャネル別 戦略サマリー</h3>
-        <div class="ch-grid">
-          <div class="ch-item ig">
-            <div class="ch-icon">&#128247;</div>
-            <div class="ch-name">Instagram / Facebook</div>
-            <div class="ch-status">@fukuokabuild<br><span class="badge red">投稿1件/フォロワー0</span><br><span style="font-size:10px;color:var(--text-light);">Meta連携で同時運用</span></div>
+        <h3>集客ファネル ── 「知ってもらう」から「買ってもらう」まで</h3>
+        <div class="funnel">
+          <div class="funnel-s" style="background:linear-gradient(135deg,#fef9f0,#fdf0db);border-radius:10px 0 0 10px;">
+            <div class="funnel-label">STEP 1 認知</div>
+            <div class="funnel-items">
+              <strong>Instagram投稿</strong><br>
+              カリフォルニアスタイル<br>
+              施工事例・暮らし写真<br>
+              <strong>SEOコンテンツ</strong><br>
+              ブログ・施工事例記事
+            </div>
           </div>
-          <div class="ch-item line">
-            <div class="ch-icon">&#128172;</div>
-            <div class="ch-name">LINE公式</div>
-            <div class="ch-status">アカウント既存<br><span class="badge done">実装済み</span></div>
+          <div class="funnel-s" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);">
+            <div class="funnel-label">STEP 2 興味</div>
+            <div class="funnel-items">
+              <strong>LP閲覧</strong><br>
+              性能数値で説得<br>
+              デザイン写真で魅了<br>
+              <strong>LINE登録</strong><br>
+              チェックリストPDF
+            </div>
           </div>
-          <div class="ch-item hp">
-            <div class="ch-icon">&#127760;</div>
-            <div class="ch-name">HP</div>
-            <div class="ch-status">f-build.co.jp<br><span class="badge done">運用中</span></div>
+          <div class="funnel-s" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);">
+            <div class="funnel-label">STEP 3 検討</div>
+            <div class="funnel-items">
+              <strong>LINEステップ配信</strong><br>
+              性能コラム・事例紹介<br>
+              見学会案内<br>
+              <strong>HP施工事例</strong><br>
+              検索からの流入
+            </div>
           </div>
+          <div class="funnel-s" style="background:linear-gradient(135deg,#e8f4fd,#d1e9f7);border-radius:0 10px 10px 0;">
+            <div class="funnel-label">STEP 4 成約</div>
+            <div class="funnel-items">
+              <strong>見学会来場</strong><br>
+              <strong>個別相談</strong><br>
+              資金計画・プラン提案<br>
+              <strong>契約</strong>
+            </div>
+          </div>
+        </div>
+        <div class="hl green">
+          <strong>原則：</strong>「SNSで集めて → LINEで育てて → 対面で決める」。この3ステップを仕組みとして回す。
         </div>
       </div>
 
-      <!-- Instagram / Facebook -->
-      <div class="card" id="ig-strategy-invest">
-        <h3>&#128247; Instagram / Facebook 戦略（@fukuokabuild）</h3>
-        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">Instagram投稿はMeta連携でFacebookにも同時配信。広告もMeta広告マネージャーで一元管理します。</p>
-        <h4>投稿コンテンツ 4本柱</h4>
+      <!-- 施策1: Instagram -->
+      <div class="card">
+        <h3>施策① Instagram改善 &amp; 本格運用</h3>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">4投稿のデータから改善点は明確。「冒頭で止める → 保存される → プロフに来る」の流れを設計する。</p>
+
+        <h4>データから見えた改善ポイント</h4>
         <div class="tw">
           <table>
-            <thead><tr><th>柱</th><th>テーマ</th><th>頻度</th><th>フック例</th></tr></thead>
+            <thead><tr><th>課題</th><th>現状の数字</th><th>改善策</th></tr></thead>
             <tbody>
-              <tr><td><strong>実例ベースの利回り公開</strong></td><td>実物件で利回り・投資額・CF全公開</td><td>週2</td><td>「利回り8.2% 投資額2,800万円」</td></tr>
-              <tr><td><strong>投資ノウハウ</strong></td><td>融資・節税・物件選び等の実践知識</td><td>週2</td><td>「銀行が融資したくなる物件とは？」</td></tr>
-              <tr><td><strong>オーナー成功ストーリー</strong></td><td>実際のオーナー様インタビュー</td><td>週1</td><td>「35歳会社員、副業で月30万円」</td></tr>
-              <tr><td><strong>福岡エリア投資データ</strong></td><td>地域特化の市場データ</td><td>週1</td><td>「博多区vs早良区 利回り比較」</td></tr>
+              <tr><td><strong>冒頭で離脱</strong></td><td>スキップ率82-86%<br>平均再生2-3秒</td><td>冒頭1秒にテキストフック（「福岡で一番暖かい家」）<br>Before/After・数字で引っ掛ける</td></tr>
+              <tr><td><strong>保存ゼロ</strong></td><td>保存0件・コメント0件</td><td>情報型コンテンツ追加（性能比較・光熱費データ）<br>「保存して見学会で見せてください」のCTA</td></tr>
+              <tr><td><strong>プロフ訪問ゼロ</strong></td><td>プロフィールアクセス0<br>新規フォロー0</td><td>投稿末尾に「他の施工事例はプロフから」<br>プロフ文にLINE登録リンク設置</td></tr>
+              <tr><td><strong>カルーセル弱い</strong></td><td>閲覧16（リールの1/8）</td><td>リール中心の運用に切替。カルーセルは情報まとめ用</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="hl blue">
-          <strong>鉄則：</strong>1枚目に必ず「数字」。投稿の90%は投資家に有益な情報。会社アピールは最終スライドのみ。
+
+        <h4>改善後の投稿コンテンツ 4本柱</h4>
+        <div class="tw">
+          <table>
+            <thead><tr><th>柱</th><th>内容</th><th>頻度</th><th>フック例</th></tr></thead>
+            <tbody>
+              <tr><td><strong>施工事例カルーセル</strong></td><td>外観＋内装＋性能数値</td><td>週2</td><td>「CALIFORNIA × デザイン3選」</td></tr>
+              <tr><td><strong>性能で選ぶ家</strong></td><td>UA値・C値・光熱費比較</td><td>週1</td><td>「エアコン1台で全館24度」</td></tr>
+              <tr><td><strong>暮らしのシーン</strong></td><td>ライフスタイル写真・動画</td><td>週1</td><td>「朝のカバードポーチ」</td></tr>
+              <tr><td><strong>見学会・イベント</strong></td><td>完成見学会・モデルハウス案内</td><td>月2</td><td>「今週末、体感してみませんか？」</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h4>投稿イメージ・テンプレート（作成済み）</h4>
-        <p style="font-size:13px;color:var(--text-light);margin-bottom:10px;">初週4投稿分のデザイン制作指示書を作成済み。以下のような投稿を展開していきます。</p>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0;">
-          <div style="background:var(--blue);color:#fff;border-radius:10px;padding:16px 10px;text-align:center;">
-            <div style="font-size:10px;opacity:0.7;margin-bottom:6px;">投稿1 / 月曜</div>
-            <div style="font-size:13px;font-weight:700;margin-bottom:4px;">福岡の利回り相場</div>
-            <div style="font-size:20px;font-weight:800;color:var(--orange);">何%？</div>
-            <div style="font-size:10px;margin-top:6px;opacity:0.7;">カルーセル5枚</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0;">
+          <div style="background:var(--orange);color:#fff;border-radius:10px;padding:14px 8px;text-align:center;">
+            <div style="font-size:10px;opacity:0.7;">火曜</div>
+            <div style="font-size:12px;font-weight:700;margin-top:4px;">施工事例<br>カルーセル</div>
           </div>
-          <div style="background:var(--blue);color:#fff;border-radius:10px;padding:16px 10px;text-align:center;">
-            <div style="font-size:10px;opacity:0.7;margin-bottom:6px;">投稿2 / 水曜</div>
-            <div style="font-size:13px;font-weight:700;margin-bottom:4px;">施工実績</div>
-            <div style="font-size:14px;margin-top:4px;">&#127968; 福岡県○○市<br><span style="color:var(--orange);font-weight:800;">利回り○%台</span></div>
-            <div style="font-size:10px;margin-top:6px;opacity:0.7;">写真3〜5枚</div>
+          <div style="background:var(--orange);color:#fff;border-radius:10px;padding:14px 8px;text-align:center;">
+            <div style="font-size:10px;opacity:0.7;">木曜</div>
+            <div style="font-size:12px;font-weight:700;margin-top:4px;">性能で選ぶ<br>高性能住宅</div>
           </div>
-          <div style="background:var(--blue);color:#fff;border-radius:10px;padding:16px 10px;text-align:center;">
-            <div style="font-size:10px;opacity:0.7;margin-bottom:6px;">投稿3 / 金曜</div>
-            <div style="font-size:13px;font-weight:700;margin-bottom:4px;">建築現場に潜入</div>
-            <div style="font-size:28px;margin-top:4px;">&#9654;&#65039;</div>
-            <div style="font-size:10px;margin-top:6px;opacity:0.7;">リール動画</div>
+          <div style="background:var(--orange);color:#fff;border-radius:10px;padding:14px 8px;text-align:center;">
+            <div style="font-size:10px;opacity:0.7;">土曜</div>
+            <div style="font-size:12px;font-weight:700;margin-top:4px;">暮らしの<br>シーン</div>
           </div>
-          <div style="background:var(--blue);color:#fff;border-radius:10px;padding:16px 10px;text-align:center;">
-            <div style="font-size:10px;opacity:0.7;margin-bottom:6px;">投稿4 / 日曜</div>
-            <div style="font-size:13px;font-weight:700;margin-bottom:4px;">福岡ビルドを<br>知っていますか？</div>
-            <div style="font-size:11px;margin-top:4px;color:var(--orange);">創業49年</div>
-            <div style="font-size:10px;margin-top:6px;opacity:0.7;">カルーセル6枚</div>
+          <div style="background:var(--orange);color:#fff;border-radius:10px;padding:14px 8px;text-align:center;">
+            <div style="font-size:10px;opacity:0.7;">日曜</div>
+            <div style="font-size:12px;font-weight:700;margin-top:4px;">見学会<br>告知</div>
           </div>
         </div>
-        <div style="font-size:12px;color:var(--text-light);margin-top:8px;">
-          &#128196; 全体戦略の図解：<a href="strategy.html#sec2" style="color:var(--blue);">strategy.html（セクション2: Instagram戦略）</a>
+
+        <div class="hl orange">
+          <strong>投稿テンプレートは作成済み。</strong>写真素材を揃えれば即日開始可能。週4投稿 × 月16本のペースで運用。
         </div>
       </div>
 
-      <!-- LINE -->
+      <!-- 施策2: LINE -->
       <div class="card">
-        <h3>&#128172; LINE公式戦略 <span class="badge done">実装済み</span></h3>
+        <h3>施策② LINE公式の活用強化</h3>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">LPにはLINE導線が設置済み。次はInstagramからもLINEに流す導線を作り、ステップ配信で見学会来場まで育てる。</p>
+
         <div class="two-col">
           <div>
-            <h4>実装済みリッチメニュー（6分割：3列&times;2行）</h4>
-            <div style="max-width:260px;margin:12px auto;">
-              <img src="LINE_fukuokabuild_screenshot.png" alt="福岡ビルド LINE公式アカウント スクリーンショット" style="width:100%;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.12);border:2px solid var(--blue);">
+            <h4>リッチメニュー（4分割）</h4>
+            <div style="max-width:260px;margin:12px auto;border-radius:12px;overflow:hidden;border:2px solid var(--orange);box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+              <div style="background:var(--orange);color:#fff;text-align:center;padding:8px;font-weight:700;font-size:12px;">FB HOME 公式LINE</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);">
+                <div style="background:#fff;padding:14px 8px;text-align:center;font-size:11px;font-weight:600;">&#127968;<br>見学会を予約</div>
+                <div style="background:#fff;padding:14px 8px;text-align:center;font-size:11px;font-weight:600;">&#127777;<br>住宅性能を知る</div>
+                <div style="background:#fff;padding:14px 8px;text-align:center;font-size:11px;font-weight:600;">&#128247;<br>施工事例</div>
+                <div style="background:#fff;padding:14px 8px;text-align:center;font-size:11px;font-weight:600;">&#127873;<br>来店予約特典</div>
+              </div>
             </div>
-            <div style="font-size:12px;color:var(--text-light);text-align:center;">実際のLINE画面（リッチメニュー＋自動応答）<br>登録特典：福岡エリア利回りマップ PDF</div>
+            <div style="font-size:11px;color:var(--text-light);text-align:center;">登録特典：家づくりチェックリストPDF</div>
           </div>
           <div>
             <h4>ステップ配信シナリオ</h4>
-            <div style="font-size:13px;line-height:2.2;">
-              <strong style="color:var(--orange);">即日</strong> ウェルカム + 利回りマップ配布<br>
-              <strong style="color:var(--orange);">3日後</strong> なぜ福岡で木造アパート投資なのか<br>
-              <strong style="color:var(--orange);">7日後</strong> オーナー様の成功事例紹介<br>
-              <strong style="color:var(--orange);">14日後</strong> 利回りシミュレーション無料診断へ誘導<br>
-              <strong style="color:var(--orange);">21日後</strong> 個別相談・見学会の案内
+            <div style="font-size:13px;line-height:2.4;">
+              <strong style="color:var(--orange);">即日</strong> ウェルカム + チェックリストPDF<br>
+              <strong style="color:var(--orange);">3日後</strong> UA値0.16の家は光熱費がこんなに違う<br>
+              <strong style="color:var(--orange);">7日後</strong> カリフォルニアスタイル施工事例<br>
+              <strong style="color:var(--orange);">14日後</strong> 見学会案内 + 来店特典<br>
+              <strong style="color:var(--orange);">21日後</strong> 個別相談・資金計画のご案内<br>
+              <strong style="color:var(--text-light);">月2回</strong> 新着情報 + 季節の暮らしコラム
             </div>
           </div>
         </div>
+        <div class="hl green">
+          <strong>LINE登録 → 見学会来場の自動化。</strong>一度仕組みを作れば、あとはInstagramからLINEに流すだけで自動的に見学会の予約が入る。
+        </div>
       </div>
 
-      <!-- 競合 -->
+      <!-- 施策3: LP改善 -->
       <div class="card">
-        <h3>&#128200; 競合状況</h3>
+        <h3>施策③ LP微調整 ── 完成度は高い、あとは流入を増やす</h3>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">fb-home.jp はUA値・C値・LINE・CTA・施工事例・イベントまで揃っている。LPの大改修は不要。微調整＋集客に注力。</p>
+
         <div class="tw">
           <table>
-            <thead><tr><th>競合</th><th>特徴</th><th>SNS</th><th>脅威</th></tr></thead>
+            <thead><tr><th>項目</th><th>現状</th><th>微調整案</th><th>優先度</th></tr></thead>
             <tbody>
-              <tr><td><strong>グランムート</strong></td><td>木造3階建て特化</td><td>SNSなし</td><td>低</td></tr>
-              <tr><td><strong>グリード</strong></td><td>毎月セミナー＋完成見学会</td><td>セミナー集客に強い</td><td style="color:var(--red);font-weight:700;">高</td></tr>
-              <tr><td><strong>セイコーエステート</strong></td><td>ワンストップ＋無料セミナー</td><td>セミナー＋オンライン</td><td style="color:var(--red);font-weight:700;">高</td></tr>
-              <tr><td><strong>功史朗建設</strong></td><td>デザイン訴求</td><td>限定的</td><td>中</td></tr>
+              <tr><td><strong>競合比較表</strong></td><td>自社数値のみ表示</td><td>WITHDOM・一般住宅との比較表を追加</td><td><span class="badge now">高</span></td></tr>
+              <tr><td><strong>無結露50年保証</strong></td><td>保証内容の詳細は薄い</td><td>保証の具体的な内容・条件を追加</td><td><span class="badge next">中</span></td></tr>
+              <tr><td><strong>お客様の声</strong></td><td>未掲載</td><td>オーナー様の体験談セクション追加</td><td><span class="badge next">中</span></td></tr>
+              <tr><td><strong>施工事例の充実</strong></td><td>3件</td><td>新規完成物件を随時追加</td><td><span class="badge next">継続</span></td></tr>
+              <tr><td><strong>SEO強化</strong></td><td>基本設定済み</td><td>「福岡 注文住宅 高断熱」等のコンテンツ強化</td><td><span class="badge next">中</span></td></tr>
             </tbody>
           </table>
         </div>
         <div class="hl green">
-          <strong>チャンス：</strong>競合のSNS活用はまだ弱い。<strong>今このタイミングでSNSを本格運用すれば、福岡エリアの投資用アパート建築分野でデジタル上の第一想起を取れる。</strong>
+          <strong>LPは合格点。</strong>今の最優先は「LPに人を連れてくること」。Instagram改善 + LINE活用 + 広告投入が先。
+        </div>
+      </div>
+
+      <!-- 施策4: SEO -->
+      <div class="card">
+        <h3>施策④ SEOコンテンツ強化（広告費ゼロで集客）</h3>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">GA4データでGoogle検索経由は滞在5分14秒・直帰率37.5%と<strong>最も質が高い</strong>。広告費をかけずに検索流入を増やす。</p>
+
+        <div class="two-col">
+          <div>
+            <h4>狙うキーワード</h4>
+            <div style="font-size:13px;line-height:2;">
+              <strong>地域×性能：</strong>「福岡 高断熱 注文住宅」<br>
+              <strong>地域×スタイル：</strong>「福岡 カリフォルニアスタイル 家」<br>
+              <strong>悩み系：</strong>「注文住宅 光熱費 安い」<br>
+              <strong>比較系：</strong>「UA値 C値 違い」<br>
+              <strong>エリア：</strong>「那珂川市 新築」
+            </div>
+          </div>
+          <div>
+            <h4>コンテンツ案</h4>
+            <div style="font-size:13px;line-height:2;">
+              &#9312; 施工事例ブログ（完成物件ごと）<br>
+              &#9313; 性能コラム（UA値・C値の解説）<br>
+              &#9314; 光熱費比較記事<br>
+              &#9315; お客様の声・インタビュー<br>
+              &#9316; エリア情報（那珂川市の住み心地）
+            </div>
+          </div>
+        </div>
+        <div class="hl green">
+          <strong>広告費ゼロ戦略：</strong>Instagram（認知）+ SEOコンテンツ（検索流入）+ LINE（育成）。すべて自前で回す。費用はかからない。
+        </div>
+      </div>
+
+      <!-- 施策5: 相互送客 -->
+      <div class="card">
+        <h3>施策⑤ 福岡ビルド（投資事業）との相互送客</h3>
+        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">投資事業の顧客基盤を住宅事業に活用。逆もまた然り。</p>
+        <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:16px 0;">
+          <div style="background:linear-gradient(135deg,#e8f4fd,#d1e9f7);border-radius:12px;padding:16px;text-align:center;border:2px solid var(--blue);">
+            <div style="font-size:13px;font-weight:700;color:var(--blue);">福岡ビルド<br>（投資事業）</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:6px;">投資家オーナー<br>LINE友だち</div>
+          </div>
+          <div style="text-align:center;font-size:24px;color:var(--text-light);">&#8644;<br><span style="font-size:10px;">相互送客</span></div>
+          <div style="background:linear-gradient(135deg,#fef9f0,#fdf0db);border-radius:12px;padding:16px;text-align:center;border:2px solid var(--orange);">
+            <div style="font-size:13px;font-weight:700;color:var(--orange);">FBホーム<br>（住宅事業）</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:6px;">マイホーム検討者<br>見学会来場者</div>
+          </div>
+        </div>
+        <div style="font-size:13px;line-height:2;">
+          <strong>投資 → 住宅：</strong>オーナーの自宅建築ニーズ、知人紹介<br>
+          <strong>住宅 → 投資：</strong>住宅購入者への不動産投資提案（将来的なクロスセル）
         </div>
       </div>
     </div>
 
-    <!-- ========== 4. FBホーム ========== -->
+    <!-- ========== 4. アクションプラン ========== -->
     <div class="sec">
       <div class="sec-head">
         <div class="sec-num orange">4</div>
-        <h2>FBホーム（住宅事業）戦略</h2>
+        <h2>アクションプラン</h2>
       </div>
 
-      <!-- チャネル一覧 -->
       <div class="card">
-        <h3>チャネル別 戦略サマリー</h3>
-        <div class="ch-grid">
-          <div class="ch-item ig">
-            <div class="ch-icon">&#128247;</div>
-            <div class="ch-name">Instagram</div>
-            <div class="ch-status">@fb_home_fukuokabuild<br><span class="badge next">STEP 2で整備</span></div>
+        <h3>4段階ロードマップ</h3>
+        <div class="timeline">
+          <div class="tl-step active">
+            <div class="tl-num">1</div>
+            <div class="tl-title">土台固め</div>
+            <div class="tl-desc">4月後半<br>LP改善 + LINE開設<br>Instagram初投稿</div>
           </div>
-          <div class="ch-item line">
-            <div class="ch-icon">&#128172;</div>
-            <div class="ch-name">LINE公式</div>
-            <div class="ch-status">アカウント未作成<br><span class="badge now">設定準備中</span></div>
+          <div class="tl-step">
+            <div class="tl-num">2</div>
+            <div class="tl-title">集客開始</div>
+            <div class="tl-desc">5月<br>Instagram週4投稿<br>LINEステップ配信開始</div>
           </div>
-          <div class="ch-item hp">
-            <div class="ch-icon">&#127760;</div>
-            <div class="ch-name">LP</div>
-            <div class="ch-status">GitHub Pages<br><span class="badge done">公開中</span></div>
+          <div class="tl-step">
+            <div class="tl-num">3</div>
+            <div class="tl-title">SEO強化</div>
+            <div class="tl-desc">6月〜<br>施工事例・コラム記事<br>検索流入の拡大</div>
           </div>
-          <div class="ch-item fb">
-            <div class="ch-icon">&#128226;</div>
-            <div class="ch-name">X / Facebook</div>
-            <div class="ch-status"><span class="badge next">不要（当面）</span></div>
+          <div class="tl-step">
+            <div class="tl-num">4</div>
+            <div class="tl-title">最適化</div>
+            <div class="tl-desc">7月〜<br>GA4分析→改善<br>投稿・SEO効果検証</div>
           </div>
-        </div>
-        <div class="hl orange">
-          <strong>方針：</strong>Instagram + LINE の2本柱に集中。X・Facebookは当面やらない。Facebookは STEP 4 で広告配信用にページ作成のみ。
         </div>
       </div>
 
-      <!-- Instagram -->
       <div class="card">
-        <h3>&#128247; Instagram 投稿イメージ（作成済み）</h3>
-        <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">カリフォルニアスタイルの世界観を活かしたカルーセル投稿を展開。施工事例の写真で「この家に住みたい」を訴求します。</p>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0;">
-          <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);border:2px solid var(--orange);">
-            <img src="fbhome_ig_cover.png" alt="CALIFORNIA × デザイン3選 表紙" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;">
-            <div style="padding:6px 8px;background:#fff;font-size:10px;text-align:center;font-weight:700;color:var(--orange);">表紙スライド</div>
-          </div>
-          <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-            <img src="fbhome_ig_design2.png" alt="デザイン2 外観" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;">
-            <div style="padding:6px 8px;background:#fff;font-size:10px;text-align:center;color:var(--text-light);">外観写真</div>
-          </div>
-          <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-            <img src="fbhome_ig_design3.png" alt="デザイン3 外観" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;">
-            <div style="padding:6px 8px;background:#fff;font-size:10px;text-align:center;color:var(--text-light);">外観写真</div>
-          </div>
-          <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);border:2px solid var(--orange);">
-            <img src="fbhome_ig_cta.png" alt="CTA 公式サイトへ" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;">
-            <div style="padding:6px 8px;background:#fff;font-size:10px;text-align:center;font-weight:700;color:var(--orange);">CTA → 公式サイトへ</div>
-          </div>
-        </div>
-        <div class="hl orange">
-          <strong>投稿の流れ：</strong>表紙「CALIFORNIA × デザイン3選」→ 3物件の外観＋内装写真 → 最終スライドでWEBカタログ＆公式サイトへ誘導
-        </div>
-      </div>
-
-      <!-- LINE -->
-      <div class="card">
-        <h3>&#128172; LINE公式戦略（設定ガイド作成済み）</h3>
-        <div class="two-col">
-          <div>
-            <h4>リッチメニュー（4分割）</h4>
-            <div class="rm-mini" style="border-color: var(--orange);">
-              <div class="rm-mini-head" style="background: var(--orange);">FB HOME 公式LINE</div>
-              <div class="rm-mini-grid">
-                <div class="rm-mini-cell"><div class="rmi">&#127968;</div>見学会を予約</div>
-                <div class="rm-mini-cell"><div class="rmi">&#127777;</div>住宅性能を知る</div>
-                <div class="rm-mini-cell"><div class="rmi">&#128247;</div>施工事例ギャラリー</div>
-                <div class="rm-mini-cell"><div class="rmi">&#127873;</div>来店予約特典</div>
-              </div>
+        <h3>STEP 1：今すぐやること（4月後半）</h3>
+        <ol class="action-list">
+          <li>
+            <span class="action-num">1</span>
+            <div>
+              <strong>Instagram改善版リール投稿開始</strong><span class="priority p-high">最優先</span><br>
+              <span style="font-size:12px;color:var(--text-light);">冒頭フック強化＋情報型コンテンツ。スキップ率82%→50%以下を目指す。</span>
             </div>
-            <div style="font-size:12px;color:var(--text-light);text-align:center;">登録特典：家づくりチェックリスト PDF<br>4つすべて「見学会に来てもらう」がゴール</div>
-          </div>
-          <div>
-            <h4>ステップ配信シナリオ</h4>
-            <div style="font-size:13px;line-height:2.2;">
-              <strong style="color:var(--orange);">即日</strong> ウェルカム + 家づくりチェックリストPDF<br>
-              <strong style="color:var(--orange);">3日後</strong> UA値0.16の家は光熱費がこんなに違う<br>
-              <strong style="color:var(--orange);">7日後</strong> CALIFORNIA STYLE / WAON 施工事例<br>
-              <strong style="color:var(--orange);">14日後</strong> モデルハウス見学会 + 来店特典<br>
-              <strong style="color:var(--orange);">21日後</strong> 個別相談・資金計画のご案内<br>
-              <strong style="color:var(--text-light);">月2回</strong> 新着物件 + 季節の暮らしコラム
+          </li>
+          <li>
+            <span class="action-num">2</span>
+            <div>
+              <strong>Instagramプロフィール → LINE導線の整備</strong><span class="priority p-high">最優先</span><br>
+              <span style="font-size:12px;color:var(--text-light);">プロフ文にLINE登録リンク設置。投稿末尾に「詳しくはプロフのリンクから」の誘導。</span>
             </div>
-          </div>
-        </div>
+          </li>
+          <li>
+            <span class="action-num">3</span>
+            <div>
+              <strong>LINEステップ配信の設計・実装</strong><span class="priority p-high">最優先</span><br>
+              <span style="font-size:12px;color:var(--text-light);">LINE登録後の自動配信シナリオ（性能コラム→施工事例→見学会案内）を設定。登録だけでなく「育成」の仕組みを作る。</span>
+            </div>
+          </li>
+          <li>
+            <span class="action-num">4</span>
+            <div>
+              <strong>Instagram改善版リール投稿（4本）</strong><span class="priority p-high">最優先</span><br>
+              <span style="font-size:12px;color:var(--text-light);">冒頭フック付き。「UA値0.16の家の中を公開」「光熱費○万円安い家」等の数字系フック。保存CTA付き。</span>
+            </div>
+          </li>
+          <li>
+            <span class="action-num">5</span>
+            <div>
+              <strong>施工写真の撮影・収集</strong><span class="priority p-mid">高</span><br>
+              <span style="font-size:12px;color:var(--text-light);">カリフォルニアスタイル完成物件の外観・内装写真。高解像度3000px以上。</span>
+            </div>
+          </li>
+        </ol>
       </div>
 
-      <!-- FBホーム 住宅性能 -->
       <div class="card">
-        <h3>&#127777; FBホームの武器（住宅性能）</h3>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0;">
-          <div style="background:linear-gradient(135deg,#fef9f0,#fff5e6);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);">
-            <div style="font-size:24px;font-weight:800;color:var(--orange);">0.16</div>
-            <div style="font-size:11px;color:var(--text-light);">UA値（断熱等級7）</div>
-          </div>
-          <div style="background:linear-gradient(135deg,#fef9f0,#fff5e6);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);">
-            <div style="font-size:24px;font-weight:800;color:var(--orange);">0.7<span style="font-size:13px;">以下</span></div>
-            <div style="font-size:11px;color:var(--text-light);">C値保証（気密）</div>
-          </div>
-          <div style="background:linear-gradient(135deg,#fef9f0,#fff5e6);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);">
-            <div style="font-size:24px;font-weight:800;color:var(--orange);">等級3</div>
-            <div style="font-size:11px;color:var(--text-light);">耐震（最高）</div>
-          </div>
-          <div style="background:linear-gradient(135deg,#fef9f0,#fff5e6);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);">
-            <div style="font-size:24px;font-weight:800;color:var(--orange);">388</div>
-            <div style="font-size:11px;color:var(--text-light);">構造計算項目</div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:var(--text-light);">モデルハウス3拠点：カリフォルニアヴィレッジ福間ビーチ / UMINAKAモデルハウス / WAON酒殿駅東</p>
+        <h3>STEP 2：5月（集客本格化）</h3>
+        <ol class="action-list">
+          <li>
+            <span class="action-num">6</span>
+            <div>
+              <strong>Instagram週4投稿ペースに移行</strong><br>
+              <span style="font-size:12px;color:var(--text-light);">火・木・土・日の投稿ルーティン確立。最適投稿時間：20:00-22:00</span>
+            </div>
+          </li>
+          <li>
+            <span class="action-num">7</span>
+            <div>
+              <strong>見学会イベントの告知開始</strong><br>
+              <span style="font-size:12px;color:var(--text-light);">Instagram＋LINE同時告知。予約はLINEから受付。</span>
+            </div>
+          </li>
+          <li>
+            <span class="action-num">8</span>
+            <div>
+              <strong>GA4で週次レビュー開始</strong><br>
+              <span style="font-size:12px;color:var(--text-light);">セッション数・流入元・直帰率・フォーム送信をチェック。</span>
+            </div>
+          </li>
+        </ol>
       </div>
 
+      <div class="card">
+        <h3>KPI目標（3ヶ月後 = 7月末）</h3>
+        <div class="kpi-grid">
+          <div class="kpi-box" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);border:1px solid #f48fb1;">
+            <div class="kpi-val" style="color:#c62828;">500</div>
+            <div class="kpi-label">Instagram フォロワー</div>
+            <div class="kpi-sub">3ヶ月目標</div>
+          </div>
+          <div class="kpi-box" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border:1px solid #81c784;">
+            <div class="kpi-val" style="color:#1e8449;">100</div>
+            <div class="kpi-label">LINE 友だち</div>
+            <div class="kpi-sub">3ヶ月目標</div>
+          </div>
+          <div class="kpi-box" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);border:1px solid #ba68c8;">
+            <div class="kpi-val" style="color:#6a1b9a;">300</div>
+            <div class="kpi-label">月間LP セッション</div>
+            <div class="kpi-sub">3ヶ月目標</div>
+          </div>
+          <div class="kpi-box" style="background:linear-gradient(135deg,#fef9f0,#fdf0db);border:1px solid var(--orange);">
+            <div class="kpi-val" style="color:var(--orange);">5</div>
+            <div class="kpi-label">見学会 来場組</div>
+            <div class="kpi-sub">3ヶ月合計</div>
+          </div>
+        </div>
+        <div class="hl green">
+          <strong>成約目標：</strong>3ヶ月で見学会5組来場 → うち1-2組が商談化 → <strong>年内1棟成約</strong>を目指す。
+        </div>
+      </div>
+
+      <!-- 本日の決定事項 -->
+      <div class="card" style="border:2px solid var(--orange);">
+        <h3 style="color:var(--orange);">本日決めたいこと</h3>
+        <ol class="action-list">
+          <li>
+            <span class="action-num">&#9312;</span>
+            <div><strong>Instagram改善方針の合意</strong> ── スキップ率82%→目標50%以下。冒頭フック強化＋情報型リール中心に切替でOKか</div>
+          </li>
+          <li>
+            <span class="action-num">&#9313;</span>
+            <div><strong>LINEステップ配信の設計</strong> ── 現在LINE登録導線はあるが、登録後の自動配信がない。ステップ配信を組んでよいか</div>
+          </li>
+          <li>
+            <span class="action-num">&#9314;</span>
+            <div><strong>LINE登録者数の現状共有</strong> ── 現時点でLINE友だちは何人いるか。ステップ配信の効果測定の起点に</div>
+          </li>
+          <li>
+            <span class="action-num">&#9315;</span>
+            <div><strong>見学会・モデルハウスの予定</strong> ── 直近で告知可能なイベントはあるか</div>
+          </li>
+          <li>
+            <span class="action-num">&#9316;</span>
+            <div><strong>SEOコンテンツのネタ出し</strong> ── 施工事例・お客様の声など、記事にできる素材はあるか</div>
+          </li>
+        </ol>
+      </div>
     </div>
 
-
-  </div>
-
-  <div style="max-width:700px;margin:0 auto 40px;padding:0 24px;">
-    <div style="background:#fff;border-radius:12px;padding:20px 24px;box-shadow:0 2px 10px rgba(0,0,0,0.04);border:1px solid #e2e8f0;">
-      <h3 style="font-size:15px;color:#1a3a5c;margin-bottom:12px;">関連資料</h3>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <a href="instagram-system.html" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#e8f5e9;border-radius:8px;text-decoration:none;color:#2c3e50;font-size:13px;font-weight:600;">
-          <span style="font-size:20px;">&#128247;</span>
-          <span>Instagram投稿の仕組み（2/25 更新）</span>
-          <span style="margin-left:auto;font-size:11px;color:#27ae60;background:#d5f5e3;padding:2px 8px;border-radius:10px;">NEW</span>
-        </a>
-        <a href="templates.html" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#e8f4fd;border-radius:8px;text-decoration:none;color:#2c3e50;font-size:13px;font-weight:600;">
-          <span style="font-size:20px;">&#128196;</span>
-          <span>Instagram投稿テンプレート一覧（全13種類）</span>
-        </a>
-        <a href="strategy.html" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fef9f0;border-radius:8px;text-decoration:none;color:#2c3e50;font-size:13px;font-weight:600;">
-          <span style="font-size:20px;">&#128218;</span>
-          <span>SNS・Web戦略 全体提案書</span>
-        </a>
-      </div>
-    </div>
   </div>
 
   <footer>
-    <p>福岡ビルド &times; FBホーム 戦略サマリー &mdash; 2026年2月15日 打ち合わせ資料</p>
+    <div style="margin-bottom:8px;">
+      <strong>福岡ビルド株式会社 &times; 株式会社斗</strong>
+    </div>
+    FBホーム住宅事業 販売戦略会議 &mdash; 2026年4月15日
   </footer>
 
 </body>
